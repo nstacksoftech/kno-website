@@ -74,7 +74,7 @@ export function Hero() {
         />
         <div
           aria-hidden
-          className="absolute inset-y-0 left-0 w-[45.5%] bg-gradient-to-r from-kno-cream to-transparent"
+          className="absolute inset-y-0 left-0 w-[20.5%] bg-gradient-to-r from-kno-cream to-transparent"
         />
       </div>
 

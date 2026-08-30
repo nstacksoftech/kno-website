@@ -87,7 +87,7 @@ export function Pricing() {
                 width={654}
                 height={366}
                 sizes="(min-width: 1024px) 654px, 160vw"
-                className="absolute left-[-58.23%] top-0 h-full w-[158.23%] max-w-none object-cover"
+                className="absolute left-0 top-0 h-full w-[96%] max-w-none object-contain"
               />
             </div>
             <blockquote className="mt-4 rounded-quote bg-kno-accent px-8 py-7 lg:absolute lg:inset-x-0 lg:bottom-0 lg:mt-0 lg:h-[167px]">
