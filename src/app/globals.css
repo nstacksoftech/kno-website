@@ -1,26 +1,187 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
+/*
+ * KNO design tokens — sourced from Figma file `Pet-Care`, frame `Home` (3642:280).
+ *
+ * Three of these are published Figma variables:
+ *   Primary Green            -> --kno-primary
+ *   Text heading color       -> --kno-on-primary
+ *   Yellow highlighting color-> --kno-accent
+ *
+ * The rest are repeated raw fills in the design that are promoted to tokens here
+ * so that no component needs to hardcode a hex value.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand */
+  --kno-primary: #4a5b39;
+  --kno-primary-soft: rgb(74 91 57 / 0.1);
+  --kno-on-primary: #eceada;
+  --kno-on-primary-muted: rgb(236 234 218 / 0.7);
+  --kno-accent: #d6a45f;
+  --kno-accent-soft: rgb(214 164 95 / 0.4);
+
+  /* Surfaces */
+  --kno-canvas: #ffffff;
+  --kno-cream: #fcf7f3;
+  --kno-surface: #fffefe;
+  --kno-surface-alt: #f4f2e9;
+  --kno-surface-muted: #eceada;
+  --kno-surface-veil: rgb(236 234 218 / 0.6);
+
+  /* Lines + secondary text (all derived from Primary Green) */
+  --kno-line: rgb(74 91 57 / 0.2);
+  --kno-muted: rgb(74 91 57 / 0.7);
+  --kno-muted-strong: rgb(74 91 57 / 0.75);
+  --kno-subtle: rgb(74 91 57 / 0.72);
+  --kno-nav: rgb(74 91 57 / 0.67);
 }
 
+/* shadcn semantic tokens -> Tailwind utilities (border-border, bg-card, ...). */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-sans);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
+@theme inline {
+  /* --- KNO palette --- */
+  --color-kno-primary: var(--kno-primary);
+  --color-kno-primary-soft: var(--kno-primary-soft);
+  --color-kno-on-primary: var(--kno-on-primary);
+  --color-kno-on-primary-muted: var(--kno-on-primary-muted);
+  --color-kno-accent: var(--kno-accent);
+  --color-kno-accent-soft: var(--kno-accent-soft);
+  --color-kno-canvas: var(--kno-canvas);
+  --color-kno-cream: var(--kno-cream);
+  --color-kno-surface: var(--kno-surface);
+  --color-kno-surface-alt: var(--kno-surface-alt);
+  --color-kno-surface-muted: var(--kno-surface-muted);
+  --color-kno-surface-veil: var(--kno-surface-veil);
+  --color-kno-line: var(--kno-line);
+  --color-kno-muted: var(--kno-muted);
+  --color-kno-muted-strong: var(--kno-muted-strong);
+  --color-kno-subtle: var(--kno-subtle);
+  --color-kno-nav: var(--kno-nav);
+
+  /* --- Type scale ---
+   * Every text node in the Figma file uses leading `normal`, but the webfont
+   * resolves `normal` to ~1.26 where Figma renders ~1.21. Leading is therefore
+   * pinned in px to the exact box heights measured in the frame; otherwise the
+   * error compounds down the page. */
+  --text-xs--line-height: 15px; /* 12px text */
+  --text-sm--line-height: 17px; /* 14px text */
+  --text-base--line-height: 19px; /* 16px text */
+  --text-lg--line-height: 22px;
+  --text-xl--line-height: 24px;
+  --text-2xl--line-height: 29px;
+
+  --text-display: 3rem; /* 48px — hero h1 */
+  --text-display--line-height: 58px;
+  --text-display--font-weight: 700;
+  --text-section: 2.875rem; /* 46px — section headings */
+  --text-section--line-height: 56px;
+  --text-section--font-weight: 700;
+  --text-price: 2.875rem; /* 46px — plan price */
+  --text-price--line-height: 56px;
+  --text-quote: 1.625rem; /* 26px — accent quote card */
+  --text-quote--line-height: 31px;
+  --text-h3: 1.5rem; /* 24px — card titles */
+  --text-h3--line-height: 29px;
+  --text-h4: 1.25rem; /* 20px — feature + step titles */
+  --text-h4--line-height: 24px;
+  --text-lead: 1.125rem; /* 18px — "Includes:", vet name */
+  --text-lead--line-height: 22px;
+
+  /* --- Radii --- */
+  --radius-chip: 17px;
+  --radius-note: 18px;
+  --radius-tile: 20px;
+  --radius-quote: 23px;
+  --radius-profile: 26px;
+  --radius-panel: 32px;
+  --radius-trust: 36px;
+  --radius-card: 42px;
+  --radius-icon: 12px;
+
+  /* --- Layout --- */
+  --spacing-gutter: 5.625rem; /* 90px page gutter at 1440 */
+  --container-kno: 90rem; /* 1440px frame width */
+  /* Width at which the layout equals the Figma frame exactly. */
+  --breakpoint-frame: 90rem;
+}
+
+/* Map shadcn's semantic tokens onto the KNO palette so primitives inherit the brand. */
+:root {
+  --background: var(--kno-canvas);
+  --foreground: var(--kno-primary);
+  --card: var(--kno-surface);
+  --card-foreground: var(--kno-primary);
+  --popover: var(--kno-surface);
+  --popover-foreground: var(--kno-primary);
+  --primary: var(--kno-primary);
+  --primary-foreground: var(--kno-on-primary);
+  --secondary: var(--kno-surface-alt);
+  --secondary-foreground: var(--kno-primary);
+  --muted: var(--kno-surface-muted);
+  --muted-foreground: var(--kno-muted);
+  --accent: var(--kno-accent);
+  --accent-foreground: var(--kno-surface);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: var(--kno-line);
+  --input: var(--kno-line);
+  --ring: var(--kno-primary);
+  --radius: 0.625rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-kno-canvas text-kno-primary;
+  }
+
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+
+  /* The design has no dark palette; opt the page out so the OS setting
+     cannot repaint form controls and scrollbars against a light layout. */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    color-scheme: light;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
