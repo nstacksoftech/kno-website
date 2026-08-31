@@ -32,7 +32,7 @@ export function Logo({ className }: { className?: string }) {
   return (
     <Link
       href="/"
-      aria-label="KNO — Veterinary Care, Simplified"
+      aria-label="KNO - Veterinary Care, Simplified"
       className={cn(
         "relative block aspect-[135/55] w-[108px] rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-kno-primary focus-visible:ring-offset-2 lg:w-[135px]",
         className,

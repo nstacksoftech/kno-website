@@ -46,7 +46,7 @@ export function HowItWorks() {
       <Container>
         <SectionHeading id="how-it-works-heading">How KNO Works</SectionHeading>
 
-        {/* Figma spaces the number badge 14 / 17 / 13px from its card text —
+        {/* Figma spaces the number badge 14 / 17 / 13px from its card text -
             a slip in the source. A single 14px gap is used here, and the
             section's bottom padding absorbs the 3px difference. */}
         <ol className="mt-12 flex flex-col gap-10 lg:mt-[72px] lg:flex-row lg:items-start lg:justify-between lg:gap-0">

@@ -1,6 +1,7 @@
 import type {
   CompanyDetails,
   FooterColumn,
+  NavItem,
   SocialLink,
   StoreLink,
   TrustBadge,
@@ -38,31 +39,33 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
   {
     heading: "Company",
     links: [
-      { label: "About Us", href: "#about" },
-      { label: "How it works", href: "#how-it-works" },
-      { label: "Our Vets", href: "#vets" },
-      { label: "Blogs", href: "#blog" },
-      { label: "Contact Us", href: "#contact" },
+      { label: "About Us", href: "/about" },
+      { label: "How it works", href: "/#how-it-works" },
+      { label: "Our Vets", href: "/#vets" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
   {
     heading: "Support",
     links: [
-      { label: "Help Centre", href: "#help" },
-      { label: "Contact Us", href: "#contact" },
-      { label: "Privacy Policy", href: "#privacy" },
-      { label: "Terms of service", href: "#terms" },
+      { label: "Help Centre", href: "/contact" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of service", href: "/terms" },
     ],
   },
   {
     heading: "For Vet",
     links: [
-      { label: "Join Our Network", href: "#join" },
-      { label: "Vet Login", href: "#vet-login" },
+      { label: "Join Our Network", href: "/contact" },
     ],
   },
 ] as const;
 
+/**
+ * Not rendered: the accounts are not live yet. Restore the block in
+ * `site-footer.tsx` once the profiles exist.
+ */
 export const SOCIAL_LINKS: readonly SocialLink[] = [
   { label: "Instagram", href: "#", icon: "/logos/social-instagram.svg" },
   { label: "LinkedIn", href: "#", icon: "/logos/social-linkedin.svg" },
@@ -70,6 +73,10 @@ export const SOCIAL_LINKS: readonly SocialLink[] = [
   { label: "YouTube", href: "#", icon: "/logos/social-youtube.svg" },
 ] as const;
 
+/**
+ * Not rendered: the apps are not published yet. Restore the "Download App"
+ * column in `site-footer.tsx` once the store listings are live.
+ */
 export const STORE_LINKS: readonly StoreLink[] = [
   { label: "App Store", href: "#", icon: "/logos/google-play.png" },
   { label: "Google Play", href: "#", icon: "/logos/app-store.svg" },
@@ -83,4 +90,7 @@ export const FOOTER_COMPANY: CompanyDetails = {
   ],
 };
 export const FOOTER_COPYRIGHT = "All rights to KNO VETERINARY CARE NETWORK.";
-export const FOOTER_LEGAL = "Privacy Policy | Terms & Condition";
+export const FOOTER_LEGAL: readonly NavItem[] = [
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms & Condition", href: "/terms" },
+] as const;

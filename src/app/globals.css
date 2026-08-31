@@ -3,7 +3,7 @@
 @import "shadcn/tailwind.css";
 
 /*
- * KNO design tokens — sourced from Figma file `Pet-Care`, frame `Home` (3642:280).
+ * KNO design tokens - sourced from Figma file `Pet-Care`, frame `Home` (3642:280).
  *
  * Three of these are published Figma variables:
  *   Primary Green            -> --kno-primary
@@ -101,21 +101,21 @@
   --text-xl--line-height: 24px;
   --text-2xl--line-height: 29px;
 
-  --text-display: 3rem; /* 48px — hero h1 */
+  --text-display: 3rem; /* 48px - hero h1 */
   --text-display--line-height: 58px;
   --text-display--font-weight: 700;
-  --text-section: 2.875rem; /* 46px — section headings */
+  --text-section: 2.875rem; /* 46px - section headings */
   --text-section--line-height: 56px;
   --text-section--font-weight: 700;
-  --text-price: 2.875rem; /* 46px — plan price */
+  --text-price: 2.875rem; /* 46px - plan price */
   --text-price--line-height: 56px;
-  --text-quote: 1.625rem; /* 26px — accent quote card */
+  --text-quote: 1.625rem; /* 26px - accent quote card */
   --text-quote--line-height: 31px;
-  --text-h3: 1.5rem; /* 24px — card titles */
+  --text-h3: 1.5rem; /* 24px - card titles */
   --text-h3--line-height: 29px;
-  --text-h4: 1.25rem; /* 20px — feature + step titles */
+  --text-h4: 1.25rem; /* 20px - feature + step titles */
   --text-h4--line-height: 24px;
-  --text-lead: 1.125rem; /* 18px — "Includes:", vet name */
+  --text-lead: 1.125rem; /* 18px - "Includes:", vet name */
   --text-lead--line-height: 22px;
 
   /* --- Radii --- */

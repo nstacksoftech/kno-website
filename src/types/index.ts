@@ -52,7 +52,9 @@ export interface Vet {
   qualification: string;
   experience: string;
   languages: readonly string[];
-  photo: string;
+  /** Omitted when we have no portrait; the card renders a monogram instead. */
+  photo?: string;
+  initials: string;
   verified: boolean;
 }
 
@@ -74,7 +76,7 @@ export interface FooterColumn {
 }
 
 export interface CompanyDetails {
-  /** Registered company name — always rendered on its own line. */
+  /** Registered company name - always rendered on its own line. */
   name: string;
   /** Postal address; each entry renders on a new line beneath the name. */
   addressLines: readonly string[];

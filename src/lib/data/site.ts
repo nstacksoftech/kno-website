@@ -1,11 +1,10 @@
 import type { NavItem, TrustPoint } from "@/types";
 
 export const NAV_ITEMS: readonly NavItem[] = [
-  { label: "How It Work", href: "#how-it-works" },
-  { label: "Plan & Pricing", href: "#pricing" },
-  { label: "Our Vets", href: "#vets" },
-  { label: "Blog", href: "#blog" },
-  { label: "About KNO", href: "#about" },
+  { label: "How It Work", href: "/#how-it-works" },
+  { label: "Plan & Pricing", href: "/#pricing" },
+  { label: "Our Vets", href: "/#vets" },
+  { label: "About KNO", href: "/about" },
 ] as const;
 
 export const HERO = {
@@ -14,8 +13,8 @@ export const HERO = {
   subhead:
     "Everything for your pet’s health and wellbeing, connected in one place",
   tagline: "KNO karo. Guess mat karo",
-  primaryCta: { label: "Book Vet Consult", href: "#pricing" },
-  secondaryCta: { label: "Explore Health Needs", href: "#features" },
+  primaryCta: { label: "Book Vet Consult", href: "/#pricing" },
+  secondaryCta: { label: "Explore Health Needs", href: "/#features" },
   socialProof: {
     caption: "Trusted by Pet Parents across India",
     headline: "10,000+ Happy Families",

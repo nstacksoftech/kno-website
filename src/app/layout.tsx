@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { SiteFooter } from "@/components/sections/site-footer";
+import { SiteHeader } from "@/components/sections/site-header";
+
 import "./globals.css";
 
 const inter = Inter({
@@ -11,11 +14,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "KNO — Veterinary Care, Simplified",
+  title: "KNO - Veterinary Care, Simplified",
   description:
     "Everything for your pet’s health and wellbeing, connected in one place. Licensed veterinarians, 24/7 availability and secure health records.",
   openGraph: {
-    title: "KNO — Veterinary Care, Simplified",
+    title: "KNO - Veterinary Care, Simplified",
     description:
       "Everything for your pet’s health and wellbeing, connected in one place.",
     type: "website",
@@ -25,7 +28,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }

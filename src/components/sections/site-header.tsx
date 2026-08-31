@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 
 import {
@@ -26,6 +27,9 @@ import { NAV_ITEMS } from "@/lib/data/site";
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  /** Only the home page puts a photograph behind the header. */
+  const overlaysHero = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -38,7 +42,7 @@ export function SiteHeader() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-200",
-        scrolled
+        scrolled || !overlaysHero
           ? "bg-kno-cream/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-kno-cream/80"
           : "bg-transparent",
       )}
