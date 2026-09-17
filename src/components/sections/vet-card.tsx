@@ -14,9 +14,9 @@ function VetPortrait({ vet }: { vet: Vet }) {
         src={vet.photo}
         alt={`Portrait of ${vet.name}`}
         width={150}
-        height={163}
+        height={175}
         sizes="150px"
-        className="h-[163px] w-[150px] shrink-0 rounded-[16px] object-cover"
+        className="h-[175px] w-[150px] shrink-0 rounded-[16px] object-cover"
       />
     );
   }
@@ -24,7 +24,7 @@ function VetPortrait({ vet }: { vet: Vet }) {
   return (
     <span
       aria-hidden
-      className="flex h-[163px] w-[150px] shrink-0 items-center justify-center rounded-[16px] bg-kno-primary text-[2.5rem] font-bold text-kno-on-primary"
+      className="flex h-[175px] w-[150px] shrink-0 items-center justify-center rounded-[16px] bg-kno-primary text-[2.5rem] font-bold text-kno-on-primary"
     >
       {vet.initials}
     </span>
@@ -33,18 +33,21 @@ function VetPortrait({ vet }: { vet: Vet }) {
 
 export function VetCard({ vet }: { vet: Vet }) {
   return (
-    <article className="relative flex h-full min-h-[187px] w-full gap-[15px] rounded-profile bg-kno-surface-alt p-3">
+    <article className="relative flex h-full min-h-[199px] w-full gap-[15px] rounded-profile bg-kno-cream p-3">
       <VetPortrait vet={vet} />
 
       <div className="flex min-w-0 flex-col pr-3 pt-[20px]">
-        <h3 className="text-lead font-semibold text-kno-primary">{vet.name}</h3>
-        <p className="mt-[8px] text-xs tracking-[0.36px] text-kno-subtle">
+        <h3 className="text-lead font-semibold text-kno-ink">{vet.name}</h3>
+        <p className="mt-[5px] text-xs tracking-[0.36px] text-kno-subtle">
+          Speciality: {vet.speciality}
+        </p>
+        <p className="mt-[6px] text-xs tracking-[0.36px] text-kno-subtle">
           {vet.qualification}
         </p>
-        <p className="mt-[11px] text-xs tracking-[0.36px] text-kno-subtle">
+        <p className="mt-[6px] text-xs tracking-[0.36px] text-kno-subtle">
           {vet.experience}
         </p>
-        <p className="mt-[22px] text-xs tracking-[0.36px] text-kno-subtle">
+        <p className="mt-[29px] text-xs tracking-[0.36px] text-kno-subtle">
           <span className="font-semibold">Languages:</span>{" "}
           {vet.languages.join(", ")}
         </p>

@@ -62,15 +62,22 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
   },
 ] as const;
 
-/**
- * Not rendered: the accounts are not live yet. Restore the block in
- * `site-footer.tsx` once the profiles exist.
- */
 export const SOCIAL_LINKS: readonly SocialLink[] = [
-  { label: "Instagram", href: "#", icon: "/logos/social-instagram.svg" },
-  { label: "LinkedIn", href: "#", icon: "/logos/social-linkedin.svg" },
-  { label: "Facebook", href: "#", icon: "/logos/social-facebook.png" },
-  { label: "YouTube", href: "#", icon: "/logos/social-youtube.svg" },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61594044461225",
+    icon: "/logos/social-facebook.png",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/kno.vet/",
+    icon: "/logos/social-instagram.svg",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/kno-vetrinary-care/about/",
+    icon: "/logos/social-linkedin.svg",
+  },
 ] as const;
 
 /**

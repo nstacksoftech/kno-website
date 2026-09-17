@@ -11,13 +11,13 @@ export function PainPoints() {
   return (
     <section
       aria-labelledby="pain-points-heading"
-      className="bg-kno-canvas pb-16 lg:pb-[100px]"
+      className="bg-kno-canvas pb-16 pt-16 lg:pb-[72px] lg:pt-[72px]"
     >
       <Container>
         <div className="rounded-panel bg-kno-cream px-6 py-12 lg:px-[42px] lg:pb-[72px] lg:pt-[72px]">
           <h2
             id="pain-points-heading"
-            className="text-balance text-center text-[1.75rem] font-bold leading-tight text-kno-primary sm:text-[2.25rem] lg:text-section lg:leading-[56px]"
+            className="text-balance text-center text-[1.75rem] font-bold leading-tight text-kno-ink sm:text-[2.25rem] lg:text-section lg:leading-[56px]"
           >
             {PAIN_POINT_HEADING}
           </h2>
@@ -32,9 +32,9 @@ export function PainPoints() {
                   src={point.icon}
                   alt={point.iconAlt}
                   size={67}
-                  iconSize={35}
+                  iconSize={point.iconSize}
                 />
-                <p className="max-w-[142px] whitespace-pre-line text-sm font-medium text-kno-primary">
+                <p className="max-w-[142px] whitespace-pre-line text-sm font-medium text-kno-ink">
                   {point.label}
                 </p>
               </article>
@@ -51,7 +51,7 @@ export function PainPoints() {
               />
               <article className="flex h-[189px] w-full flex-col items-center justify-center gap-[13px] rounded-[30px] bg-kno-primary px-7 text-center lg:w-[294px]">
                 <IconChip
-                  src="/icons/stethoscope-light.svg"
+                  src="/icons/pets.svg"
                   alt=""
                   size={68}
                   iconSize={35}

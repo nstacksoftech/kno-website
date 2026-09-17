@@ -31,19 +31,27 @@ export const STEPS: readonly Step[] = [
 export const PAIN_POINTS: readonly PainPoint[] = [
   {
     label: "Finding the right\nvet",
-    icon: "/icons/stethoscope.svg",
+    icon: "/icons/search.svg",
     iconAlt: "",
+    iconSize: 35,
   },
   {
     label: "Remembering vaccinations",
-    icon: "/icons/av-timer.svg",
+    icon: "/icons/calendar-clock.svg",
     iconAlt: "",
+    iconSize: 35,
   },
-  { label: "Keeping health\nrecords", icon: "/icons/contract.svg", iconAlt: "" },
+  {
+    label: "Keeping health\nrecords",
+    icon: "/icons/folder.svg",
+    iconAlt: "",
+    iconSize: 26,
+  },
   {
     label: "Wondering if\ntreatment is working",
-    icon: "/icons/verified.svg",
+    icon: "/icons/question-mark.svg",
     iconAlt: "",
+    iconSize: 35,
   },
 ] as const;
 

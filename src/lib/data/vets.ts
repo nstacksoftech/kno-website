@@ -8,11 +8,16 @@ import type { Vet } from "@/types";
  *
  * Only three portraits exist in the design file. Entries without a `photo`
  * render a brand monogram rather than a stand-in photograph of someone else.
+ *
+ * `speciality` was added to the card in the 2026 design review. The Figma frame
+ * ships the label with no value, so these are placeholders alongside the rest of
+ * the profile and must be replaced with each vet's real registered focus.
  */
 export const VETS: readonly Vet[] = [
   {
     id: "rohan-mehta",
     name: "Dr. Rohan Mehta",
+    speciality: "Internal Medicine",
     qualification: "BVSc & MVSc",
     experience: "12+ Years Experience",
     languages: ["English", "Hindi", "Gujarati", "Marathi"],
@@ -23,6 +28,7 @@ export const VETS: readonly Vet[] = [
   {
     id: "ruhi-rai",
     name: "Dr. Ruhi Rai",
+    speciality: "Dermatology",
     qualification: "BVSc & MVSc",
     experience: "9+ Years Experience",
     languages: ["English", "Hindi", "Bengali"],
@@ -33,6 +39,7 @@ export const VETS: readonly Vet[] = [
   {
     id: "romi-mishra",
     name: "Dr. Romi Mishra",
+    speciality: "Preventive Care",
     qualification: "BVSc & MVSc",
     experience: "10+ Years Experience",
     languages: ["English", "Hindi", "Marathi"],
@@ -43,6 +50,7 @@ export const VETS: readonly Vet[] = [
   {
     id: "anand-krishnan",
     name: "Dr. Anand Krishnan",
+    speciality: "Internal Medicine",
     qualification: "BVSc, MVSc (Medicine)",
     experience: "8+ Years Experience",
     languages: ["English", "Tamil", "Malayalam", "Hindi"],
@@ -52,6 +60,7 @@ export const VETS: readonly Vet[] = [
   {
     id: "simran-kaur-bedi",
     name: "Dr. Simran Kaur Bedi",
+    speciality: "Surgery",
     qualification: "BVSc, MVSc (Surgery)",
     experience: "7+ Years Experience",
     languages: ["English", "Hindi", "Punjabi"],

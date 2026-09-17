@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { LogoWordmark } from "@/components/ui/logo";
@@ -6,6 +7,7 @@ import {
   FOOTER_COLUMNS,
   FOOTER_COPYRIGHT,
   FOOTER_LEGAL,
+  SOCIAL_LINKS,
 } from "@/lib/data/footer";
 
 export function SiteFooter() {
@@ -27,6 +29,30 @@ export function SiteFooter() {
                 ))}
               </address>
             </div>
+
+            <ul className="mt-10 flex items-center gap-[18px] lg:mt-[37px]">
+              {SOCIAL_LINKS.map((social) => (
+                <li key={social.label}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Kno on ${social.label}`}
+                    className="block leading-[0] rounded-sm outline-none transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:ring-kno-on-primary focus-visible:ring-offset-2 focus-visible:ring-offset-kno-primary"
+                  >
+                    <Image
+                      src={social.icon}
+                      alt=""
+                      aria-hidden
+                      width={27}
+                      height={27}
+                      unoptimized
+                      className="size-[27px] object-contain"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:col-span-3 lg:grid lg:grid-cols-subgrid lg:items-start lg:gap-x-0 lg:gap-y-0">

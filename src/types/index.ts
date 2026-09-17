@@ -10,6 +10,9 @@ export interface TrustPoint {
   detail: string;
   icon: string;
   iconAlt: string;
+  /** Glyph box in px. The strip bottom-aligns four icons of differing height. */
+  iconWidth: number;
+  iconHeight: number;
 }
 
 export interface Step {
@@ -26,6 +29,8 @@ export interface PainPoint {
   label: string;
   icon: string;
   iconAlt: string;
+  /** Glyph size in px inside the 67px chip. */
+  iconSize: number;
 }
 
 export interface Feature {
@@ -49,6 +54,8 @@ export interface Plan {
 export interface Vet {
   id: string;
   name: string;
+  /** Clinical focus, shown above the qualification on the card. */
+  speciality: string;
   qualification: string;
   experience: string;
   languages: readonly string[];

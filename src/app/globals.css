@@ -3,7 +3,7 @@
 @import "shadcn/tailwind.css";
 
 /*
- * KNO design tokens - sourced from Figma file `Pet-Care`, frame `Home` (3642:280).
+ * KNO design tokens - sourced from Figma file `Pet-Care`, frame `Home` (3743:2).
  *
  * Three of these are published Figma variables:
  *   Primary Green            -> --kno-primary
@@ -12,6 +12,11 @@
  *
  * The rest are repeated raw fills in the design that are promoted to tokens here
  * so that no component needs to hardcode a hex value.
+ *
+ * The 2026 refresh moved the page off the warm cream ground (#fcf7f3) onto a
+ * near-white one (#fdfaf8 panels on a #fffefe page) and took headings off the
+ * brand green onto a near-black ink, with body copy on a neutral grey. Green is
+ * now reserved for brand marks, buttons, icons and the footer.
  */
 :root {
   /* Brand */
@@ -23,19 +28,42 @@
   --kno-accent-soft: rgb(214 164 95 / 0.4);
 
   /* Surfaces */
-  --kno-canvas: #ffffff;
-  --kno-cream: #fcf7f3;
+  --kno-canvas: #fffefe;
+  --kno-cream: #fdfaf8;
+  /* Retained only for the hero photograph's left-hand fade, which the design
+     still draws in the older, warmer cream. */
+  --kno-cream-deep: #fcf7f3;
   --kno-surface: #fffefe;
   --kno-surface-alt: #f4f2e9;
   --kno-surface-muted: #eceada;
-  --kno-surface-veil: rgb(236 234 218 / 0.6);
+  --kno-surface-veil: #fdfaf8;
 
-  /* Lines + secondary text (all derived from Primary Green) */
+  /* Type: near-black headings over neutral-grey body copy. */
+  --kno-ink: #111411;
+  --kno-body: #5e625a;
+  --kno-muted: rgb(94 98 90 / 0.7);
+  --kno-muted-strong: rgb(94 98 90 / 0.75);
+  --kno-subtle: rgb(94 98 90 / 0.72);
+  --kno-soft: rgb(94 98 90 / 0.8);
+
+  /* Icon chip fills. The gradient is the second iteration requested in the
+     2026 review; it is previewed side by side at /design/icons. */
+  --kno-chip-gradient: linear-gradient(
+    135deg,
+    rgb(214 164 95 / 0.8) 0%,
+    rgb(214 164 95 / 0.3) 52%,
+    rgb(74 91 57 / 0.34) 100%
+  );
+  --kno-chip-gradient-strong: linear-gradient(
+    135deg,
+    #e2b478 0%,
+    #d6a45f 48%,
+    #8a8f57 100%
+  );
+
+  /* Lines derive from Primary Green; nav derives from the heading ink. */
   --kno-line: rgb(74 91 57 / 0.2);
-  --kno-muted: rgb(74 91 57 / 0.7);
-  --kno-muted-strong: rgb(74 91 57 / 0.75);
-  --kno-subtle: rgb(74 91 57 / 0.72);
-  --kno-nav: rgb(74 91 57 / 0.67);
+  --kno-nav: rgb(17 20 17 / 0.67);
 }
 
 /* shadcn semantic tokens -> Tailwind utilities (border-border, bg-card, ...). */
@@ -79,14 +107,18 @@
   --color-kno-accent-soft: var(--kno-accent-soft);
   --color-kno-canvas: var(--kno-canvas);
   --color-kno-cream: var(--kno-cream);
+  --color-kno-cream-deep: var(--kno-cream-deep);
   --color-kno-surface: var(--kno-surface);
   --color-kno-surface-alt: var(--kno-surface-alt);
   --color-kno-surface-muted: var(--kno-surface-muted);
   --color-kno-surface-veil: var(--kno-surface-veil);
   --color-kno-line: var(--kno-line);
+  --color-kno-ink: var(--kno-ink);
+  --color-kno-body: var(--kno-body);
   --color-kno-muted: var(--kno-muted);
   --color-kno-muted-strong: var(--kno-muted-strong);
   --color-kno-subtle: var(--kno-subtle);
+  --color-kno-soft: var(--kno-soft);
   --color-kno-nav: var(--kno-nav);
 
   /* --- Type scale ---
@@ -139,15 +171,15 @@
 /* Map shadcn's semantic tokens onto the KNO palette so primitives inherit the brand. */
 :root {
   --background: var(--kno-canvas);
-  --foreground: var(--kno-primary);
+  --foreground: var(--kno-ink);
   --card: var(--kno-surface);
-  --card-foreground: var(--kno-primary);
+  --card-foreground: var(--kno-ink);
   --popover: var(--kno-surface);
-  --popover-foreground: var(--kno-primary);
+  --popover-foreground: var(--kno-ink);
   --primary: var(--kno-primary);
   --primary-foreground: var(--kno-on-primary);
   --secondary: var(--kno-surface-alt);
-  --secondary-foreground: var(--kno-primary);
+  --secondary-foreground: var(--kno-ink);
   --muted: var(--kno-surface-muted);
   --muted-foreground: var(--kno-muted);
   --accent: var(--kno-accent);
@@ -165,7 +197,7 @@
   }
 
   body {
-    @apply bg-kno-canvas text-kno-primary;
+    @apply bg-kno-canvas text-kno-body;
   }
 
   html {

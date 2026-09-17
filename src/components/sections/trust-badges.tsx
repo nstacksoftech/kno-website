@@ -66,9 +66,11 @@ export function TrustBadges() {
                 badge.image ? "gap-[14px]" : "gap-[22px]",
               )}
             >
-              <div className="flex max-w-[197px] flex-col gap-[10px] text-kno-primary">
-                <h3 className="text-h4 font-semibold">{badge.title}</h3>
-                <p className="text-xs">{badge.description}</p>
+              <div className="flex max-w-[197px] flex-col gap-[10px]">
+                <h3 className="text-h4 font-semibold text-kno-ink">
+                  {badge.title}
+                </h3>
+                <p className="text-xs text-kno-body">{badge.description}</p>
               </div>
 
               {badge.image ? (

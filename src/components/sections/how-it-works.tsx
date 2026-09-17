@@ -26,7 +26,7 @@ function StepCard({ step }: { step: Step }) {
           {step.number}
         </span>
         <div className="flex flex-col gap-[10px]">
-          <h3 className="text-h4 font-semibold text-kno-primary">
+          <h3 className="text-h4 font-semibold text-kno-ink">
             {step.title}
           </h3>
           <p className="text-base text-kno-muted-strong">{step.description}</p>
@@ -41,7 +41,7 @@ export function HowItWorks() {
     <section
       id="how-it-works"
       aria-labelledby="how-it-works-heading"
-      className="scroll-mt-24 bg-kno-canvas pb-16 pt-16 lg:pb-[71px] lg:pt-[62px]"
+      className="scroll-mt-24 bg-kno-canvas pb-16 pt-16 lg:pb-[62px] lg:pt-[62px]"
     >
       <Container>
         <SectionHeading id="how-it-works-heading">How KNO Works</SectionHeading>

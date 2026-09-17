@@ -30,7 +30,7 @@ export function FeatureGrid() {
             <div className="flex-1">
               <h2
                 id="features-heading"
-                className="text-balance text-[1.75rem] font-bold leading-tight text-kno-primary sm:text-[2.25rem] lg:text-section lg:leading-[56px]"
+                className="text-balance text-[1.75rem] font-bold leading-tight text-kno-ink sm:text-[2.25rem] lg:text-section lg:leading-[56px]"
               >
                 Everything in One Place
               </h2>
@@ -43,11 +43,10 @@ export function FeatureGrid() {
                       alt={feature.iconAlt}
                       size={60}
                       iconSize={33}
-                      tone="accent"
                       shape="squircle"
                     />
                     <div className="flex flex-col gap-2">
-                      <h3 className="text-h4 font-bold text-kno-primary">
+                      <h3 className="text-h4 font-bold text-kno-ink">
                         {feature.title}
                       </h3>
                       <p className="text-base text-kno-muted">

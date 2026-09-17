@@ -44,12 +44,12 @@ export function Vets() {
     <section
       id="vets"
       aria-labelledby="vets-heading"
-      className="scroll-mt-24 bg-kno-canvas pb-16 lg:pb-[68px] lg:pt-0"
+      className="scroll-mt-24 bg-kno-canvas pb-16 lg:pb-[78px] lg:pt-0"
     >
       <Container>
         <SectionHeading id="vets-heading">{VETS_HEADING}</SectionHeading>
 
-        <div className="relative mt-10 lg:mt-[52px]">
+        <div className="relative mt-10 lg:mt-[53px]">
           <button
             type="button"
             onClick={() => scrollByCard(-1)}
@@ -94,7 +94,7 @@ export function Vets() {
           </button>
         </div>
 
-        <div className="mt-8 flex justify-center lg:mt-[32px]">
+        <div className="mt-8 flex justify-center lg:mt-[19px]">
           <Link
             href="#vets"
             className="inline-flex h-[53px] items-center justify-between gap-4 rounded-[40px] border border-kno-primary py-3 pl-[21px] pr-[12px] text-base text-kno-primary outline-none transition-colors hover:bg-kno-primary/5 focus-visible:ring-2 focus-visible:ring-kno-primary focus-visible:ring-offset-2 lg:w-[135px]"

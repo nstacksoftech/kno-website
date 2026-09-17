@@ -19,7 +19,7 @@ export function SectionHeading({
   return (
     <Tag
       className={cn(
-        "text-balance font-bold text-kno-primary",
+        "text-balance font-bold text-kno-ink",
         "text-[1.75rem] leading-tight sm:text-[2.25rem] lg:text-section lg:leading-[56px]",
         align === "center" ? "text-center" : "text-left",
         className,

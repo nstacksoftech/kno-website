@@ -8,10 +8,13 @@ export const PLANS: readonly Plan[] = [
     price: "₹199",
     period: "/month",
     includes: [
-      "Access to KNO platform",
-      "1 pet profile",
-      "Book consultations at member price (₹599)",
-      "Health records & reminders",
+      "Access to KNO Platform",
+      "1 Pet Health Profile",
+      "Book Vet Consultations from ₹499",
+      "Health Records and Reminders",
+      "₹100 off KNO Supplements",
+      "20% off KNO Pharmacy",
+      "FREE next day delivery",
     ],
     cta: "Get Started",
     featured: false,
@@ -24,9 +27,12 @@ export const PLANS: readonly Plan[] = [
     period: "/month",
     includes: [
       "Everything in KNO Care",
-      "Priority access to veterinarians",
-      "Up to 3 pets",
-      "Consultations at member price (₹499)",
+      "Up to 3 Pet Health Profiles",
+      "Book Vet Consultations from ₹499",
+      "Health Records and Reminders",
+      "₹100 off KNO Supplements",
+      "20% off KNO Pharmacy",
+      "FREE next day delivery",
     ],
     cta: "Get Started",
     featured: true,
@@ -34,5 +40,6 @@ export const PLANS: readonly Plan[] = [
 ] as const;
 
 export const PLANS_HEADING = "Plans that care for every Pet";
+
 export const PLANS_QUOTE =
   "Because every pet parent deserves confidence, not confusion.";

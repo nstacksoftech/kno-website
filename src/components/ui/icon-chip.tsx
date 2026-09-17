@@ -3,12 +3,16 @@ import { cn } from "@/lib/utils";
 import { Icon } from "./icon";
 
 const TONE_CLASSES = {
-  /** Trust strip + pain-point tiles: translucent accent behind a green glyph. */
+  /** Pain-point tiles + feature grid: translucent accent behind a green glyph. */
   accentSoft: "bg-kno-accent-soft",
-  /** Feature grid + resolution card: solid accent. */
+  /** Resolution card: solid accent. */
   accent: "bg-kno-accent",
   /** How-it-works steps: translucent primary. */
   primarySoft: "bg-kno-primary-soft",
+  /** Gradient iteration - accent falling away into brand green. */
+  gradient: "bg-[image:var(--kno-chip-gradient)]",
+  /** Gradient iteration for chips that sit on a dark ground. */
+  gradientStrong: "bg-[image:var(--kno-chip-gradient-strong)]",
 } as const;
 
 const SHAPE_CLASSES = {
