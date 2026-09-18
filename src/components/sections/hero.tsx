@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ShieldCheck } from "lucide-react";
 
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
@@ -10,7 +11,7 @@ function SocialProofCard() {
   return (
     <div className="w-[258px] rounded-note bg-kno-surface-muted px-4 pt-[17px] lg:h-[132px]">
       <p className="flex items-center gap-1 text-xs text-kno-primary">
-        <Icon src="/icons/shield.svg" alt="" size={21} />
+        <ShieldCheck className="size-[21px] shrink-0" aria-hidden />
         {HERO.socialProof.caption}
       </p>
       <div className="mt-[10px] flex items-center gap-3">

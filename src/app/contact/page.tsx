@@ -3,9 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  BookOpen,
   Mail,
-  MessageCircle,
   MessageSquare,
   Package,
   Search,
@@ -84,7 +82,7 @@ export default function ContactPage() {
             <p className="mt-4 max-w-[480px] text-base font-semibold text-kno-ink">
               {CONTACT_HERO.lead}
             </p>
-            <p className="mt-1 max-w-[480px] text-base text-kno-muted">
+            <p className="mt-3 max-w-[480px] text-base text-kno-muted">
               {CONTACT_HERO.availability}
             </p>
 
@@ -148,7 +146,7 @@ export default function ContactPage() {
       <section aria-labelledby="contact-emergency" className="bg-kno-canvas pt-12 lg:pt-[56px]">
         <Container>
           <div className="grid gap-6 rounded-[24px] bg-kno-alert/10 px-6 py-8 lg:grid-cols-[1fr_auto] lg:gap-10 lg:px-[42px]">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-6">
               <Icon
                 src="/images/warning.png"
                 alt=""
@@ -200,13 +198,11 @@ export default function ContactPage() {
                     tone="accentSoft"
                     shape="squircle"
                   />
-                  <h3 className="mt-6 text-h4 font-bold text-kno-ink">
+                  <h3 className="mt-4 text-h4 font-bold text-kno-ink">
                     {topic.title}
                   </h3>
-                  <p className="mt-2 flex-1 text-sm text-kno-muted">
-                    {topic.body}
-                  </p>
-                  <span className="mt-6 inline-flex size-9 items-center justify-center rounded-full bg-kno-primary text-kno-on-primary transition-transform group-hover:translate-x-1">
+                  <p className="mt-1.5 text-sm text-kno-muted">{topic.body}</p>
+                  <span className="mt-auto inline-flex size-9 items-center justify-center self-end rounded-full bg-kno-primary text-kno-on-primary transition-transform group-hover:translate-x-1">
                     <ArrowRight className="size-5" aria-hidden />
                   </span>
                 </Link>
@@ -274,57 +270,73 @@ export default function ContactPage() {
 
             <aside className="flex flex-col gap-6">
               {/* WhatsApp */}
-              <div className="rounded-panel bg-kno-cream p-6">
-                <span className="flex size-12 items-center justify-center rounded-full bg-kno-primary text-kno-on-primary">
-                  <MessageCircle className="size-6" aria-hidden />
-                </span>
-                <p className="mt-4 text-sm font-semibold text-kno-muted">
-                  {CONTACT_CHAT.eyebrow}
-                </p>
-                <h3 className="mt-1 text-lead font-bold text-kno-ink">
-                  {CONTACT_CHAT.title}
-                </h3>
-                <p className="mt-2 text-sm text-kno-muted">{CONTACT_CHAT.body}</p>
-                <PillLink
-                  href={CONTACT_CHAT.cta.href}
-                  size="compact"
-                  className="mt-5 gap-[10px] px-6"
-                >
-                  {CONTACT_CHAT.cta.label}
-                  <Icon
-                    src="/icons/chevron-right-light.svg"
-                    alt=""
-                    width={9.18}
-                    height={16}
-                    className="-scale-x-100"
-                  />
-                </PillLink>
+              <div className="flex items-start gap-4 rounded-panel bg-kno-cream p-6">
+                <Icon
+                  src="/icons/whatsapp.svg"
+                  alt=""
+                  size={44}
+                  className="shrink-0"
+                />
+                <div className="flex-1">
+                  <p className="text-sm font-semibold text-kno-muted">
+                    {CONTACT_CHAT.eyebrow}
+                  </p>
+                  <h3 className="mt-0.5 text-lead font-bold text-kno-ink">
+                    {CONTACT_CHAT.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-kno-muted">
+                    {CONTACT_CHAT.body}
+                  </p>
+                  <PillLink
+                    href={CONTACT_CHAT.cta.href}
+                    size="compact"
+                    block
+                    className="mt-5 gap-[10px]"
+                  >
+                    {CONTACT_CHAT.cta.label}
+                    <Icon
+                      src="/icons/chevron-right-light.svg"
+                      alt=""
+                      width={9.18}
+                      height={16}
+                      className="-scale-x-100"
+                    />
+                  </PillLink>
+                </div>
               </div>
 
               {/* FAQ */}
-              <div className="rounded-panel bg-kno-cream p-6">
-                <span className="flex size-12 items-center justify-center rounded-icon bg-kno-primary-soft text-kno-primary">
-                  <BookOpen className="size-6" aria-hidden />
-                </span>
-                <h3 className="mt-4 text-lead font-bold text-kno-ink">
-                  {CONTACT_FAQ.title}
-                </h3>
-                <p className="mt-2 text-sm text-kno-muted">{CONTACT_FAQ.body}</p>
-                <PillLink
-                  href={CONTACT_FAQ.cta.href}
-                  size="compact"
-                  variant="outline"
-                  className="mt-5 gap-[10px] px-6"
-                >
-                  {CONTACT_FAQ.cta.label}
-                  <Icon
-                    src="/icons/chevron-right.svg"
-                    alt=""
-                    width={9.18}
-                    height={16}
-                    className="-scale-x-100"
-                  />
-                </PillLink>
+              <div className="flex items-start gap-4 rounded-panel bg-kno-cream p-6">
+                <Icon
+                  src="/icons/book_ribbon.svg"
+                  alt=""
+                  size={44}
+                  className="shrink-0"
+                />
+                <div className="flex-1">
+                  <h3 className="text-lead font-bold text-kno-ink">
+                    {CONTACT_FAQ.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-kno-muted">
+                    {CONTACT_FAQ.body}
+                  </p>
+                  <PillLink
+                    href={CONTACT_FAQ.cta.href}
+                    size="compact"
+                    variant="outline"
+                    block
+                    className="mt-5 gap-[10px]"
+                  >
+                    {CONTACT_FAQ.cta.label}
+                    <Icon
+                      src="/icons/chevron-right.svg"
+                      alt=""
+                      width={9.18}
+                      height={16}
+                      className="-scale-x-100"
+                    />
+                  </PillLink>
+                </div>
               </div>
             </aside>
           </div>

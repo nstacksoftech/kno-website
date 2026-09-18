@@ -77,7 +77,7 @@ export const HELP_TOPICS: readonly HelpTopic[] = [
   {
     title: "Membership & Billing",
     body: "Plans, payments, cancellations and member benefits",
-    icon: "/icons/loyalty.svg",
+    icon: "/icons/id_card.svg",
     href: "#",
   },
   {
