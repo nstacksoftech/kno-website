@@ -6,8 +6,11 @@ import {
   Mail,
   MessageSquare,
   Package,
+  PackageSearch,
   Search,
   ShieldCheck,
+  Stethoscope,
+  UserRound,
   Users,
   type LucideIcon,
 } from "lucide-react";
@@ -29,6 +32,7 @@ import {
   CONTACT_HERO_ACTIONS,
   HELP_TOPICS,
   type ContactChannel,
+  type HeroAction,
 } from "@/lib/data/contact";
 
 export const metadata: Metadata = {
@@ -43,6 +47,13 @@ const CHANNEL_ICONS: Record<ContactChannel["id"], LucideIcon> = {
   general: MessageSquare,
   vets: Users,
   privacy: ShieldCheck,
+};
+
+/** Hero quick actions that use a lucide glyph instead of an SVG asset. */
+const ACTION_LUCIDE: Partial<Record<HeroAction["id"], LucideIcon>> = {
+  track: PackageSearch,
+  membership: UserRound,
+  vet: Stethoscope,
 };
 
 export default function ContactPage() {
@@ -68,7 +79,7 @@ export default function ContactPage() {
           />
         </div>
 
-        <Container className="relative pb-12 pt-[104px] lg:min-h-[560px] lg:pb-[64px] lg:pt-[150px]">
+        <Container className="relative pb-10 pt-[104px] lg:min-h-[480px] lg:pb-[36px] lg:pt-[140px]">
           <div className="max-w-[560px] lg:max-w-[55%] lg:pr-10">
             <p className="text-sm font-semibold uppercase tracking-[0.12em] text-kno-muted">
               {CONTACT_HERO.eyebrow}
@@ -99,31 +110,35 @@ export default function ContactPage() {
 
             {/* Quick actions */}
             <ul className="mt-6 grid w-full grid-cols-1 gap-4 sm:grid-cols-3">
-              {CONTACT_HERO_ACTIONS.map((action) => (
-                <li key={action.id}>
-                  <Link
-                    href={action.href}
-                    className="group flex items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-kno-primary focus-visible:ring-offset-2"
-                  >
-                    <IconChip
-                      src={action.icon}
-                      alt=""
-                      size={40}
-                      iconSize={22}
-                      tone="primarySoft"
-                      shape="squircle"
-                    />
-                    <span className="text-left">
+              {CONTACT_HERO_ACTIONS.map((action) => {
+                const ActionLucide = ACTION_LUCIDE[action.id];
+                return (
+                  <li key={action.id} className="flex items-center gap-3">
+                    {ActionLucide ? (
+                      <ActionLucide
+                        className="size-[34px] shrink-0 text-kno-primary"
+                        strokeWidth={1.25}
+                        aria-hidden
+                      />
+                    ) : (
+                      <Icon
+                        src={action.icon}
+                        alt=""
+                        size={34}
+                        className="shrink-0"
+                      />
+                    )}
+                    <div className="text-left">
                       <span className="block text-sm font-bold text-kno-ink">
                         {action.title}
                       </span>
                       <span className="block text-xs text-kno-muted">
                         {action.sub}
                       </span>
-                    </span>
-                  </Link>
-                </li>
-              ))}
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -143,7 +158,7 @@ export default function ContactPage() {
       </section>
 
       {/* Emergency band */}
-      <section aria-labelledby="contact-emergency" className="bg-kno-canvas pt-12 lg:pt-[56px]">
+      <section aria-labelledby="contact-emergency" className="bg-kno-canvas pt-8 lg:pt-[28px]">
         <Container>
           <div className="grid gap-6 rounded-[24px] bg-kno-alert/10 px-6 py-8 lg:grid-cols-[1fr_auto] lg:gap-10 lg:px-[42px]">
             <div className="flex items-center gap-6">
@@ -176,14 +191,14 @@ export default function ContactPage() {
       </section>
 
       {/* Browse Help Topics */}
-      <section aria-labelledby="contact-topics" className="bg-kno-canvas py-16 lg:py-[80px]">
+      <section aria-labelledby="contact-topics" className="bg-kno-canvas py-10 lg:py-[40px]">
         <Container>
           <SectionHeading id="contact-topics">Browse Help Topics</SectionHeading>
-          <p className="mt-3 text-center text-base text-kno-muted">
+          <p className="mt-1 text-center text-base text-kno-muted">
             Find quick answers to common questions.
           </p>
 
-          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-[52px] lg:grid-cols-3 xl:grid-cols-6">
+          <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:mt-[28px] lg:grid-cols-3 xl:grid-cols-6">
             {HELP_TOPICS.map((topic) => (
               <li key={topic.title}>
                 <Link
@@ -213,13 +228,17 @@ export default function ContactPage() {
       </section>
 
       {/* Ways to reach us (channel cards) */}
-      <section aria-labelledby="contact-channels" className="bg-kno-canvas pb-16 lg:pb-[80px]">
+      <section aria-labelledby="contact-channels" className="bg-kno-canvas pb-10 lg:pb-[40px]">
         <Container>
           <SectionHeading id="contact-channels">
-            Built with trust at the center.
+            Still need help? Get in touch.
           </SectionHeading>
+          <p className="mt-1 text-center text-base text-kno-muted">
+            Choose the right support channel and we&apos;ll get back to you as
+            soon as possible.
+          </p>
 
-          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-[52px] lg:grid-cols-3 xl:grid-cols-5">
+          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:mt-[36px] lg:grid-cols-3 xl:grid-cols-5">
             {CONTACT_CHANNELS.map((channel) => {
               const ChannelIcon = CHANNEL_ICONS[channel.id];
               return (
@@ -253,14 +272,14 @@ export default function ContactPage() {
       </section>
 
       {/* Send us a message */}
-      <section aria-labelledby="contact-form-heading" className="bg-kno-canvas pb-16 lg:pb-[80px]">
+      <section aria-labelledby="contact-form-heading" className="bg-kno-canvas pb-10 lg:pb-[40px]">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-[48px]">
             <div>
               <SectionHeading id="contact-form-heading" align="start">
                 {CONTACT_FORM_COPY.heading}
               </SectionHeading>
-              <p className="mt-4 max-w-[620px] text-base leading-[24px] text-kno-muted">
+              <p className="mt-1 max-w-[620px] text-base leading-[24px] text-kno-muted">
                 {CONTACT_FORM_COPY.lead}
               </p>
               <div className="mt-8">

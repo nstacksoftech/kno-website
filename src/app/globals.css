@@ -199,6 +199,16 @@
     @apply border-border outline-ring/50;
   }
 
+  /* Tailwind v4 defaults buttons to `cursor: default`; restore the pointer
+     for every interactive control so buttons show the hand like links do. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  label[for],
+  summary,
+  select:not(:disabled) {
+    cursor: pointer;
+  }
+
   body {
     @apply bg-kno-canvas text-kno-body;
   }

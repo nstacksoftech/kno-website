@@ -93,8 +93,8 @@ export function Hero() {
           </p>
           <p className="mt-1 text-base text-kno-muted">{HERO.subhead}</p>
 
-          <p className="mt-8 inline-flex h-[66px] items-center gap-[3px] rounded-[16px] border border-kno-primary pl-[15px] pr-[26px]">
-            <Icon src="/icons/loyalty.svg" alt="" size={42} />
+          <p className="mt-8 inline-flex h-[66px] items-center gap-[10px] rounded-[16px] border border-kno-primary pl-[18px] pr-[26px]">
+            <Icon src="/icons/kno-karo.svg" alt="" size={34} />
             <span className="text-[1.25rem] font-bold text-kno-primary lg:text-h3">
               {HERO.tagline}
             </span>

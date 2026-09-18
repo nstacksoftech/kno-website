@@ -46,14 +46,14 @@ export const CONTACT_HERO_ACTIONS: readonly HeroAction[] = [
     id: "membership",
     title: "Manage Membership",
     sub: "Billing, plan & more",
-    icon: "/icons/person-add.svg",
+    icon: "/icons/id_card.svg",
     href: "/#pricing",
   },
   {
     id: "vet",
     title: "Talk to vet",
     sub: "Consult a veterinarian",
-    icon: "/icons/stethoscope-step.svg",
+    icon: "/icons/consult.svg",
     href: "/#pricing",
   },
 ] as const;

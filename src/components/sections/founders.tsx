@@ -39,7 +39,7 @@ function FounderCard({ person }: { person: AboutFounder }) {
     <Dialog.Root>
       <Dialog.Trigger
         className={cn(
-          "group relative block aspect-[300/340] w-full overflow-hidden rounded-trust outline-none",
+          "group relative block aspect-[300/340] w-full cursor-pointer overflow-hidden rounded-trust outline-none",
           "focus-visible:ring-2 focus-visible:ring-kno-primary focus-visible:ring-offset-2 focus-visible:ring-offset-kno-canvas",
         )}
         aria-label={`Read more about ${person.name}, ${person.role}`}
