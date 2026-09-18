@@ -26,6 +26,8 @@
   --kno-on-primary-muted: rgb(236 234 218 / 0.7);
   --kno-accent: #d6a45f;
   --kno-accent-soft: rgb(214 164 95 / 0.4);
+  /* Alert / emergency (published Figma variable "Alert Color"). */
+  --kno-alert: #c96869;
 
   /* Surfaces */
   --kno-canvas: #fffefe;
@@ -105,6 +107,7 @@
   --color-kno-on-primary-muted: var(--kno-on-primary-muted);
   --color-kno-accent: var(--kno-accent);
   --color-kno-accent-soft: var(--kno-accent-soft);
+  --color-kno-alert: var(--kno-alert);
   --color-kno-canvas: var(--kno-canvas);
   --color-kno-cream: var(--kno-cream);
   --color-kno-cream-deep: var(--kno-cream-deep);

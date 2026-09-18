@@ -1,84 +1,181 @@
-export interface Principle {
+export interface AboutFeature {
+  title: string;
+  icon: string;
+}
+
+export interface AboutBelief {
   title: string;
   body: string;
   icon: string;
 }
 
-export interface Milestone {
-  value: string;
-  label: string;
+export interface AboutFounder {
+  name: string;
+  role: string;
+  image: string;
+  imageAlt: string;
+  /** Long-form profile shown in the click-through popup. */
+  bio: {
+    /** Opening single line, e.g. "For Sanaya, KNO began with something personal." */
+    intro: string;
+    paragraphs: readonly string[];
+    /** Brand sign-off line under the story. */
+    closing: string;
+  };
 }
 
-export const ABOUT_INTRO =
-  "KNO is a veterinary care network built for Indian pet parents. We connect you to licensed veterinarians, keep your pet's medical history in one place, and tell you what is due next - so caring for an animal stops being a guessing game.";
+export interface AboutTrustPoint {
+  title: string;
+  body: string;
+  icon: string;
+}
 
-export const ABOUT_PROBLEM = {
-  heading: "Why we started KNO",
-  paragraphs: [
-    "Pet ownership in India has grown far faster than the infrastructure around it. A family brings home a puppy or kitten and immediately runs into the same wall: finding a veterinarian they can trust, remembering which vaccination is due, and holding on to a paper prescription long enough to show it at the next visit.",
-    "Records live in WhatsApp threads and shoeboxes. Deworming slips by a month. A rash gets treated twice because nobody can tell whether the first course worked. None of this is negligence - it is what happens when care is delivered as a series of disconnected visits rather than a continuous relationship.",
-    "KNO was built to close that gap. One membership, one profile per pet, and one timeline that every veterinarian you speak to can actually read.",
-  ],
+/** Hero band — copy sits left of the family photograph. */
+export const ABOUT_HERO = {
+  headline: "We built KNO because",
+  headlineAccent: "We're pet parents too.",
+  eyebrow: "There are moments every pet parent knows",
+  body: "When they haven't eaten all day. When something doesn't look right. When you can't remember their last vaccination. Or when you're simply wondering should I be worried? We wanted one trusted place to turn. So, we built KNO.",
+  tagline: "KNO karo. Guess mat karo",
+  primaryCta: {
+    label: "Book Vet Consult",
+    href: "/#pricing",
+    icon: "/icons/consult.svg",
+  },
+  secondaryCta: {
+    label: "Explore Health Needs",
+    href: "/#features",
+    icon: "/icons/medical-services.svg",
+  },
+  image: "/images/hero-family.png",
+  imageAlt: "A parent and child sitting outdoors with their dog",
 } as const;
 
-export const ABOUT_PRINCIPLES: readonly Principle[] = [
-  {
-    title: "Qualified people, not chatbots",
-    body: "Every consultation on KNO is with a registered veterinarian holding a BVSc, and in most cases an MVSc as well. We verify degrees and council registration before anyone joins the panel, and we publish the languages each vet speaks so you can be understood properly.",
-    icon: "/icons/stethoscope-step.svg",
-  },
-  {
-    title: "The record belongs to the pet",
-    body: "Weights, vaccinations, prescriptions and consultation notes are written to a single health timeline. You can read it, export it, and share it with any clinic - including ones outside our network. We are not trying to lock your pet's history inside our app.",
-    icon: "/icons/contract.svg",
-  },
-  {
-    title: "Care that arrives before the problem",
-    body: "Most of what harms a healthy animal is preventable and scheduled: vaccinations, deworming, flea and tick cover, annual checkups. KNO tracks those dates against your pet's species, age and last visit, and reminds you in time to act rather than after the fact.",
-    icon: "/icons/av-timer.svg",
-  },
-  {
-    title: "Priced so you use it early",
-    body: "Charging per visit teaches people to wait until something is clearly wrong. A membership does the opposite - it makes the small question, asked early, effectively free. That is when veterinary advice is cheapest and most useful.",
-    icon: "/icons/loyalty.svg",
-  },
-] as const;
-
-export const ABOUT_HOW = {
-  heading: "What a KNO membership actually covers",
-  paragraphs: [
-    "Membership gives you the platform: a profile for each pet, the full health timeline, vaccination and care reminders, digital prescriptions, and consultations booked at member pricing rather than walk-in rates.",
-    "KNO Care is ₹199 a month and covers one pet. KNO Care+ is ₹499 a month, covers up to three pets, gives you priority access to veterinarians, and lowers the per-consultation price. Consultations themselves are charged separately - ₹599 on KNO Care and ₹499 on KNO Care+ - so you only pay for the advice you use.",
-    "Consultations run over audio or video, at any hour. If a veterinarian believes your pet needs to be examined physically, they will say so and tell you what to ask for at the clinic.",
-  ],
+/** "Why KNO?" — one row of six connected capabilities. */
+export const ABOUT_WHY = {
+  heading: "Why KNO?",
+  lead: "One pet. One health journey.",
+  sub: "KNO brings your pet's healthcare together in one place",
+  footnote:
+    "So, whether you have a question today or need to look back at their health years from now, their journey stays connected.",
+  features: [
+    { title: "Veterinarians", icon: "/icons/stethoscope-step.svg" },
+    { title: "Health records", icon: "/icons/folder.svg" },
+    { title: "Prescriptions", icon: "/icons/pill.svg" },
+    { title: "Preventive care", icon: "/icons/bloodtype.svg" },
+    { title: "Reminders", icon: "/icons/calendar-clock.svg" },
+    { title: "Online vet pharmacy", icon: "/icons/hero-records.svg" },
+  ] satisfies AboutFeature[],
 } as const;
 
-export const ABOUT_LIMITS = {
-  heading: "What KNO is not",
-  body: "KNO is a telehealth and records service. It is not an emergency room, and it does not replace a physical examination where one is needed. Some conditions cannot be assessed responsibly over a screen - trauma, breathing difficulty, seizures, suspected poisoning, bloat, whelping complications, and collapse among them. In those situations, take your pet to the nearest emergency veterinary hospital immediately and contact us afterwards so the episode is recorded on the timeline.",
+/** "What we believe" — four value cards on the cream panel. */
+export const ABOUT_BELIEFS = {
+  heading: "What we believe",
+  cards: [
+    {
+      title: "Care should start early.",
+      body: "Getting trusted guidance shouldn't have to wait until something becomes serious.",
+      icon: "/icons/cardiology.svg",
+    },
+    {
+      title: "Your pet's history should follow them",
+      body: "Health records, consultations and prescriptions belong to one continuous journey.",
+      icon: "/icons/contract.svg",
+    },
+    {
+      title: "Good care should be easy to access.",
+      body: "Connect with qualified veterinarians when you need guidance",
+      icon: "/icons/pet_supplies.svg",
+    },
+    {
+      title: "Pet parenting should feel more confident.",
+      body: "Less searching. Less remembering. Less guessing. That's all you need to KNO.",
+      icon: "/icons/loyalty.svg",
+    },
+  ] satisfies AboutBelief[],
 } as const;
 
-/**
- * Every figure here is a commitment we can point at - an availability window, a
- * qualification bar, a retention period, a certification. Deliberately no user
- * or install counts, which age badly and cannot be checked by a reader.
- */
-export const ABOUT_MILESTONES: readonly Milestone[] = [
-  { value: "24/7", label: "Consultation availability" },
-  { value: "BVSc & MVSc", label: "Minimum panel qualification" },
-  { value: "3 years", label: "Clinical history retained per pet" },
-  { value: "ISO 27001", label: "Certified information security" },
-] as const;
+/** "Meet the people behind KNO" — the three co-founders. */
+export const ABOUT_FOUNDERS = {
+  heading: "Meet the people behind KNO",
+  lead: "Three people. Three stories. One reason for building KNO.",
+  sub: "We started KNO with a simple belief: pet parents deserve better access, better information and greater confidence when making decisions about the animals they love.",
+  people: [
+    {
+      name: "Vishaka",
+      role: "Co-Founder",
+      image: "/images/Vishaka.jpg",
+      imageAlt: "Vishaka, Co-Founder of KNO",
+      bio: {
+        intro: "For Vishaka, KNO is about making trusted veterinary care easier to reach.",
+        paragraphs: [
+          "Trained at the Royal Veterinary College in London, Vishaka's journey as a veterinarian has given her firsthand insight into the challenges both pet parents and veterinary professionals face when trying to access timely, reliable care. As India's community of pet parents continues to grow, she saw an opportunity to use technology to bring pet parents and qualified veterinarians closer together — regardless of where they live or how difficult it may be to find the right professional.",
+          "Her vision is to help build a more connected veterinary ecosystem: one where pet parents can access trusted professional guidance when they need it, while veterinarians are empowered to reach and care for more pets and their families.",
+          "That shared belief became part of the foundation of KNO — combining veterinary expertise with technology to make quality pet healthcare more accessible, approachable and connected across India.",
+          "Because when it comes to their pet's health, every pet parent deserves to KNO.",
+        ],
+        closing: "One pet. One health journey.",
+      },
+    },
+    {
+      name: "Anuj",
+      role: "Co-Founder",
+      image: "/images/Anuj.jpeg",
+      imageAlt: "Anuj, Co-Founder of KNO",
+      bio: {
+        intro: "For Anuj, KNO began with a story he couldn't forget.",
+        paragraphs: [
+          "Coming from four generations of jewelers, Anuj grew up with an appreciation for craftsmanship, precision and trust. He studied International Business in London before earning his Graduate Gemologist qualification from GIA in New York. Alongside that journey has always been a deep love for animals.",
+          "His perspective changed after hearing about a pet parent who lost her dog in the middle of the night because she couldn't reach veterinary care when she needed it most. What stayed with Anuj was the helplessness of knowing that care may have existed — but wasn't within reach when it mattered.",
+          "That experience became one of the reasons he co-founded KNO — built on the same principles that have shaped his life: patience, care and attention to detail.",
+          "Because when it comes to their pet's health, every pet parent deserves to KNO.",
+        ],
+        closing: "One pet. One health journey.",
+      },
+    },
+    {
+      name: "Sanaya",
+      role: "Co-Founder",
+      image: "/images/Sanaya.png",
+      imageAlt: "Sanaya, Co-Founder of KNO",
+      bio: {
+        intro: "For Sanaya, KNO began with something personal.",
+        paragraphs: [
+          "Raised in America and a lifelong pet lover, Sanaya visited India and saw a rapidly growing community of passionate pet parents — but also a veterinary-care ecosystem that often felt fragmented. Veterinary consultations, health records, prescriptions, preventive care, medications and follow-ups frequently lived in different places, leaving pet parents to connect the dots themselves. She saw an opportunity to make that experience simpler, more accessible and more connected.",
+          "An NYU graduate, Sanaya brings experience from building and operating pet businesses spanning pharma, mobile grooming and pet care across more than 25 countries. That experience inspired a simple idea: what if every pet parent in India could have one trusted place for their pet's health journey?",
+          "That idea became KNO — an affordable veterinary and digital health platform designed to connect veterinarians, health records, prescriptions, preventive care, reminders and ongoing support around every pet — because when it comes to their pet's health, every pet parent in India deserves to KNO.",
+        ],
+        closing: "One pet. One health journey.",
+      },
+    },
+  ] satisfies AboutFounder[],
+} as const;
 
+/** "Built with trust at the center." — four assurances plus CTAs. */
 export const ABOUT_TRUST = {
-  heading: "How we handle trust",
-  paragraphs: [
-    "Veterinarians on KNO are registered with the veterinary council and are credentialed by us before they take a single consultation. Consultation notes are attributable - you can always see who advised you and when.",
-    "Health records are sensitive, and we treat them that way. Our information security practices are certified to ISO 27001, payments run through regulated Indian gateways, and we never sell your data or your pet's medical history to anyone. What we collect, why, and how long we keep it is set out in full in our Privacy Policy.",
-  ],
-} as const;
-
-export const ABOUT_CTA = {
-  heading: "Start your pet's health journey",
-  body: "Pick a plan, add your pet, and book a consultation whenever you need one. Cancel any time from your account.",
+  heading: "Built with trust at the center.",
+  points: [
+    {
+      title: "Qualified Veterinarians",
+      body: "Every consultation is with a registered veterinary professional",
+      icon: "/icons/stethoscope-step.svg",
+    },
+    {
+      title: "Secure Health Records",
+      body: "Your pet's healthcare records stays connected and protected.",
+      icon: "/icons/folder.svg",
+    },
+    {
+      title: "Continuity of Care",
+      body: "Consultation, prescriptions, vaccinations and reminders form one health journey.",
+      icon: "/icons/cardiology.svg",
+    },
+    {
+      title: "Care Beyond the Consultation",
+      body: "KNO Pharmacy and ongoing health management keep care moving forward.",
+      icon: "/icons/hero-india.svg",
+    },
+  ] satisfies AboutTrustPoint[],
+  primaryCta: { label: "Start your pet's health journey", href: "/#pricing" },
+  secondaryCta: { label: "One pet. One health journey", href: "/#features" },
 } as const;

@@ -4,7 +4,7 @@ export const FEATURES: readonly Feature[] = [
   {
     title: "Health Records",
     description: "All your pet’s medical records, safe and secure.",
-    icon: "/icons/blood-pressure.svg",
+    icon: "/icons/folder.svg",
     iconAlt: "",
   },
   {

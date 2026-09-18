@@ -28,8 +28,9 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  /** Only the home page puts a photograph behind the header. */
-  const overlaysHero = pathname === "/";
+  /** Home, about and contact all put a photograph behind the header. */
+  const overlaysHero =
+    pathname === "/" || pathname === "/about" || pathname === "/contact";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
