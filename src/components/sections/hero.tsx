@@ -9,7 +9,7 @@ import { HERO, TRUST_POINTS } from "@/lib/data/site";
 
 function SocialProofCard() {
   return (
-    <div className="w-[258px] rounded-note bg-kno-surface-muted px-4 pt-[17px] lg:h-[132px]">
+    <div className="w-[258px] rounded-note bg-kno-surface-muted/90 px-4 pt-[17px] lg:h-[132px]">
       <p className="flex items-center gap-1 text-xs text-kno-primary">
         <ShieldCheck className="size-[21px] shrink-0" aria-hidden />
         {HERO.socialProof.caption}
