@@ -9,7 +9,7 @@ export function FeatureGrid() {
     <section
       id="features"
       aria-labelledby="features-heading"
-      className="scroll-mt-24 bg-kno-canvas py-12 lg:pb-[100px] lg:pt-0"
+      className="scroll-mt-24 bg-kno-canvas py-10 lg:pb-[40px] lg:pt-0"
     >
       <Container>
         <div className="overflow-hidden rounded-panel bg-kno-cream px-6 py-12 lg:px-[34px] lg:pb-[3px] lg:pt-[47px]">
@@ -35,7 +35,7 @@ export function FeatureGrid() {
                 Everything in One Place
               </h2>
 
-              <ul className="mt-8 grid gap-x-[49px] gap-y-10 sm:grid-cols-2 lg:mt-[55px] lg:gap-y-[40px]">
+              <ul className="mt-8 grid gap-x-[49px] gap-y-10 sm:grid-cols-2 lg:mt-[36px] lg:gap-y-[40px]">
                 {FEATURES.map((feature) => (
                   <li key={feature.title} className="flex items-start gap-[18px]">
                     <IconChip

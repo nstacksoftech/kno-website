@@ -79,7 +79,7 @@ export default function ContactPage() {
           />
         </div>
 
-        <Container className="relative pb-10 pt-[104px] lg:min-h-[480px] lg:pb-[36px] lg:pt-[140px]">
+        <Container className="relative pb-10 pt-[104px] lg:min-h-[480px] lg:pb-[40px] lg:pt-[140px]">
           <div className="max-w-[560px] lg:max-w-[55%] lg:pr-10">
             <p className="text-sm font-semibold uppercase tracking-[0.12em] text-kno-muted">
               {CONTACT_HERO.eyebrow}
@@ -198,7 +198,7 @@ export default function ContactPage() {
             Find quick answers to common questions.
           </p>
 
-          <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:mt-[28px] lg:grid-cols-3 xl:grid-cols-6">
+          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:mt-[36px] lg:grid-cols-3 xl:grid-cols-6">
             {HELP_TOPICS.map((topic) => (
               <li key={topic.title}>
                 <Link
@@ -282,7 +282,7 @@ export default function ContactPage() {
               <p className="mt-1 max-w-[620px] text-base leading-[24px] text-kno-muted">
                 {CONTACT_FORM_COPY.lead}
               </p>
-              <div className="mt-8">
+              <div className="mt-8 lg:mt-[36px]">
                 <ContactForm />
               </div>
             </div>

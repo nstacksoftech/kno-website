@@ -16,7 +16,7 @@ import type { AboutFounder } from "@/lib/data/about";
 export function Founders() {
   return (
     <>
-      <ul className="mx-auto mt-10 grid max-w-[960px] gap-6 sm:grid-cols-2 lg:mt-[52px] lg:grid-cols-3">
+      <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:mt-[36px] lg:grid-cols-3 lg:gap-[22px]">
         {ABOUT_FOUNDERS.people.map((person) => (
           <li key={person.name}>
             <FounderCard person={person} />

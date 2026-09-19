@@ -41,7 +41,7 @@ export function HowItWorks() {
     <section
       id="how-it-works"
       aria-labelledby="how-it-works-heading"
-      className="scroll-mt-24 bg-kno-canvas pb-16 pt-16 lg:pb-[62px] lg:pt-[62px]"
+      className="scroll-mt-24 bg-kno-canvas pb-10 pt-10 lg:pb-[40px] lg:pt-[40px]"
     >
       <Container>
         <SectionHeading id="how-it-works-heading">How KNO Works</SectionHeading>
@@ -49,7 +49,7 @@ export function HowItWorks() {
         {/* Figma spaces the number badge 14 / 17 / 13px from its card text -
             a slip in the source. A single 14px gap is used here, and the
             section's bottom padding absorbs the 3px difference. */}
-        <ol className="mt-12 flex flex-col gap-10 lg:mt-[72px] lg:flex-row lg:items-start lg:justify-between lg:gap-0">
+        <ol className="mt-8 flex flex-col gap-10 lg:mt-[36px] lg:flex-row lg:items-start lg:justify-between lg:gap-0">
           {STEPS.map((step, index) => (
             <Fragment key={step.number}>
               <StepCard step={step} />

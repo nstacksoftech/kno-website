@@ -11,10 +11,10 @@ export function PainPoints() {
   return (
     <section
       aria-labelledby="pain-points-heading"
-      className="bg-kno-canvas pb-16 pt-16 lg:pb-[72px] lg:pt-[72px]"
+      className="bg-kno-canvas pb-10 pt-10 lg:pb-[40px] lg:pt-[40px]"
     >
       <Container>
-        <div className="rounded-panel bg-kno-cream px-6 py-12 lg:px-[42px] lg:pb-[72px] lg:pt-[72px]">
+        <div className="rounded-panel bg-kno-cream px-6 py-12 lg:px-[34px] lg:pb-[47px] lg:pt-[47px]">
           <h2
             id="pain-points-heading"
             className="text-balance text-center text-[1.75rem] font-bold leading-tight text-kno-ink sm:text-[2.25rem] lg:text-section lg:leading-[56px]"
@@ -22,7 +22,7 @@ export function PainPoints() {
             {PAIN_POINT_HEADING}
           </h2>
 
-          <div className="mt-10 grid gap-[18px] lg:mt-[43px] lg:grid-cols-[repeat(4,180px)_1fr] lg:items-center lg:gap-[18px]">
+          <div className="mt-8 grid gap-[18px] lg:mt-[36px] lg:grid-cols-[repeat(4,180px)_1fr] lg:items-center lg:gap-[18px]">
             {PAIN_POINTS.map((point) => (
               <article
                 key={point.label}

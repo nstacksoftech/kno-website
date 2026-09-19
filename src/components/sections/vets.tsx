@@ -44,12 +44,12 @@ export function Vets() {
     <section
       id="vets"
       aria-labelledby="vets-heading"
-      className="scroll-mt-24 bg-kno-canvas pb-16 lg:pb-[78px] lg:pt-0"
+      className="scroll-mt-24 bg-kno-canvas pb-10 lg:pb-[40px] lg:pt-0"
     >
       <Container>
         <SectionHeading id="vets-heading">{VETS_HEADING}</SectionHeading>
 
-        <div className="relative mt-10 lg:mt-[53px]">
+        <div className="relative mt-8 lg:mt-[36px]">
           <button
             type="button"
             onClick={() => scrollByCard(-1)}

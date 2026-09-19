@@ -78,7 +78,7 @@ export function Hero() {
         />
       </div>
 
-      <Container className="relative pb-12 pt-[88px] lg:min-h-[788px] lg:pb-[86px] lg:pt-[137px]">
+      <Container className="relative pb-10 pt-[88px] lg:min-h-[700px] lg:pb-[40px] lg:pt-[137px]">
         <div className="max-w-[609px]">
           <h1
             id="hero-heading"
@@ -93,7 +93,7 @@ export function Hero() {
           </p>
           <p className="mt-1 text-base text-kno-muted">{HERO.subhead}</p>
 
-          <p className="mt-8 inline-flex h-[66px] items-center gap-[10px] rounded-[16px] border border-kno-primary pl-[18px] pr-[26px]">
+          <p className="mt-8 inline-flex h-[66px] items-center gap-[10px] rounded-[16px] border border-kno-primary pl-[18px] pr-[26px] lg:mt-[42px]">
             <Icon src="/icons/kno-karo.svg" alt="" size={34} />
             <span className="text-[1.25rem] font-bold text-kno-primary lg:text-h3">
               {HERO.tagline}
@@ -124,7 +124,7 @@ export function Hero() {
             ))}
           </ul>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row lg:mt-[62px]">
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row lg:mt-[42px]">
             <PillLink
               href={HERO.primaryCta.href}
               className="gap-[10px] px-[30px]"

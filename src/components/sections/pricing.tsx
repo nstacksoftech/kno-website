@@ -72,12 +72,12 @@ export function Pricing() {
     <section
       id="pricing"
       aria-labelledby="pricing-heading"
-      className="scroll-mt-24 bg-kno-canvas py-16 lg:pb-[100px] lg:pt-0"
+      className="scroll-mt-24 bg-kno-canvas py-10 lg:pb-[40px] lg:pt-0"
     >
       <Container>
         <SectionHeading id="pricing-heading">{PLANS_HEADING}</SectionHeading>
 
-        <div className="mt-12 grid gap-6 lg:mt-[69px] lg:grid-cols-[399px_399px_1fr] lg:gap-[22px]">
+        <div className="mt-8 grid gap-6 lg:mt-[36px] lg:grid-cols-[399px_399px_1fr] lg:gap-[22px]">
           {PLANS.map((plan) => (
             <PlanCard key={plan.id} plan={plan} />
           ))}

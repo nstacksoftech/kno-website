@@ -46,7 +46,7 @@ export default function AboutPage() {
           />
         </div>
 
-        <Container className="relative pb-12 pt-[104px] lg:min-h-[720px] lg:pb-[86px] lg:pt-[150px]">
+        <Container className="relative pb-10 pt-[104px] lg:min-h-[620px] lg:pb-[40px] lg:pt-[150px]">
           <div className="max-w-[560px]">
             <h1
               id="about-hero-heading"
@@ -65,8 +65,8 @@ export default function AboutPage() {
               {ABOUT_HERO.body}
             </p>
 
-            <p className="mt-8 inline-flex h-[66px] items-center gap-[3px] rounded-[16px] border border-kno-primary pl-[15px] pr-[26px]">
-              <Icon src="/icons/loyalty.svg" alt="" size={42} />
+            <p className="mt-8 inline-flex h-[66px] items-center gap-[10px] rounded-[16px] border border-kno-primary pl-[18px] pr-[26px] lg:mt-[42px]">
+              <Icon src="/icons/kno-karo.svg" alt="" size={34} />
               <span className="text-[1.25rem] font-bold text-kno-primary lg:text-h3">
                 {ABOUT_HERO.tagline}
               </span>
@@ -123,18 +123,18 @@ export default function AboutPage() {
       {/* Why KNO? */}
       <section
         aria-labelledby="about-why"
-        className="bg-kno-canvas py-16 lg:py-[80px]"
+        className="bg-kno-canvas py-10 lg:py-[40px]"
       >
         <Container>
           <SectionHeading id="about-why">{ABOUT_WHY.heading}</SectionHeading>
-          <p className="mt-4 text-center text-lead font-bold text-kno-ink">
+          <p className="mt-2 text-center text-lead font-bold text-kno-ink">
             {ABOUT_WHY.lead}
           </p>
-          <p className="mt-2 text-center text-base text-kno-muted">
+          <p className="mt-1 text-center text-base text-kno-muted">
             {ABOUT_WHY.sub}
           </p>
 
-          <ul className="mx-auto mt-12 flex max-w-[1000px] flex-wrap items-start justify-center gap-x-10 gap-y-8 lg:mt-[48px]">
+          <ul className="mx-auto mt-8 flex max-w-[1000px] flex-wrap items-start justify-center gap-x-10 gap-y-8 lg:mt-[36px]">
             {ABOUT_WHY.features.map((feature) => (
               <li
                 key={feature.title}
@@ -153,20 +153,20 @@ export default function AboutPage() {
             ))}
           </ul>
 
-          <p className="mx-auto mt-12 max-w-[820px] text-center text-base text-kno-muted lg:mt-[48px]">
+          <p className="mx-auto mt-8 max-w-[820px] text-center text-base text-kno-muted lg:mt-[36px]">
             {ABOUT_WHY.footnote}
           </p>
         </Container>
       </section>
 
       {/* What we believe */}
-      <section aria-labelledby="about-beliefs" className="bg-kno-cream py-16 lg:py-[80px]">
+      <section aria-labelledby="about-beliefs" className="bg-kno-cream py-10 lg:py-[40px]">
         <Container>
           <SectionHeading id="about-beliefs">
             {ABOUT_BELIEFS.heading}
           </SectionHeading>
 
-          <ul className="mt-10 grid gap-6 lg:mt-[52px] lg:grid-cols-4">
+          <ul className="mt-8 grid gap-6 lg:mt-[36px] lg:grid-cols-4">
             {ABOUT_BELIEFS.cards.map((card) => (
               <li
                 key={card.title}
@@ -193,7 +193,7 @@ export default function AboutPage() {
       {/* Meet the people behind KNO */}
       <section
         aria-labelledby="about-founders"
-        className="bg-kno-canvas py-16 lg:py-[80px]"
+        className="bg-kno-canvas py-10 lg:py-[40px]"
       >
         <Container>
           <SectionHeading id="about-founders">
@@ -207,14 +207,14 @@ export default function AboutPage() {
       {/* Built with trust at the center */}
       <section
         aria-labelledby="about-trust"
-        className="bg-kno-canvas pb-16 lg:pb-[80px]"
+        className="bg-kno-canvas pb-10 lg:pb-[40px]"
       >
         <Container>
           <SectionHeading id="about-trust">
             {ABOUT_TRUST.heading}
           </SectionHeading>
 
-          <ul className="mt-10 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:mt-[52px] lg:grid-cols-4">
+          <ul className="mt-8 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:mt-[36px] lg:grid-cols-4">
             {ABOUT_TRUST.points.map((point) => (
               <li key={point.title} className="flex flex-col gap-4">
                 <IconChip
@@ -235,7 +235,7 @@ export default function AboutPage() {
             ))}
           </ul>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:mt-[48px]">
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:mt-[36px]">
             <PillLink
               href={ABOUT_TRUST.primaryCta.href}
               className="gap-[10px] px-[30px]"

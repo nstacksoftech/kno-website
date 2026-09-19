@@ -34,8 +34,8 @@ export interface AboutTrustPoint {
 export const ABOUT_HERO = {
   headline: "We built KNO because",
   headlineAccent: "We're pet parents too.",
-  eyebrow: "There are moments every pet parent knows",
-  body: "When they haven't eaten all day. When something doesn't look right. When you can't remember their last vaccination. Or when you're simply wondering should I be worried? We wanted one trusted place to turn. So, we built KNO.",
+  eyebrow: "There are moments every pet parent knows -",
+  body: "when they haven't eaten all day, when something doesn't look right, or when you can't remember their last vaccination. KNO was built to make those moments feel a little less uncertain.",
   tagline: "KNO karo. Guess mat karo",
   primaryCta: {
     label: "Book Vet Consult",
@@ -55,7 +55,7 @@ export const ABOUT_HERO = {
 export const ABOUT_WHY = {
   heading: "Why KNO?",
   lead: "One pet. One health journey.",
-  sub: "KNO brings your pet's healthcare together in one place",
+  sub: "KNO brings the people, care and information behind your pet's health together in one place.",
   footnote:
     "So, whether you have a question today or need to look back at their health years from now, their journey stays connected.",
   features: [
@@ -102,17 +102,16 @@ export const ABOUT_FOUNDERS = {
   sub: "We started KNO with a simple belief: pet parents deserve better access, better information and greater confidence when making decisions about the animals they love.",
   people: [
     {
-      name: "Vishaka",
+      name: "Sanaya",
       role: "Co-Founder",
-      image: "/images/Vishaka.jpg",
-      imageAlt: "Vishaka, Co-Founder of KNO",
+      image: "/images/Sanaya.png",
+      imageAlt: "Sanaya, Co-Founder of KNO",
       bio: {
-        intro: "For Vishaka, KNO is about making trusted veterinary care easier to reach.",
+        intro: "For Sanaya, KNO began with something personal.",
         paragraphs: [
-          "Trained at the Royal Veterinary College in London, Vishaka's journey as a veterinarian has given her firsthand insight into the challenges both pet parents and veterinary professionals face when trying to access timely, reliable care. As India's community of pet parents continues to grow, she saw an opportunity to use technology to bring pet parents and qualified veterinarians closer together — regardless of where they live or how difficult it may be to find the right professional.",
-          "Her vision is to help build a more connected veterinary ecosystem: one where pet parents can access trusted professional guidance when they need it, while veterinarians are empowered to reach and care for more pets and their families.",
-          "That shared belief became part of the foundation of KNO — combining veterinary expertise with technology to make quality pet healthcare more accessible, approachable and connected across India.",
-          "Because when it comes to their pet's health, every pet parent deserves to KNO.",
+          "Raised in America and a lifelong pet lover, Sanaya visited India and saw a rapidly growing community of passionate pet parents — but also a veterinary-care ecosystem that often felt fragmented. Veterinary consultations, health records, prescriptions, preventive care, medications and follow-ups frequently lived in different places, leaving pet parents to connect the dots themselves. She saw an opportunity to make that experience simpler, more accessible and more connected.",
+          "An NYU graduate, Sanaya brings experience from building and operating pet businesses spanning pharma, mobile grooming and pet care across more than 25 countries. That experience inspired a simple idea: what if every pet parent in India could have one trusted place for their pet's health journey?",
+          "That idea became KNO — an affordable veterinary and digital health platform designed to connect veterinarians, health records, prescriptions, preventive care, reminders and ongoing support around every pet — because when it comes to their pet's health, every pet parent in India deserves to KNO.",
         ],
         closing: "One pet. One health journey.",
       },
@@ -134,16 +133,17 @@ export const ABOUT_FOUNDERS = {
       },
     },
     {
-      name: "Sanaya",
-      role: "Co-Founder",
-      image: "/images/Sanaya.png",
-      imageAlt: "Sanaya, Co-Founder of KNO",
+      name: "Vishaka",
+      role: "Clinical Lead",
+      image: "/images/Vishaka.jpg",
+      imageAlt: "Vishaka, Clinical Lead of KNO",
       bio: {
-        intro: "For Sanaya, KNO began with something personal.",
+        intro: "For Vishaka, KNO is about making trusted veterinary care easier to reach.",
         paragraphs: [
-          "Raised in America and a lifelong pet lover, Sanaya visited India and saw a rapidly growing community of passionate pet parents — but also a veterinary-care ecosystem that often felt fragmented. Veterinary consultations, health records, prescriptions, preventive care, medications and follow-ups frequently lived in different places, leaving pet parents to connect the dots themselves. She saw an opportunity to make that experience simpler, more accessible and more connected.",
-          "An NYU graduate, Sanaya brings experience from building and operating pet businesses spanning pharma, mobile grooming and pet care across more than 25 countries. That experience inspired a simple idea: what if every pet parent in India could have one trusted place for their pet's health journey?",
-          "That idea became KNO — an affordable veterinary and digital health platform designed to connect veterinarians, health records, prescriptions, preventive care, reminders and ongoing support around every pet — because when it comes to their pet's health, every pet parent in India deserves to KNO.",
+          "Trained at the Royal Veterinary College in London, Vishaka's journey as a veterinarian has given her firsthand insight into the challenges both pet parents and veterinary professionals face when trying to access timely, reliable care. As India's community of pet parents continues to grow, she saw an opportunity to use technology to bring pet parents and qualified veterinarians closer together — regardless of where they live or how difficult it may be to find the right professional.",
+          "Her vision is to help build a more connected veterinary ecosystem: one where pet parents can access trusted professional guidance when they need it, while veterinarians are empowered to reach and care for more pets and their families.",
+          "That shared belief became part of the foundation of KNO — combining veterinary expertise with technology to make quality pet healthcare more accessible, approachable and connected across India.",
+          "Because when it comes to their pet's health, every pet parent deserves to KNO.",
         ],
         closing: "One pet. One health journey.",
       },
