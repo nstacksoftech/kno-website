@@ -3,7 +3,8 @@ import { Inter } from "next/font/google";
 
 import { SiteFooter } from "@/components/sections/site-footer";
 import { SiteHeader } from "@/components/sections/site-header";
-import { fetchHeaderData } from "@/lib/api";
+import { fetchFooterData, fetchHeaderData } from "@/lib/api";
+import { mapFooter } from "@/lib/map-footer";
 import { NAV_ITEMS } from "@/lib/data/site";
 import { resolveMediaUrl } from "@/lib/graphqlClient";
 
@@ -29,7 +30,11 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
-  const header = await fetchHeaderData();
+  const [header, footerData] = await Promise.all([
+    fetchHeaderData(),
+    fetchFooterData(),
+  ]);
+  const footer = mapFooter(footerData);
   const items =
     header?.navLinks && header.navLinks.length > 0
       ? header.navLinks.map((link) => ({ label: link.label, href: link.url }))
@@ -57,7 +62,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           logo={logo}
         />
         {children}
-        <SiteFooter />
+        <SiteFooter footer={footer} />
       </body>
     </html>
   );

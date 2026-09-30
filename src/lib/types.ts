@@ -113,6 +113,53 @@ export type HeaderData = {
   cta: HeaderLink | null;
 };
 
+export type FooterData = {
+  logo: MediaRef;
+  companyName: string;
+  companyAddress: string;
+  socialLinks:
+    | {
+        platform: string;
+        url: string;
+        icon: MediaRef;
+      }[]
+    | null;
+  columns:
+    | {
+        title: string;
+        links: { label: string; url: string }[] | null;
+      }[]
+    | null;
+  copyright: string;
+  legalLinks: { label: string; url: string }[] | null;
+};
+
+export type FooterLink = {
+  label: string;
+  href: string;
+};
+
+export type FooterSocialLink = {
+  label: string;
+  href: string;
+  icon: CmsImage | null;
+};
+
+export type FooterColumnView = {
+  heading: string;
+  links: FooterLink[];
+};
+
+export type FooterView = {
+  logo: CmsImage | null;
+  companyName: string;
+  addressLines: string[];
+  socialLinks: FooterSocialLink[];
+  columns: FooterColumnView[];
+  copyright: string;
+  legalLinks: FooterLink[];
+};
+
 export type CmsImage = {
   src: string;
   alt: string;
