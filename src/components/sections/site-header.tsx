@@ -17,14 +17,26 @@ import { Container } from "@/components/ui/container";
 import { Logo } from "@/components/ui/logo";
 import { PillLink } from "@/components/ui/pill-button";
 import { cn } from "@/lib/utils";
-import { NAV_ITEMS } from "@/lib/data/site";
+import type { NavItem } from "@/types";
 
 /**
  * In the source frame the header sits directly on top of the hero photograph,
  * so it renders transparent at rest and only picks up a background once the
  * page scrolls past the hero.
  */
-export function SiteHeader() {
+export function SiteHeader({
+  items,
+  ctaLabel,
+  ctaHref,
+  logo,
+  subheadingLogo,
+}: {
+  items: readonly NavItem[];
+  ctaLabel: string;
+  ctaHref: string;
+  logo?: { src: string; alt: string } | null;
+  subheadingLogo?: { src: string; alt: string } | null;
+}) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -49,14 +61,14 @@ export function SiteHeader() {
       )}
     >
       <Container className="relative flex items-center justify-between gap-6 py-3 lg:py-[19px]">
-        <Logo />
+        <Logo logo={logo} subheadingLogo={subheadingLogo} />
 
         <nav
           aria-label="Main"
           className="hidden lg:absolute lg:left-1/2 lg:block lg:-translate-x-1/2"
         >
           <ul className="flex items-center gap-[18px]">
-            {NAV_ITEMS.map((item) => (
+            {items.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
@@ -71,11 +83,11 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <PillLink
-            href="#pricing"
+            href={ctaHref}
             size="compact"
             className="hidden px-6 sm:inline-flex"
           >
-            Become a Member
+            {ctaLabel}
           </PillLink>
 
           <Sheet open={open} onOpenChange={setOpen}>
@@ -91,7 +103,7 @@ export function SiteHeader() {
               </SheetHeader>
               <nav aria-label="Mobile">
                 <ul className="flex flex-col gap-1">
-                  {NAV_ITEMS.map((item) => (
+                  {items.map((item) => (
                     <li key={item.href}>
                       <SheetClose
                         render={
@@ -107,8 +119,8 @@ export function SiteHeader() {
                   ))}
                 </ul>
               </nav>
-              <PillLink href="#pricing" block onClick={() => setOpen(false)}>
-                Become a Member
+              <PillLink href={ctaHref} block onClick={() => setOpen(false)}>
+                {ctaLabel}
               </PillLink>
             </SheetContent>
           </Sheet>
