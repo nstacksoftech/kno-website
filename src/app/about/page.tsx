@@ -8,13 +8,9 @@ import { Icon } from "@/components/ui/icon";
 import { IconChip } from "@/components/ui/icon-chip";
 import { PillLink } from "@/components/ui/pill-button";
 import { SectionHeading } from "@/components/ui/section-heading";
-import {
-  ABOUT_BELIEFS,
-  ABOUT_FOUNDERS,
-  ABOUT_HERO,
-  ABOUT_TRUST,
-  ABOUT_WHY,
-} from "@/lib/data/about";
+import { fetchAboutPageData } from "@/lib/api";
+import { mapAboutPage } from "@/lib/map-about";
+import type { AboutCta, CmsImage } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "About KNO - We built KNO because we're pet parents too",
@@ -22,24 +18,53 @@ export const metadata: Metadata = {
     "KNO brings your pet's healthcare together in one place: licensed veterinarians, health records, prescriptions, preventive care and reminders - one pet, one health journey.",
 };
 
-export default function AboutPage() {
+function CtaIcon({ icon, size = 20 }: { icon: CmsImage | null; size?: number }) {
+  if (!icon) return null;
+  return <Icon src={icon.src} alt={icon.alt} width={size} height={size} />;
+}
+
+function AboutCtaLink({
+  cta,
+  variant = "solid",
+}: {
+  cta: AboutCta;
+  variant?: "solid" | "outline";
+}) {
+  return (
+    <PillLink href={cta.href} variant={variant} className="gap-[10px] px-[30px]">
+      <CtaIcon icon={cta.icon} size={variant === "outline" ? 20 : 18.6} />
+      {cta.label}
+      <Icon
+        src={variant === "outline" ? "/icons/chevron-right.svg" : "/icons/chevron-right-light.svg"}
+        alt=""
+        width={9.18}
+        height={16}
+        className="-scale-x-100"
+      />
+    </PillLink>
+  );
+}
+
+export default async function AboutPage() {
+  const about = mapAboutPage(await fetchAboutPageData());
+
   return (
     <main className="flex-1">
-      {/* Hero */}
       <section
         aria-labelledby="about-hero-heading"
         className="relative isolate overflow-hidden bg-kno-cream"
       >
-        {/* Photograph bleeds to the right edge, as in the source frame. */}
         <div className="absolute inset-y-0 right-0 -z-10 hidden w-[48%] lg:block">
-          <Image
-            src={ABOUT_HERO.image}
-            alt={ABOUT_HERO.imageAlt}
-            fill
-            priority
-            sizes="(min-width: 1024px) 49vw, 0px"
-            className="rounded-l-panel object-cover object-[68%_center]"
-          />
+          {about.hero.image ? (
+            <Image
+              src={about.hero.image.src}
+              alt={about.hero.image.alt}
+              fill
+              priority
+              sizes="(min-width: 1024px) 49vw, 0px"
+              className="rounded-l-panel object-cover object-[68%_center]"
+            />
+          ) : null}
           <div
             aria-hidden
             className="absolute inset-y-0 left-0 w-[18%] bg-gradient-to-r from-kno-cream to-transparent"
@@ -52,137 +77,104 @@ export default function AboutPage() {
               id="about-hero-heading"
               className="text-[2rem] font-bold leading-tight text-kno-ink sm:text-[2.5rem] lg:text-display lg:leading-[58px]"
             >
-              {ABOUT_HERO.headline}{" "}
-              <span className="text-kno-primary">
-                {ABOUT_HERO.headlineAccent}
-              </span>
+              {about.hero.heading}{" "}
+              <span className="text-kno-primary">{about.hero.highlight}</span>
             </h1>
 
             <p className="mt-6 text-base font-semibold text-kno-ink">
-              {ABOUT_HERO.eyebrow}
+              {about.hero.supportingLine}
             </p>
             <p className="mt-2 max-w-[470px] text-base text-kno-muted">
-              {ABOUT_HERO.body}
+              {about.hero.description}
             </p>
 
             <p className="mt-8 inline-flex h-[66px] items-center gap-[10px] rounded-[16px] border border-kno-primary pl-[18px] pr-[26px] lg:mt-[42px]">
-              <Icon src="/icons/kno-karo.svg" alt="" size={34} />
+              <CtaIcon icon={about.hero.chipIcon} size={34} />
               <span className="text-[1.25rem] font-bold text-kno-primary lg:text-h3">
-                {ABOUT_HERO.tagline}
+                {about.hero.chip}
               </span>
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row lg:mt-[42px]">
-              <PillLink
-                href={ABOUT_HERO.primaryCta.href}
-                className="gap-[10px] px-[30px]"
-              >
-                <Icon src={ABOUT_HERO.primaryCta.icon} alt="" width={18.6} height={19} />
-                {ABOUT_HERO.primaryCta.label}
-                <Icon
-                  src="/icons/chevron-right-light.svg"
-                  alt=""
-                  width={9.18}
-                  height={16}
-                  className="-scale-x-100"
-                />
-              </PillLink>
-              <PillLink
-                href={ABOUT_HERO.secondaryCta.href}
-                variant="outline"
-                className="gap-[10px] px-[30px]"
-              >
-                <Icon src={ABOUT_HERO.secondaryCta.icon} alt="" size={20} />
-                {ABOUT_HERO.secondaryCta.label}
-                <Icon
-                  src="/icons/chevron-right.svg"
-                  alt=""
-                  width={9.18}
-                  height={16}
-                  className="-scale-x-100"
-                />
-              </PillLink>
+              <AboutCtaLink cta={about.hero.primaryCta} />
+              <AboutCtaLink cta={about.hero.secondaryCta} variant="outline" />
             </div>
           </div>
 
-          {/* Mobile: the photograph stacks below the copy. */}
           <div className="relative mt-10 lg:hidden">
-            <Image
-              src={ABOUT_HERO.image}
-              alt={ABOUT_HERO.imageAlt}
-              width={699}
-              height={788}
-              priority
-              sizes="100vw"
-              className="h-[320px] w-full rounded-panel object-cover sm:h-[420px]"
-            />
+            {about.hero.image ? (
+              <Image
+                src={about.hero.image.src}
+                alt={about.hero.image.alt}
+                width={699}
+                height={788}
+                priority
+                sizes="100vw"
+                className="h-[320px] w-full rounded-panel object-cover sm:h-[420px]"
+              />
+            ) : null}
           </div>
         </Container>
       </section>
 
-      {/* Why KNO? */}
-      <section
-        aria-labelledby="about-why"
-        className="bg-kno-canvas py-10 lg:py-[40px]"
-      >
+      <section aria-labelledby="about-why" className="bg-kno-canvas py-10 lg:py-[40px]">
         <Container>
-          <SectionHeading id="about-why">{ABOUT_WHY.heading}</SectionHeading>
+          <SectionHeading id="about-why">{about.whyKno.heading}</SectionHeading>
           <p className="mt-2 text-center text-lead font-bold text-kno-ink">
-            {ABOUT_WHY.lead}
+            {about.whyKno.supportingLine}
           </p>
-          <p className="mt-1 text-center text-base text-kno-muted">
-            {ABOUT_WHY.sub}
-          </p>
+          <p className="mt-1 text-center text-base text-kno-muted">{about.whyKno.description}</p>
 
           <ul className="mx-auto mt-8 flex max-w-[1000px] flex-wrap items-start justify-center gap-x-10 gap-y-8 lg:mt-[36px]">
-            {ABOUT_WHY.features.map((feature) => (
+            {about.whyKno.items.map((feature) => (
               <li
-                key={feature.title}
+                key={feature.label}
                 className="flex w-[120px] flex-col items-center gap-3 text-center"
               >
-                <IconChip
-                  src={feature.icon}
-                  alt=""
-                  size={66}
-                  iconSize={34}
-                  tone="accentSoft"
-                  shape="circle"
-                />
-                <span className="text-sm text-kno-ink">{feature.title}</span>
+                {feature.icon ? (
+                  <IconChip
+                    src={feature.icon.src}
+                    alt={feature.icon.alt}
+                    size={66}
+                    iconSize={34}
+                    tone="accentSoft"
+                    shape="circle"
+                  />
+                ) : null}
+                <span className="text-sm text-kno-ink">{feature.label}</span>
               </li>
             ))}
           </ul>
 
           <p className="mx-auto mt-8 max-w-[820px] text-center text-base text-kno-muted lg:mt-[36px]">
-            {ABOUT_WHY.footnote}
+            {about.whyKno.resolution}
           </p>
         </Container>
       </section>
 
-      {/* What we believe */}
       <section aria-labelledby="about-beliefs" className="bg-kno-cream py-10 lg:py-[40px]">
         <Container>
-          <SectionHeading id="about-beliefs">
-            {ABOUT_BELIEFS.heading}
-          </SectionHeading>
+          <SectionHeading id="about-beliefs">{about.beliefs.heading}</SectionHeading>
 
           <ul className="mt-8 grid gap-6 lg:mt-[36px] lg:grid-cols-4">
-            {ABOUT_BELIEFS.cards.map((card) => (
+            {about.beliefs.items.map((card) => (
               <li
                 key={card.title}
                 className="flex flex-col gap-6 rounded-panel border border-kno-primary/30 p-6 lg:p-[26px]"
               >
-                <IconChip
-                  src={card.icon}
-                  alt=""
-                  size={60}
-                  iconSize={30}
-                  tone="accentSoft"
-                  shape="squircle"
-                />
+                {card.icon ? (
+                  <IconChip
+                    src={card.icon.src}
+                    alt={card.icon.alt}
+                    size={60}
+                    iconSize={30}
+                    tone="accentSoft"
+                    shape="squircle"
+                  />
+                ) : null}
                 <div>
                   <h3 className="text-h4 font-bold text-kno-ink">{card.title}</h3>
-                  <p className="mt-3 text-sm text-kno-muted">{card.body}</p>
+                  <p className="mt-3 text-sm text-kno-muted">{card.description}</p>
                 </div>
               </li>
             ))}
@@ -190,87 +182,50 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Meet the people behind KNO */}
-      <section
-        aria-labelledby="about-founders"
-        className="bg-kno-canvas py-10 lg:py-[40px]"
-      >
+      <section aria-labelledby="about-founders" className="bg-kno-canvas py-10 lg:py-[40px]">
         <Container>
-          <SectionHeading id="about-founders">
-            {ABOUT_FOUNDERS.heading}
-          </SectionHeading>
-
-          <Founders />
+          <SectionHeading id="about-founders">{about.team.heading}</SectionHeading>
+          <Founders
+            people={about.team.people}
+            supportingLine={about.team.supportingLine}
+            description={about.team.description}
+          />
         </Container>
       </section>
 
-      {/* Built with trust at the center */}
-      <section
-        aria-labelledby="about-trust"
-        className="bg-kno-canvas pb-10 lg:pb-[40px]"
-      >
+      <section aria-labelledby="about-trust" className="bg-kno-canvas pb-10 lg:pb-[40px]">
         <Container>
-          <SectionHeading id="about-trust">
-            {ABOUT_TRUST.heading}
-          </SectionHeading>
+          <SectionHeading id="about-trust">{about.commitments.heading}</SectionHeading>
 
           <ul className="mt-8 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:mt-[36px] lg:grid-cols-4">
-            {ABOUT_TRUST.points.map((point) => (
+            {about.commitments.items.map((point) => (
               <li key={point.title} className="flex flex-col gap-4">
-                <IconChip
-                  src={point.icon}
-                  alt=""
-                  size={64}
-                  iconSize={32}
-                  tone="primarySoft"
-                  shape="squircle"
-                />
+                {point.icon ? (
+                  <IconChip
+                    src={point.icon.src}
+                    alt={point.icon.alt}
+                    size={64}
+                    iconSize={32}
+                    tone="primarySoft"
+                    shape="squircle"
+                  />
+                ) : null}
                 <div>
-                  <h3 className="text-h4 font-bold text-kno-ink">
-                    {point.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-kno-muted">{point.body}</p>
+                  <h3 className="text-h4 font-bold text-kno-ink">{point.title}</h3>
+                  <p className="mt-2 text-sm text-kno-muted">{point.description}</p>
                 </div>
               </li>
             ))}
           </ul>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:mt-[36px]">
-            <PillLink
-              href={ABOUT_TRUST.primaryCta.href}
-              className="gap-[10px] px-[30px]"
-            >
-              <Icon src="/icons/consult.svg" alt="" width={18.6} height={19} />
-              {ABOUT_TRUST.primaryCta.label}
-              <Icon
-                src="/icons/chevron-right-light.svg"
-                alt=""
-                width={9.18}
-                height={16}
-                className="-scale-x-100"
-              />
-            </PillLink>
-            <PillLink
-              href={ABOUT_TRUST.secondaryCta.href}
-              variant="outline"
-              className="gap-[10px] px-[30px]"
-            >
-              <Icon src="/icons/medical-services.svg" alt="" size={20} />
-              {ABOUT_TRUST.secondaryCta.label}
-              <Icon
-                src="/icons/chevron-right.svg"
-                alt=""
-                width={9.18}
-                height={16}
-                className="-scale-x-100"
-              />
-            </PillLink>
+            <AboutCtaLink cta={about.commitments.primaryCta} />
+            <AboutCtaLink cta={about.commitments.secondaryCta} variant="outline" />
           </div>
         </Container>
       </section>
 
-      {/* Trust badges band — reused from the home page. */}
-      <TrustBadges />
+      <TrustBadges badges={about.trustBadges} />
     </main>
   );
 }

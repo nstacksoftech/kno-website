@@ -272,3 +272,116 @@ export type HomeView = {
   };
   trustBadges: HomeTrustBadge[];
 };
+
+export type AboutCta = {
+  label: string;
+  href: string;
+  icon: CmsImage | null;
+};
+
+export type AboutIconItem = {
+  label: string;
+  icon: CmsImage | null;
+};
+
+export type AboutCard = {
+  title: string;
+  description: string;
+  icon: CmsImage | null;
+};
+
+export type AboutPerson = {
+  name: string;
+  role: string;
+  image: CmsImage | null;
+  bio: string;
+};
+
+export type AboutPageData = {
+  hero: {
+    heading: string;
+    highlight: string;
+    supportingLine: string;
+    description: string;
+    chipIcon: MediaRef;
+    chip: string;
+    primaryCta: { label: string; url: string; icon: MediaRef };
+    secondaryCta: { label: string; url: string; icon: MediaRef };
+    image: MediaRef;
+  };
+  whyKno: {
+    heading: string;
+    supportingLine: string;
+    description: string;
+    items: { icon: MediaRef; label: string }[] | null;
+    resolution: string;
+  };
+  beliefs: {
+    heading: string;
+    items: { icon: MediaRef; title: string; description: string }[] | null;
+  };
+  team: {
+    heading: string;
+    people:
+      | {
+          image: MediaRef;
+          name: string;
+          role: string;
+          bio: string;
+        }[]
+      | null;
+    supportingLine: string;
+    description: string;
+  };
+  commitments: {
+    heading: string;
+    items: { icon: MediaRef; title: string; description: string }[] | null;
+    primaryCta: { label: string; url: string; icon: MediaRef };
+    secondaryCta: { label: string; url: string; icon: MediaRef };
+  };
+  showTrustedBanner?: boolean | null;
+};
+
+export type AboutPageResponse = {
+  about: AboutPageData | null;
+  trust: TrustData | null;
+};
+
+export type AboutView = {
+  hero: {
+    heading: string;
+    highlight: string;
+    supportingLine: string;
+    description: string;
+    chip: string;
+    chipIcon: CmsImage | null;
+    image: CmsImage | null;
+    primaryCta: AboutCta;
+    secondaryCta: AboutCta;
+  };
+  whyKno: {
+    heading: string;
+    supportingLine: string;
+    description: string;
+    items: AboutIconItem[];
+    resolution: string;
+  };
+  beliefs: {
+    heading: string;
+    items: AboutCard[];
+  };
+  team: {
+    heading: string;
+    people: AboutPerson[];
+    supportingLine: string;
+    description: string;
+  };
+  commitments: {
+    heading: string;
+    items: AboutCard[];
+    primaryCta: AboutCta;
+    secondaryCta: AboutCta;
+  };
+  trustBadges: HomeTrustBadge[];
+};
+

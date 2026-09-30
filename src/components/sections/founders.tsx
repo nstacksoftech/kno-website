@@ -5,19 +5,21 @@ import { Dialog } from "@base-ui/react/dialog";
 import { ArrowUpRight, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { ABOUT_FOUNDERS } from "@/lib/data/about";
-import type { AboutFounder } from "@/lib/data/about";
+import type { AboutPerson } from "@/lib/types";
 
-/**
- * "Meet the people behind KNO" — each portrait opens a centred popup with the
- * co-founder's full profile, per the Figma popup frame (957 x 914, 32px radius,
- * accent border, arrow button top-right).
- */
-export function Founders() {
+export function Founders({
+  people,
+  supportingLine,
+  description,
+}: {
+  people: readonly AboutPerson[];
+  supportingLine: string;
+  description: string;
+}) {
   return (
     <>
       <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:mt-[36px] lg:grid-cols-3 lg:gap-[22px]">
-        {ABOUT_FOUNDERS.people.map((person) => (
+        {people.map((person) => (
           <li key={person.name}>
             <FounderCard person={person} />
           </li>
@@ -25,16 +27,21 @@ export function Founders() {
       </ul>
 
       <p className="mt-10 text-center text-lead font-bold text-kno-ink lg:mt-[42px]">
-        {ABOUT_FOUNDERS.lead}
+        {supportingLine}
       </p>
       <p className="mx-auto mt-3 max-w-[720px] text-center text-base text-kno-muted">
-        {ABOUT_FOUNDERS.sub}
+        {description}
       </p>
     </>
   );
 }
 
-function FounderCard({ person }: { person: AboutFounder }) {
+function FounderCard({ person }: { person: AboutPerson }) {
+  const paragraphs = person.bio
+    .split(/\n+/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+
   return (
     <Dialog.Root>
       <Dialog.Trigger
@@ -44,13 +51,15 @@ function FounderCard({ person }: { person: AboutFounder }) {
         )}
         aria-label={`Read more about ${person.name}, ${person.role}`}
       >
-        <Image
-          src={person.image}
-          alt={person.imageAlt}
-          fill
-          sizes="(min-width: 1024px) 300px, (min-width: 640px) 45vw, 90vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-        />
+        {person.image ? (
+          <Image
+            src={person.image.src}
+            alt={person.image.alt}
+            fill
+            sizes="(min-width: 1024px) 300px, (min-width: 640px) 45vw, 90vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+          />
+        ) : null}
         <span className="absolute right-3 top-3 inline-flex size-9 items-center justify-center rounded-full bg-kno-primary text-kno-on-primary">
           <ArrowUpRight className="size-5" aria-hidden />
         </span>
@@ -83,13 +92,15 @@ function FounderCard({ person }: { person: AboutFounder }) {
           </Dialog.Close>
 
           <div className="relative mx-auto aspect-[300/340] w-[260px] overflow-hidden rounded-trust sm:w-[300px]">
-            <Image
-              src={person.image}
-              alt={person.imageAlt}
-              fill
-              sizes="300px"
-              className="object-cover"
-            />
+            {person.image ? (
+              <Image
+                src={person.image.src}
+                alt={person.image.alt}
+                fill
+                sizes="300px"
+                className="object-cover"
+              />
+            ) : null}
           </div>
 
           <Dialog.Title className="mt-6 text-center text-h3 font-bold text-kno-ink">
@@ -100,19 +111,12 @@ function FounderCard({ person }: { person: AboutFounder }) {
           </p>
 
           <div className="mt-6 space-y-4 text-base leading-[24px] text-kno-muted">
-            {person.bio.intro ? (
-              <p className="text-center text-kno-ink">{person.bio.intro}</p>
-            ) : null}
-            {person.bio.paragraphs.map((paragraph) => (
+            {paragraphs.map((paragraph) => (
               <p key={paragraph.slice(0, 32)} className="text-left">
                 {paragraph}
               </p>
             ))}
           </div>
-
-          <p className="mt-6 text-center text-base font-semibold text-kno-ink">
-            {person.bio.closing}
-          </p>
         </Dialog.Popup>
       </Dialog.Portal>
     </Dialog.Root>
