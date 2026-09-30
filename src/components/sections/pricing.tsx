@@ -5,14 +5,9 @@ import { Container } from "@/components/ui/container";
 import { PillLink } from "@/components/ui/pill-button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { cn } from "@/lib/utils";
-import type { Plan } from "@/types";
-import {
-  PLANS,
-  PLANS_HEADING,
-  PLANS_QUOTE,
-} from "@/lib/data/plans";
+import type { CmsImage, HomePlan } from "@/lib/types";
 
-function PlanCard({ plan }: { plan: Plan }) {
+function PlanCard({ plan }: { plan: HomePlan }) {
   return (
     <article
       className={cn(
@@ -37,7 +32,7 @@ function PlanCard({ plan }: { plan: Plan }) {
       </p>
 
       <h4 className="mt-[18px] text-lead font-semibold text-kno-ink">
-        Includes:
+        {plan.includesLabel}
       </h4>
       <ul className="mb-8 mt-3 flex flex-col gap-[10px]">
         {plan.includes.map((item) => (
@@ -56,7 +51,7 @@ function PlanCard({ plan }: { plan: Plan }) {
       </ul>
 
       <PillLink
-        href="#"
+        href={plan.href}
         variant="outline"
         block
         className="mt-auto pt-0 font-semibold"
@@ -67,7 +62,17 @@ function PlanCard({ plan }: { plan: Plan }) {
   );
 }
 
-export function Pricing() {
+export function Pricing({
+  heading,
+  plans,
+  image,
+  caption,
+}: {
+  heading: string;
+  plans: readonly HomePlan[];
+  image: CmsImage | null;
+  caption: string;
+}) {
   return (
     <section
       id="pricing"
@@ -75,10 +80,10 @@ export function Pricing() {
       className="scroll-mt-24 bg-kno-canvas py-10 lg:pb-[40px] lg:pt-0"
     >
       <Container>
-        <SectionHeading id="pricing-heading">{PLANS_HEADING}</SectionHeading>
+        <SectionHeading id="pricing-heading">{heading}</SectionHeading>
 
         <div className="mt-8 grid gap-6 lg:mt-[36px] lg:grid-cols-[399px_399px_1fr] lg:gap-[22px]">
-          {PLANS.map((plan) => (
+          {plans.map((plan) => (
             <PlanCard key={plan.id} plan={plan} />
           ))}
 
@@ -87,18 +92,20 @@ export function Pricing() {
           <div className="relative lg:-mt-[19px] lg:ml-[5px] lg:flex lg:flex-col lg:justify-end">
             {/* Figma crops this asset to its right-hand 413px, not centre. */}
             <div className="relative h-[280px] w-full overflow-hidden rounded-panel lg:h-[366px] lg:rounded-none">
-              <Image
-                src="/images/cats-dogs-friends.png"
-                alt="A cat and a dog sitting together"
-                width={654}
-                height={366}
-                sizes="(min-width: 1024px) 654px, 160vw"
-                className="absolute left-0 top-0 h-full w-[96%] max-w-none object-contain"
-              />
+              {image ? (
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={654}
+                  height={366}
+                  sizes="(min-width: 1024px) 654px, 160vw"
+                  className="absolute left-0 top-0 h-full w-[96%] max-w-none object-contain"
+                />
+              ) : null}
             </div>
             <blockquote className="mt-4 rounded-quote bg-kno-surface-alt px-8 py-7 lg:relative lg:-mt-[53px] lg:h-[167px] lg:pt-[37px]">
               <p className="text-[1.25rem] font-semibold text-kno-ink lg:text-quote">
-                {PLANS_QUOTE}
+                {caption}
               </p>
             </blockquote>
           </div>

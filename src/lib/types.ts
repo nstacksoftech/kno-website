@@ -1,0 +1,227 @@
+export type MediaRef = {
+  url?: string | null;
+  alt?: string | null;
+} | null;
+
+export type HomePageData = {
+  hero: {
+    heading: string;
+    highlight: string;
+    supportingLine: string;
+    description: string;
+    chip: string;
+    highlights: {
+      icon: MediaRef;
+      title: string;
+      description: string | null;
+    }[] | null;
+    primaryCta: { label: string; url: string; icon: MediaRef };
+    secondaryCta: { label: string; url: string };
+    image: MediaRef;
+    badgeImage: MediaRef;
+    badge: string;
+    proofTitle: string;
+    proofStat: string;
+    avatars: MediaRef[] | null;
+  };
+  howItWorks: {
+    heading: string;
+    steps: {
+      icon: MediaRef;
+      title: string;
+      description: string;
+    }[] | null;
+  };
+  painPoints: {
+    heading: string;
+    points: { icon: MediaRef; label: string }[] | null;
+    resolution: string;
+  };
+  features: {
+    heading: string;
+    image: MediaRef;
+    items: {
+      icon: MediaRef;
+      title: string;
+      description: string;
+    }[] | null;
+  };
+  pricing: {
+    heading: string;
+    plans: {
+      id: string;
+      name: string;
+      tagline: string;
+      price: number;
+      currency: string;
+      interval: string;
+      featured?: boolean | null;
+      includesLabel: string;
+      features: { text: string }[] | null;
+      ctaLabel: string;
+      ctaUrl: string;
+    }[] | null;
+    image: MediaRef;
+    caption?: string | null;
+  };
+  veterinarians: {
+    heading: string;
+    vets: {
+      id: string;
+      name: string;
+      photo: MediaRef;
+      initials?: string | null;
+      speciality: string;
+      qualification: string;
+      experience: string;
+      languages: string;
+      verifiedLabel?: string | null;
+    }[] | null;
+    viewAllLabel?: string | null;
+    viewAllUrl?: string | null;
+  };
+  showTrustedBanner?: boolean | null;
+};
+
+export type TrustData = {
+  items: {
+    title: string;
+    description: string;
+    note?: string | null;
+    image: MediaRef;
+  }[] | null;
+};
+
+export type HomePageResponse = {
+  home: HomePageData | null;
+  trust: TrustData | null;
+};
+
+export type HeaderLogo = {
+  url: string | null;
+  alt: string | null;
+};
+
+export type HeaderLink = {
+  label: string;
+  url: string;
+};
+
+export type HeaderData = {
+  logo: HeaderLogo | null;
+  navLinks: HeaderLink[] | null;
+  cta: HeaderLink | null;
+};
+
+export type CmsImage = {
+  src: string;
+  alt: string;
+};
+
+export type HomeCta = {
+  label: string;
+  href: string;
+  icon: CmsImage | null;
+};
+
+export type HomeHighlight = {
+  title: string;
+  description: string;
+  icon: CmsImage | null;
+};
+
+export type HomeStep = {
+  number: number;
+  title: string;
+  description: string;
+  icon: CmsImage | null;
+};
+
+export type HomePainPoint = {
+  label: string;
+  icon: CmsImage | null;
+};
+
+export type HomeFeature = {
+  title: string;
+  description: string;
+  icon: CmsImage | null;
+};
+
+export type HomePlan = {
+  id: string;
+  name: string;
+  tagline: string;
+  price: string;
+  period: string;
+  includes: string[];
+  includesLabel: string;
+  cta: string;
+  href: string;
+  featured: boolean;
+};
+
+export type HomeVet = {
+  id: string;
+  name: string;
+  speciality: string;
+  qualification: string;
+  experience: string;
+  languages: string[];
+  photo: string | null;
+  initials: string;
+  verified: boolean;
+};
+
+export type HomeTrustBadge = {
+  title: string;
+  description: string;
+  caption: string;
+  image: CmsImage | null;
+};
+
+export type HomeView = {
+  hero: {
+    heading: string;
+    highlight: string;
+    supportingLine: string;
+    description: string;
+    chip: string;
+    image: CmsImage | null;
+    badge: string;
+    badgeImage: CmsImage | null;
+    highlights: HomeHighlight[];
+    primaryCta: HomeCta;
+    secondaryCta: Omit<HomeCta, "icon">;
+    proofTitle: string;
+    proofStat: string;
+    avatars: CmsImage[];
+  };
+  howItWorks: {
+    heading: string;
+    steps: HomeStep[];
+  };
+  painPoints: {
+    heading: string;
+    points: HomePainPoint[];
+    resolution: string;
+  };
+  features: {
+    heading: string;
+    image: CmsImage | null;
+    items: HomeFeature[];
+  };
+  pricing: {
+    heading: string;
+    plans: HomePlan[];
+    image: CmsImage | null;
+    caption: string;
+  };
+  veterinarians: {
+    heading: string;
+    vets: HomeVet[];
+    viewAllLabel: string;
+    viewAllUrl: string;
+  };
+  trustBadges: HomeTrustBadge[];
+};

@@ -2,9 +2,17 @@ import Image from "next/image";
 
 import { Container } from "@/components/ui/container";
 import { IconChip } from "@/components/ui/icon-chip";
-import { FEATURES } from "@/lib/data/features";
+import type { CmsImage, HomeFeature } from "@/lib/types";
 
-export function FeatureGrid() {
+export function FeatureGrid({
+  heading,
+  image,
+  items,
+}: {
+  heading: string;
+  image: CmsImage | null;
+  items: readonly HomeFeature[];
+}) {
   return (
     <section
       id="features"
@@ -17,14 +25,16 @@ export function FeatureGrid() {
             {/* Product shot: the source asset is a wider flyer, cropped to the
                 349 x 445 frame at the offsets Figma reports. */}
             <div className="relative mx-auto h-[360px] w-[280px] shrink-0 overflow-hidden lg:mx-0 lg:h-[445px] lg:w-[349px]">
-              <Image
-                src="/images/app-promo-flyer.png"
-                alt="The KNO mobile app showing a pet health overview"
-                width={4096}
-                height={2683}
-                sizes="(min-width: 1024px) 1273px, 1021px"
-                className="absolute left-[-128.1%] top-[-18.2%] h-[188.37%] w-[364.56%] max-w-none object-cover"
-              />
+              {image ? (
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={4096}
+                  height={2683}
+                  sizes="(min-width: 1024px) 1273px, 1021px"
+                  className="absolute left-[-128.1%] top-[-18.2%] h-[188.37%] w-[364.56%] max-w-none object-cover"
+                />
+              ) : null}
             </div>
 
             <div className="flex-1">
@@ -32,19 +42,23 @@ export function FeatureGrid() {
                 id="features-heading"
                 className="text-balance text-[1.75rem] font-bold leading-tight text-kno-ink sm:text-[2.25rem] lg:text-section lg:leading-[56px]"
               >
-                Everything in One Place
+                {heading}
               </h2>
 
               <ul className="mt-8 grid gap-x-[49px] gap-y-10 sm:grid-cols-2 lg:mt-[36px] lg:gap-y-[40px]">
-                {FEATURES.map((feature) => (
+                {items.map((feature) => (
                   <li key={feature.title} className="flex items-start gap-[18px]">
-                    <IconChip
-                      src={feature.icon}
-                      alt={feature.iconAlt}
-                      size={60}
-                      iconSize={33}
-                      shape="squircle"
-                    />
+                    {feature.icon ? (
+                      <IconChip
+                        src={feature.icon.src}
+                        alt={feature.icon.alt}
+                        size={60}
+                        iconSize={33}
+                        shape="squircle"
+                      />
+                    ) : (
+                      <span className="size-[60px] shrink-0" />
+                    )}
                     <div className="flex flex-col gap-2">
                       <h3 className="text-h4 font-bold text-kno-ink">
                         {feature.title}

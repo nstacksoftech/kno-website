@@ -1,13 +1,17 @@
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
 import { IconChip } from "@/components/ui/icon-chip";
-import {
-  PAIN_POINTS,
-  PAIN_POINT_HEADING,
-  PAIN_POINT_RESOLUTION,
-} from "@/lib/data/steps";
+import type { HomePainPoint } from "@/lib/types";
 
-export function PainPoints() {
+export function PainPoints({
+  heading,
+  points,
+  resolution,
+}: {
+  heading: string;
+  points: readonly HomePainPoint[];
+  resolution: string;
+}) {
   return (
     <section
       aria-labelledby="pain-points-heading"
@@ -19,21 +23,25 @@ export function PainPoints() {
             id="pain-points-heading"
             className="text-balance text-center text-[1.75rem] font-bold leading-tight text-kno-ink sm:text-[2.25rem] lg:text-section lg:leading-[56px]"
           >
-            {PAIN_POINT_HEADING}
+            {heading}
           </h2>
 
           <div className="mt-8 grid gap-[18px] lg:mt-[36px] lg:grid-cols-[repeat(4,180px)_1fr] lg:items-center lg:gap-[18px]">
-            {PAIN_POINTS.map((point) => (
+            {points.map((point) => (
               <article
                 key={point.label}
                 className="flex h-[188px] flex-col items-center justify-center gap-[13px] rounded-tile bg-white px-4 text-center"
               >
-                <IconChip
-                  src={point.icon}
-                  alt={point.iconAlt}
-                  size={67}
-                  iconSize={point.iconSize}
-                />
+                {point.icon ? (
+                  <IconChip
+                    src={point.icon.src}
+                    alt={point.icon.alt}
+                    size={67}
+                    iconSize={35}
+                  />
+                ) : (
+                  <span className="size-[67px] shrink-0" />
+                )}
                 <p className="max-w-[142px] whitespace-pre-line text-sm font-medium text-kno-ink">
                   {point.label}
                 </p>
@@ -58,7 +66,7 @@ export function PainPoints() {
                   tone="accent"
                 />
                 <p className="max-w-[238px] whitespace-pre-line text-h4 font-semibold text-kno-on-primary">
-                  {PAIN_POINT_RESOLUTION}
+                  {resolution}
                 </p>
               </article>
             </div>

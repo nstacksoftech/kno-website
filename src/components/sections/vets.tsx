@@ -7,11 +7,21 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { VETS, VETS_HEADING } from "@/lib/data/vets";
+import type { HomeVet } from "@/lib/types";
 
 import { VetCard } from "./vet-card";
 
-export function Vets() {
+export function Vets({
+  heading,
+  vets,
+  viewAllLabel,
+  viewAllUrl,
+}: {
+  heading: string;
+  vets: readonly HomeVet[];
+  viewAllLabel: string;
+  viewAllUrl: string;
+}) {
   const trackRef = useRef<HTMLUListElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
@@ -30,7 +40,7 @@ export function Vets() {
     syncBounds();
     window.addEventListener("resize", syncBounds);
     return () => window.removeEventListener("resize", syncBounds);
-  }, [syncBounds]);
+  }, [syncBounds, vets]);
 
   const scrollByCard = (direction: -1 | 1) => {
     const track = trackRef.current;
@@ -47,7 +57,7 @@ export function Vets() {
       className="scroll-mt-24 bg-kno-canvas pb-10 lg:pb-[40px] lg:pt-0"
     >
       <Container>
-        <SectionHeading id="vets-heading">{VETS_HEADING}</SectionHeading>
+        <SectionHeading id="vets-heading">{heading}</SectionHeading>
 
         <div className="relative mt-8 lg:mt-[36px]">
           <button
@@ -70,7 +80,7 @@ export function Vets() {
             aria-label="Veterinarians"
             className="flex snap-x snap-mandatory gap-[18px] overflow-x-auto scroll-smooth pb-2 outline-none focus-visible:ring-2 focus-visible:ring-kno-primary lg:mx-[57px] lg:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            {VETS.map((vet) => (
+            {vets.map((vet) => (
               <li
                 key={vet.id}
                 className="w-[320px] shrink-0 snap-start sm:w-[370px] lg:w-[calc((100%-36px)/3)]"
@@ -96,10 +106,10 @@ export function Vets() {
 
         <div className="mt-8 flex justify-center lg:mt-[19px]">
           <Link
-            href="#vets"
+            href={viewAllUrl}
             className="inline-flex h-[53px] items-center justify-between gap-4 rounded-[40px] border border-kno-primary py-3 pl-[21px] pr-[12px] text-base text-kno-primary outline-none transition-colors hover:bg-kno-primary/5 focus-visible:ring-2 focus-visible:ring-kno-primary focus-visible:ring-offset-2 lg:w-[135px]"
           >
-            View all
+            {viewAllLabel}
             <span className="flex size-6 items-center justify-center rounded-full bg-kno-primary">
               <ArrowRight className="size-4 text-kno-on-primary" aria-hidden />
             </span>

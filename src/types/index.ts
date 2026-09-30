@@ -47,7 +47,10 @@ export interface Plan {
   price: string;
   period: string;
   includes: readonly string[];
+  /** Label above the include list. Defaults to "Includes:". */
+  includesLabel?: string;
   cta: string;
+  href?: string;
   featured: boolean;
 }
 

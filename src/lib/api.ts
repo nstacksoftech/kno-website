@@ -1,22 +1,8 @@
 import { headerQuery } from "@/graphql/queries/headerQuery";
+import { homeQuery } from "@/graphql/queries/homeQuery";
 
 import { graphqlFetch } from "./graphqlClient";
-
-export type HeaderLogo = {
-  url: string | null;
-  alt: string | null;
-};
-
-export type HeaderLink = {
-  label: string;
-  url: string;
-};
-
-export type HeaderData = {
-  logo: HeaderLogo | null;
-  navLinks: HeaderLink[] | null;
-  cta: HeaderLink | null;
-};
+import type { HeaderData, HomePageData, HomePageResponse, TrustData } from "./types";
 
 export async function fetchHeaderData(): Promise<HeaderData | null> {
   try {
@@ -28,6 +14,24 @@ export async function fetchHeaderData(): Promise<HeaderData | null> {
     return data.Header;
   } catch (error) {
     console.error("Error fetching header", error);
+    return null;
+  }
+}
+
+export async function fetchHomePageData(): Promise<HomePageResponse | null> {
+  try {
+    const data = await graphqlFetch<{
+      Home: HomePageData | null;
+      Trust: TrustData | null;
+    }>({
+      query: homeQuery,
+      revalidate: 60,
+      tags: ["home"],
+    });
+    console.log(data, "Home");
+    return { home: data.Home, trust: data.Trust };
+  } catch (error) {
+    console.error("Error fetching home page", error);
     return null;
   }
 }

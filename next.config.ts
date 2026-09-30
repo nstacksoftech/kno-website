@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    // CMS media is served from the local Payload app during development.
+    dangerouslyAllowLocalIP: true,
     remotePatterns: [
       {
         protocol: "http",

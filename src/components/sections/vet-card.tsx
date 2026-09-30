@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
 
-import type { Vet } from "@/types";
+import type { HomeVet } from "@/lib/types";
 
 /**
  * Where no portrait exists we show a brand monogram rather than borrow a
  * photograph of someone else.
  */
-function VetPortrait({ vet }: { vet: Vet }) {
+function VetPortrait({ vet }: { vet: HomeVet }) {
   if (vet.photo) {
     return (
       <Image
@@ -31,7 +31,7 @@ function VetPortrait({ vet }: { vet: Vet }) {
   );
 }
 
-export function VetCard({ vet }: { vet: Vet }) {
+export function VetCard({ vet }: { vet: HomeVet }) {
   return (
     <article className="relative flex h-full min-h-[199px] w-full gap-[15px] rounded-profile bg-kno-cream p-3">
       <VetPortrait vet={vet} />
