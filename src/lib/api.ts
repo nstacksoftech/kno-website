@@ -14,7 +14,6 @@ export type HeaderLink = {
 
 export type HeaderData = {
   logo: HeaderLogo | null;
-  subheadingLogo: HeaderLogo | null;
   navLinks: HeaderLink[] | null;
   cta: HeaderLink | null;
 };

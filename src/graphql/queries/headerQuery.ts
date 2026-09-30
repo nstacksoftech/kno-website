@@ -5,10 +5,6 @@ query {
       url
       alt
     }
-    subheadingLogo{
-      url
-      alt
-    }
     navLinks {
       label
       url

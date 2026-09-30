@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
@@ -29,13 +30,11 @@ export function SiteHeader({
   ctaLabel,
   ctaHref,
   logo,
-  subheadingLogo,
 }: {
   items: readonly NavItem[];
   ctaLabel: string;
   ctaHref: string;
   logo?: { src: string; alt: string } | null;
-  subheadingLogo?: { src: string; alt: string } | null;
 }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -61,7 +60,25 @@ export function SiteHeader({
       )}
     >
       <Container className="relative flex items-center justify-between gap-6 py-3 lg:py-[19px]">
-        <Logo logo={logo} subheadingLogo={subheadingLogo} />
+        {logo ? (
+          <Link
+            href="/"
+            aria-label={logo.alt || "KNO"}
+            className="relative block h-11 w-auto rounded-sm leading-[0] outline-none focus-visible:ring-2 focus-visible:ring-kno-primary focus-visible:ring-offset-2 lg:h-[55px]"
+          >
+            <Image
+              src={logo.src}
+              alt={logo.alt}
+              width={135}
+              height={55}
+              priority
+              unoptimized
+              className="h-full w-auto object-contain"
+            />
+          </Link>
+        ) : (
+          <Logo />
+        )}
 
         <nav
           aria-label="Main"
