@@ -347,6 +347,149 @@ export type AboutPageResponse = {
   trust: TrustData | null;
 };
 
+export type ContactPageData = {
+  hero: {
+    eyebrow: string;
+    heading: string;
+    description: string;
+    hours: string;
+    image: MediaRef;
+    actions:
+      | {
+          icon: MediaRef;
+          title: string;
+          description: string;
+          url?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  emergency: {
+    icon: MediaRef;
+    heading: string;
+    description: string;
+    note: string;
+  };
+  helpTopics: {
+    heading: string;
+    description: string;
+    items:
+      | {
+          icon: MediaRef;
+          title: string;
+          description: string;
+          url: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  channels: {
+    heading: string;
+    description: string;
+    items:
+      | {
+          icon: MediaRef;
+          title: string;
+          description: string;
+          email: string;
+          responseTime: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  message: {
+    heading: string;
+    description: string;
+    disclaimer: string;
+    submitLabel: string;
+    whatsapp: {
+      icon: MediaRef;
+      eyebrow: string;
+      heading: string;
+      description: string;
+    };
+    faqs: {
+      icon: MediaRef;
+      heading: string;
+      description: string;
+    };
+  };
+  showTrustedBanner?: boolean | null;
+};
+
+export type ContactPageResponse = {
+  contact: ContactPageData | null;
+  trust: TrustData | null;
+};
+
+export type ContactAction = {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  icon: CmsImage | null;
+};
+
+export type ContactTopic = {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  icon: CmsImage | null;
+};
+
+export type ContactChannelView = {
+  id: string;
+  title: string;
+  description: string;
+  email: string;
+  responseTime: string;
+  icon: CmsImage | null;
+};
+
+export type ContactSideCard = {
+  eyebrow: string;
+  heading: string;
+  description: string;
+  icon: CmsImage | null;
+};
+
+export type ContactView = {
+  hero: {
+    eyebrow: string;
+    heading: string;
+    description: string;
+    hours: string;
+    image: CmsImage | null;
+    actions: ContactAction[];
+  };
+  emergency: {
+    heading: string;
+    description: string;
+    note: string;
+    icon: CmsImage | null;
+  };
+  helpTopics: {
+    heading: string;
+    description: string;
+    items: ContactTopic[];
+  };
+  channels: {
+    heading: string;
+    description: string;
+    items: ContactChannelView[];
+  };
+  message: {
+    heading: string;
+    description: string;
+    disclaimer: string;
+    submitLabel: string;
+    whatsapp: ContactSideCard;
+    faqs: ContactSideCard;
+  };
+  trustBadges: HomeTrustBadge[];
+};
+
 export type AboutView = {
   hero: {
     heading: string;

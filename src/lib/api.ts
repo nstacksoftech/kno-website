@@ -1,12 +1,15 @@
 import { headerQuery } from "@/graphql/queries/headerQuery";
 import { homeQuery } from "@/graphql/queries/homeQuery";
 import { aboutQuery } from "@/graphql/queries/aboutQuery";
+import { contactQuery } from "@/graphql/queries/contactQuery";
 import { footerQuery } from "@/graphql/queries/footerQuery";
 
 import { graphqlFetch } from "./graphqlClient";
 import type {
   AboutPageData,
   AboutPageResponse,
+  ContactPageData,
+  ContactPageResponse,
   FooterData,
   HeaderData,
   HomePageData,
@@ -72,6 +75,23 @@ export async function fetchAboutPageData(): Promise<AboutPageResponse | null> {
     return { about: data.About, trust: data.Trust };
   } catch (error) {
     console.error("Error fetching about page", error);
+    return null;
+  }
+}
+
+export async function fetchContactPageData(): Promise<ContactPageResponse | null> {
+  try {
+    const data = await graphqlFetch<{
+      Contact: ContactPageData | null;
+      Trust: TrustData | null;
+    }>({
+      query: contactQuery,
+      revalidate: 60,
+      tags: ["contact"],
+    });
+    return { contact: data.Contact, trust: data.Trust };
+  } catch (error) {
+    console.error("Error fetching contact page", error);
     return null;
   }
 }

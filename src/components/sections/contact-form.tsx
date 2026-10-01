@@ -38,7 +38,13 @@ function FieldError({ id, message }: { id: string; message?: string }) {
   );
 }
 
-export function ContactForm() {
+export function ContactForm({
+  disclaimer,
+  submitLabel = "Send message",
+}: {
+  disclaimer?: string;
+  submitLabel?: string;
+}) {
   const id = useId();
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
@@ -179,10 +185,9 @@ export function ContactForm() {
             )}
           />
           <FieldError id={`${id}-message-error`} message={errors.message} />
-          <p className="mt-2 text-sm text-kno-subtle">
-            Please do not include your pet&apos;s full medical history here — a
-            consultation with a vet is the right place for that.
-          </p>
+          {disclaimer ? (
+            <p className="mt-2 text-sm text-kno-subtle">{disclaimer}</p>
+          ) : null}
         </div>
 
         {/* Right column: email */}
@@ -220,7 +225,7 @@ export function ContactForm() {
         disabled={status === "submitting"}
         className="gap-[10px] self-start px-[30px]"
       >
-        {status === "submitting" ? "Sending…" : "Send message"}
+        {status === "submitting" ? "Sending…" : submitLabel}
         <Icon
           src="/icons/chevron-right-light.svg"
           alt=""
