@@ -17,9 +17,12 @@ export interface LegalSection {
 }
 
 export interface LegalDocument {
+  eyebrow?: string;
   title: string;
   intro: string;
   effectiveDate: string;
   lastUpdated: string;
+  /** Sidebar heading. Falls back to "On this page" when the CMS leaves it blank. */
+  tocHeading?: string;
   sections: readonly LegalSection[];
 }

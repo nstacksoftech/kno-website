@@ -63,11 +63,11 @@ export function LegalDocumentBody({ document }: { document: LegalDocument }) {
       <Container>
         <div className="grid gap-12 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-[72px]">
           <nav
-            aria-label="On this page"
+            aria-label={document.tocHeading || "On this page"}
             className="min-w-0 lg:sticky lg:top-[120px] lg:self-start"
           >
             <h2 className="text-sm font-semibold uppercase tracking-[0.06em] text-kno-primary">
-              On this page
+              {document.tocHeading || "On this page"}
             </h2>
             <ol className="mt-4 space-y-2">
               {document.sections.map((section, index) => (

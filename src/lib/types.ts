@@ -490,6 +490,38 @@ export type ContactView = {
   trustBadges: HomeTrustBadge[];
 };
 
+export type LegalBlockData = {
+  type: "paragraph" | "list" | "table";
+  text?: string | null;
+  items?: { text: string; id?: string | null }[] | null;
+  caption?: string | null;
+  columns?: { label: string; id?: string | null }[] | null;
+  rows?:
+    | {
+        cells?: { text: string; id?: string | null }[] | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+};
+
+export type LegalPageData = {
+  eyebrow: string;
+  heading: string;
+  description: string;
+  effectiveDate: string;
+  lastUpdated: string;
+  tocHeading: string;
+  sections?:
+    | {
+        title: string;
+        anchor?: string | null;
+        blocks?: LegalBlockData[] | null;
+        id?: string | null;
+      }[]
+    | null;
+};
+
 export type AboutView = {
   hero: {
     heading: string;

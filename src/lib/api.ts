@@ -2,6 +2,7 @@ import { headerQuery } from "@/graphql/queries/headerQuery";
 import { homeQuery } from "@/graphql/queries/homeQuery";
 import { aboutQuery } from "@/graphql/queries/aboutQuery";
 import { contactQuery } from "@/graphql/queries/contactQuery";
+import { privacyQuery, termsQuery } from "@/graphql/queries/legalQuery";
 import { footerQuery } from "@/graphql/queries/footerQuery";
 
 import { graphqlFetch } from "./graphqlClient";
@@ -14,6 +15,7 @@ import type {
   HeaderData,
   HomePageData,
   HomePageResponse,
+  LegalPageData,
   TrustData,
 } from "./types";
 
@@ -92,6 +94,35 @@ export async function fetchContactPageData(): Promise<ContactPageResponse | null
     return { contact: data.Contact, trust: data.Trust };
   } catch (error) {
     console.error("Error fetching contact page", error);
+    return null;
+  }
+}
+
+export async function fetchPrivacyPageData(): Promise<LegalPageData | null> {
+  try {
+    const data = await graphqlFetch<{ Privacy: LegalPageData | null }>({
+      query: privacyQuery,
+      revalidate: 60,
+      tags: ["privacy"],
+    });
+    return data.Privacy;
+  } catch (error) {
+    console.error("Error fetching privacy page", error);
+    return null;
+  }
+}
+
+export async function fetchTermsPageData(): Promise<LegalPageData | null> {
+  try {
+    const data = await graphqlFetch<{ Term: LegalPageData | null }>({
+      query: termsQuery,
+      revalidate: 60,
+      tags: ["terms"],
+    });
+    console.log(data,'data');
+    return data.Term;
+  } catch (error) {
+    console.error("Error fetching terms page", error);
     return null;
   }
 }
