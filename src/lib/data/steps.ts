@@ -19,7 +19,7 @@ export const STEPS: readonly Step[] = [
   },
   {
     number: 3,
-    title: "Manage Your Pet’s Health",
+    title: "Manage your pet’s health",
     description:
       "Access records, prescriptions and care reminders all in one place.",
     icon: "/icons/cardiology.svg",

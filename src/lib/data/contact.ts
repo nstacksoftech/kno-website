@@ -6,7 +6,7 @@ export const COMPANY = {
   legalName: "KNO Veterinary Care Network Private Limited",
   tradingName: "KNO",
   registeredOffice: [
-    "WeWork Oberoi Commerz II, Oberoi Garden City",
+    "Oberoi Garden City",
     "Goregaon East, Mumbai - 400063",
     "Maharashtra, India",
   ],
@@ -19,7 +19,7 @@ export const CONTACT_HERO = {
   title: "How can we help?",
   lead: "Whether you have a question about your membership, your pet's health records, an order or KNO, we're here to help.",
   availability:
-    "Member support is available Monday – Friday, 9:00 AM to 9:00 PM IST.",
+    "Member support is available Monday to Friday, 9:00 AM to 9:00 PM IST.",
   searchPlaceholder:
     "Search KNO Help (e.g. memberships, consultations, prescriptions...)",
   image: "/images/contact-banner.png",
@@ -37,14 +37,14 @@ export interface HeroAction {
 export const CONTACT_HERO_ACTIONS: readonly HeroAction[] = [
   {
     id: "track",
-    title: "Track My Order",
+    title: "Track my order",
     sub: "Get real-time update",
     icon: "/icons/calendar-clock.svg",
     href: "#",
   },
   {
     id: "membership",
-    title: "Manage Membership",
+    title: "Manage membership",
     sub: "Billing, plan & more",
     icon: "/icons/id_card.svg",
     href: "/#pricing",

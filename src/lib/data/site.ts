@@ -1,7 +1,7 @@
 import type { NavItem, TrustPoint } from "@/types";
 
 export const NAV_ITEMS: readonly NavItem[] = [
-  { label: "How It Work", href: "/#how-it-works" },
+  { label: "How It Works", href: "/#how-it-works" },
   { label: "Plan & Pricing", href: "/#pricing" },
   { label: "Our Vets", href: "/#vets" },
   { label: "About KNO", href: "/about" },
@@ -16,12 +16,12 @@ export const HERO = {
     "Everything for your pet’s health and wellbeing, connected in one place",
   tagline: "KNO karo. Guess mat karo",
   primaryCta: {
-    label: "Book Vet Consult",
+    label: "Book vet consult",
     href: "/#pricing",
     icon: "/icons/consult.svg",
   },
   secondaryCta: {
-    label: "Explore Health Needs",
+    label: "Explore health needs",
     href: "/#features",
     icon: "/icons/medical-services.svg",
   },

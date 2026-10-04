@@ -13,7 +13,7 @@ export const PRIVACY_POLICY: LegalDocument = {
       blocks: [
         {
           kind: "p",
-          text: "KNO is operated by KNO Veterinary Care Network Private Limited, a company registered in India with its office at WeWork Oberoi Commerz II, Oberoi Garden City, Goregaon East, Mumbai - 400063, Maharashtra. In this policy, “KNO”, “we” and “us” mean that company.",
+          text: "KNO is operated by KNO Veterinary Care Network Private Limited, a company registered in India with its office at Oberoi Garden City, Goregaon East, Mumbai - 400063, Maharashtra. In this policy, “KNO”, “we” and “us” mean that company.",
         },
         {
           kind: "p",
@@ -254,7 +254,7 @@ export const PRIVACY_POLICY: LegalDocument = {
         },
         {
           kind: "p",
-          text: "Postal address: KNO Veterinary Care Network Private Limited, WeWork Oberoi Commerz II, Oberoi Garden City, Goregaon East, Mumbai - 400063, Maharashtra, India.",
+          text: "Postal address: KNO Veterinary Care Network Private Limited, Oberoi Garden City, Goregaon East, Mumbai - 400063, Maharashtra, India.",
         },
       ],
     },
