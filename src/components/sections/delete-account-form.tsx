@@ -114,12 +114,14 @@ export function DeleteAccountForm({
   heading = "Enter your details",
   description = "Use the mobile number you signed in to KNO with. We'll send a one-time password to confirm it's you.",
   reasonPlaceholder = "Select a reason",
+  reasons = DELETE_ACCOUNT_REASONS,
   confirmationText = "I understand that deleting my account is permanent. My pet profiles, health history and any active membership will be removed and cannot be restored.",
 }: {
   steps?: readonly DeleteAccountStepView[];
   heading?: string;
   description?: string;
   reasonPlaceholder?: string;
+  reasons?: readonly string[];
   confirmationText?: string;
 }) {
   const id = useId();
@@ -327,7 +329,7 @@ export function DeleteAccountForm({
                   className={cn(INPUT, "appearance-none pr-12")}
                 >
                   <option value="">{reasonPlaceholder}</option>
-                  {DELETE_ACCOUNT_REASONS.map((r) => (
+                  {reasons.map((r) => (
                     <option key={r} value={r}>
                       {r}
                     </option>

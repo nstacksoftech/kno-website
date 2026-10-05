@@ -13,7 +13,7 @@ query {
     form {
       heading
       description
-      reasonPlaceholder
+      reasons { id text }
       confirmationText
     }
     process {
@@ -27,14 +27,13 @@ query {
     retained {
       heading
       description
-      items { id label detail }
+      items { id detail }
       button { label href }
     }
     help {
       heading
       description
       email
-      address
     }
     showTrustedBanner
     ${seoMetaFields}

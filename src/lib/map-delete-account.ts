@@ -31,6 +31,14 @@ const EMPTY_DELETE_ACCOUNT: DeleteAccountView = {
     description:
       "Use the mobile number you signed in to KNO with. We'll send a one-time password to confirm it's you.",
     reasonPlaceholder: "Select a reason",
+    reasons: [
+      "I no longer have a pet",
+      "I'm using a different service",
+      "I have privacy concerns",
+      "I created a duplicate account",
+      "The app didn't meet my needs",
+      "Something else",
+    ],
     confirmationText:
       "I understand that deleting my account is permanent. My pet profiles, health history and any active membership will be removed and cannot be restored.",
   },
@@ -42,7 +50,7 @@ const EMPTY_DELETE_ACCOUNT: DeleteAccountView = {
     items: [],
     button: { label: "", href: "" },
   },
-  help: { heading: "", description: "", email: "", address: "" },
+  help: { heading: "", description: "", email: "" },
   trustBadges: [],
 };
 
@@ -90,12 +98,6 @@ function mapSteps(
   }));
 }
 
-function retainedItemText(label: string, detail: string): string {
-  if (!label || label === "-") return detail;
-  if (!detail) return label;
-  return `${label} - ${detail}`;
-}
-
 function mapDeleteAccount(
   page: DeleteAccountPageData,
   trust: TrustData | null,
@@ -112,9 +114,13 @@ function mapDeleteAccount(
       heading: text(page.form?.heading) || EMPTY_DELETE_ACCOUNT.form.heading,
       description:
         text(page.form?.description) || EMPTY_DELETE_ACCOUNT.form.description,
-      reasonPlaceholder:
-        text(page.form?.reasonPlaceholder) ||
-        EMPTY_DELETE_ACCOUNT.form.reasonPlaceholder,
+      reasonPlaceholder: EMPTY_DELETE_ACCOUNT.form.reasonPlaceholder,
+      reasons: (() => {
+        const reasons = list(page.form?.reasons)
+          .map((item) => text(item.text))
+          .filter(Boolean);
+        return reasons.length > 0 ? reasons : EMPTY_DELETE_ACCOUNT.form.reasons;
+      })(),
       confirmationText:
         text(page.form?.confirmationText) ||
         EMPTY_DELETE_ACCOUNT.form.confirmationText,
@@ -139,7 +145,7 @@ function mapDeleteAccount(
       description: text(page.retained?.description),
       items: list(page.retained?.items).map((item, index) => ({
         id: text(item.id) || `retained-${index}`,
-        text: retainedItemText(text(item.label), text(item.detail)),
+        text: text(item.detail),
       })),
       button: {
         label: text(page.retained?.button?.label),
@@ -150,7 +156,6 @@ function mapDeleteAccount(
       heading: text(page.help?.heading),
       description: text(page.help?.description),
       email: text(page.help?.email),
-      address: text(page.help?.address),
     },
     trustBadges: page.showTrustedBanner ? mapTrust(trust) : [],
   };

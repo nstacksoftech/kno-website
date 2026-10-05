@@ -47,6 +47,7 @@ export default async function DeleteAccountPage() {
                 heading={page.form.heading}
                 description={page.form.description}
                 reasonPlaceholder={page.form.reasonPlaceholder}
+                reasons={page.form.reasons}
                 confirmationText={page.form.confirmationText}
               />
             </div>
@@ -157,11 +158,6 @@ export default async function DeleteAccountPage() {
                     >
                       {page.help.email}
                     </a>
-                  ) : null}
-                  {page.help.address ? (
-                    <p className="mt-3 whitespace-pre-line text-sm leading-[20px] text-kno-on-primary-muted">
-                      {page.help.address}
-                    </p>
                   ) : null}
                 </div>
               </div>

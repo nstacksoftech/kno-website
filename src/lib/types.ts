@@ -555,7 +555,7 @@ export type DeleteAccountPageData = {
   form: {
     heading: string;
     description: string;
-    reasonPlaceholder?: string | null;
+    reasons?: { text: string; id?: string | null }[] | null;
     confirmationText: string;
   };
   process: {
@@ -577,7 +577,6 @@ export type DeleteAccountPageData = {
     description: string;
     items?:
       | {
-          label?: string | null;
           detail: string;
           id?: string | null;
         }[]
@@ -588,7 +587,6 @@ export type DeleteAccountPageData = {
     heading: string;
     description: string;
     email: string;
-    address: string;
   };
   showTrustedBanner?: boolean | null;
   meta?: SeoMeta | null;
@@ -616,6 +614,7 @@ export type DeleteAccountView = {
     heading: string;
     description: string;
     reasonPlaceholder: string;
+    reasons: string[];
     confirmationText: string;
   };
   process: {
@@ -636,7 +635,6 @@ export type DeleteAccountView = {
     heading: string;
     description: string;
     email: string;
-    address: string;
   };
   trustBadges: HomeTrustBadge[];
 };
