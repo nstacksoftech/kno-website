@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import { JsonLd } from "@/components/seo/json-ld";
 import { Founders } from "@/components/sections/founders";
 import { TrustBadges } from "@/components/sections/trust-badges";
 import { Container } from "@/components/ui/container";
@@ -10,13 +11,17 @@ import { PillLink } from "@/components/ui/pill-button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { fetchAboutPageData } from "@/lib/api";
 import { mapAboutPage } from "@/lib/map-about";
+import { metadataFromSeo } from "@/lib/map-seo";
 import type { AboutCta, CmsImage } from "@/lib/types";
 
-export const metadata: Metadata = {
-  title: "About KNO - We built KNO because we're pet parents too",
-  description:
-    "KNO brings your pet's healthcare together in one place: licensed veterinarians, health records, prescriptions, preventive care and reminders - one pet, one health journey.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await fetchAboutPageData();
+  return metadataFromSeo(data?.about?.meta, {
+    title: "About KNO - We built KNO because we're pet parents too",
+    description:
+      "KNO brings your pet's healthcare together in one place: licensed veterinarians, health records, prescriptions, preventive care and reminders - one pet, one health journey.",
+  });
+}
 
 function CtaIcon({ icon, size = 20 }: { icon: CmsImage | null; size?: number }) {
   if (!icon) return null;
@@ -46,10 +51,12 @@ function AboutCtaLink({
 }
 
 export default async function AboutPage() {
-  const about = mapAboutPage(await fetchAboutPageData());
+  const data = await fetchAboutPageData();
+  const about = mapAboutPage(data);
 
   return (
     <main className="flex-1">
+      <JsonLd data={data?.about?.meta?.schema} />
       <section
         aria-labelledby="about-hero-heading"
         className="relative isolate overflow-hidden bg-kno-cream"

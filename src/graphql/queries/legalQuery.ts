@@ -1,3 +1,5 @@
+import { seoMetaFields } from "@/graphql/queries/seoMetaFields";
+
 const legalPageFields = `
   eyebrow
   heading
@@ -22,6 +24,7 @@ const legalPageFields = `
       }
     }
   }
+  ${seoMetaFields}
 `;
 
 export const privacyQuery = `

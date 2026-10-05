@@ -1,3 +1,5 @@
+import { seoMetaFields } from "@/graphql/queries/seoMetaFields";
+
 export const contactQuery = `
 query {
   Contact {
@@ -62,6 +64,7 @@ query {
       }
     }
     showTrustedBanner
+    ${seoMetaFields}
   }
   Trust {
     items {

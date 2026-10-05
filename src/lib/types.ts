@@ -3,6 +3,24 @@ export type MediaRef = {
   alt?: string | null;
 } | null;
 
+export type SeoMeta = {
+  title?: string | null;
+  description?: string | null;
+  canonical?: string | null;
+  ogTitle?: string | null;
+  ogDescription?: string | null;
+  ogImage?: MediaRef;
+  ogType?: "website" | "article" | "product" | "profile" | null;
+  ogUrl?: string | null;
+  keywords?: { keyword: string; id?: string | null }[] | null;
+  twitterCard?: "summary" | "summary_large_image" | "app" | "player" | null;
+  twitterSite?: string | null;
+  twitterTitle?: string | null;
+  twitterDescription?: string | null;
+  twitterImage?: MediaRef;
+  schema?: unknown;
+};
+
 export type HomePageData = {
   hero: {
     heading: string;
@@ -81,6 +99,7 @@ export type HomePageData = {
     viewAllUrl?: string | null;
   };
   showTrustedBanner?: boolean | null;
+  meta?: SeoMeta | null;
 };
 
 export type TrustData = {
@@ -340,6 +359,7 @@ export type AboutPageData = {
     secondaryCta: { label: string; url: string; icon: MediaRef };
   };
   showTrustedBanner?: boolean | null;
+  meta?: SeoMeta | null;
 };
 
 export type AboutPageResponse = {
@@ -415,6 +435,7 @@ export type ContactPageData = {
     };
   };
   showTrustedBanner?: boolean | null;
+  meta?: SeoMeta | null;
 };
 
 export type ContactPageResponse = {
@@ -520,6 +541,7 @@ export type LegalPageData = {
         id?: string | null;
       }[]
     | null;
+  meta?: SeoMeta | null;
 };
 
 export type AboutView = {

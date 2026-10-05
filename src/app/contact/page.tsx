@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { JsonLd } from "@/components/seo/json-ld";
 import { ContactForm } from "@/components/sections/contact-form";
 import { TrustBadges } from "@/components/sections/trust-badges";
 import { Container } from "@/components/ui/container";
@@ -13,18 +14,24 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { fetchContactPageData } from "@/lib/api";
 import { CONTACT_CHAT, CONTACT_FAQ } from "@/lib/data/contact";
 import { mapContactPage } from "@/lib/map-contact";
+import { metadataFromSeo } from "@/lib/map-seo";
 
-export const metadata: Metadata = {
-  title: "Contact KNO - Help Center",
-  description:
-    "How can we help? Browse common topics, or send the Mumbai team a message about your membership, an order, a consultation or a privacy request.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await fetchContactPageData();
+  return metadataFromSeo(data?.contact?.meta, {
+    title: "Contact KNO - Help Center",
+    description:
+      "How can we help? Browse common topics, or send the Mumbai team a message about your membership, an order, a consultation or a privacy request.",
+  });
+}
 
 export default async function ContactPage() {
-  const contact = mapContactPage(await fetchContactPageData());
+  const data = await fetchContactPageData();
+  const contact = mapContactPage(data);
 
   return (
     <main className="flex-1">
+      <JsonLd data={data?.contact?.meta?.schema} />
       <section
         aria-labelledby="contact-hero-heading"
         className="relative isolate overflow-hidden bg-kno-cream"

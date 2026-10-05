@@ -1,3 +1,5 @@
+import { seoMetaFields } from "@/graphql/queries/seoMetaFields";
+
 export const homeQuery = `
 query {
   Home {
@@ -86,6 +88,7 @@ query {
       viewAllUrl
     }
     showTrustedBanner
+    ${seoMetaFields}
   }
   Trust {
     items {

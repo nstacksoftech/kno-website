@@ -1,3 +1,5 @@
+import { seoMetaFields } from "@/graphql/queries/seoMetaFields";
+
 export const aboutQuery = `
 query {
   About {
@@ -36,6 +38,7 @@ query {
       secondaryCta { label url icon { url alt } }
     }
     showTrustedBanner
+    ${seoMetaFields}
   }
   Trust {
     items {
