@@ -2,6 +2,7 @@ import { headerQuery } from "@/graphql/queries/headerQuery";
 import { homeQuery } from "@/graphql/queries/homeQuery";
 import { aboutQuery } from "@/graphql/queries/aboutQuery";
 import { contactQuery } from "@/graphql/queries/contactQuery";
+import { deleteAccountQuery } from "@/graphql/queries/deleteAccountQuery";
 import { privacyQuery, termsQuery } from "@/graphql/queries/legalQuery";
 import { footerQuery } from "@/graphql/queries/footerQuery";
 
@@ -11,6 +12,8 @@ import type {
   AboutPageResponse,
   ContactPageData,
   ContactPageResponse,
+  DeleteAccountPageData,
+  DeleteAccountPageResponse,
   FooterData,
   HeaderData,
   HomePageData,
@@ -119,10 +122,26 @@ export async function fetchTermsPageData(): Promise<LegalPageData | null> {
       revalidate: 60,
       tags: ["terms"],
     });
-    console.log(data,'data');
     return data.Term;
   } catch (error) {
     console.error("Error fetching terms page", error);
+    return null;
+  }
+}
+
+export async function fetchDeleteAccountPageData(): Promise<DeleteAccountPageResponse | null> {
+  try {
+    const data = await graphqlFetch<{
+      DeleteAccount: DeleteAccountPageData | null;
+      Trust: TrustData | null;
+    }>({
+      query: deleteAccountQuery,
+      revalidate: 60,
+      tags: ["delete-account"],
+    });
+    return { deleteAccount: data.DeleteAccount, trust: data.Trust };
+  } catch (error) {
+    console.error("Error fetching delete account page", error);
     return null;
   }
 }

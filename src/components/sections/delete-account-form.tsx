@@ -11,6 +11,7 @@ import {
   DELETE_ACCOUNT_STEPS,
   type DeleteAccountStep,
 } from "@/lib/data/delete-account";
+import type { DeleteAccountStepView } from "@/lib/types";
 
 type Errors = Partial<Record<"phone" | "email" | "code" | "confirm" | "form", string>>;
 
@@ -50,11 +51,17 @@ function FieldError({ id, message }: { id: string; message?: string }) {
   );
 }
 
-function Stepper({ current }: { current: DeleteAccountStep }) {
-  const currentIndex = DELETE_ACCOUNT_STEPS.findIndex((s) => s.id === current);
+function Stepper({
+  current,
+  steps,
+}: {
+  current: DeleteAccountStep;
+  steps: readonly DeleteAccountStepView[];
+}) {
+  const currentIndex = steps.findIndex((s) => s.id === current);
   return (
     <ol className="flex items-center gap-2 sm:gap-3" aria-label="Progress">
-      {DELETE_ACCOUNT_STEPS.map((step, index) => {
+      {steps.map((step, index) => {
         const done = index < currentIndex || current === "done";
         const active = index === currentIndex && current !== "done";
         return (
@@ -102,7 +109,19 @@ function maskPhone(phone: string): string {
   return `+91 ${digits.slice(0, 2)}••• ••${digits.slice(-3)}`;
 }
 
-export function DeleteAccountForm() {
+export function DeleteAccountForm({
+  steps = DELETE_ACCOUNT_STEPS,
+  heading = "Enter your details",
+  description = "Use the mobile number you signed in to KNO with. We'll send a one-time password to confirm it's you.",
+  reasonPlaceholder = "Select a reason",
+  confirmationText = "I understand that deleting my account is permanent. My pet profiles, health history and any active membership will be removed and cannot be restored.",
+}: {
+  steps?: readonly DeleteAccountStepView[];
+  heading?: string;
+  description?: string;
+  reasonPlaceholder?: string;
+  confirmationText?: string;
+}) {
   const id = useId();
   const [step, setStep] = useState<DeleteAccountStep>("details");
   const [busy, setBusy] = useState(false);
@@ -220,7 +239,7 @@ export function DeleteAccountForm() {
       ref={cardRef}
       className="scroll-mt-[110px] rounded-panel border border-kno-line bg-kno-canvas p-6 sm:p-8 lg:p-10"
     >
-      <Stepper current={step} />
+      <Stepper current={step} steps={steps} />
       <div className="mt-8 border-t border-kno-line pt-8">
         {errors.form ? (
           <p
@@ -234,10 +253,9 @@ export function DeleteAccountForm() {
         {step === "details" ? (
           <form onSubmit={handleDetails} noValidate className="flex flex-col gap-6">
             <div>
-              <h2 className="text-h3 font-bold text-kno-ink">Enter your details</h2>
+              <h2 className="text-h3 font-bold text-kno-ink">{heading}</h2>
               <p className="mt-2 text-base leading-[24px] text-kno-muted">
-                Use the mobile number you signed in to KNO with. We&apos;ll send a
-                one-time password to confirm it&apos;s you.
+                {description}
               </p>
             </div>
 
@@ -308,7 +326,7 @@ export function DeleteAccountForm() {
                   onChange={(e) => setReason(e.target.value)}
                   className={cn(INPUT, "appearance-none pr-12")}
                 >
-                  <option value="">Select a reason</option>
+                  <option value="">{reasonPlaceholder}</option>
                   {DELETE_ACCOUNT_REASONS.map((r) => (
                     <option key={r} value={r}>
                       {r}
@@ -338,11 +356,7 @@ export function DeleteAccountForm() {
                   aria-describedby={errors.confirm ? `${id}-confirm-error` : undefined}
                   className="mt-0.5 size-4 shrink-0 accent-kno-primary"
                 />
-                <span>
-                  I understand that deleting my account is <strong className="text-kno-ink">permanent</strong>.
-                  My pet profiles, health history and any active membership will be
-                  removed and cannot be restored.
-                </span>
+                <span>{confirmationText}</span>
               </label>
               <FieldError id={`${id}-confirm-error`} message={errors.confirm} />
             </div>

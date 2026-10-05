@@ -544,6 +544,103 @@ export type LegalPageData = {
   meta?: SeoMeta | null;
 };
 
+export type DeleteAccountPageData = {
+  hero: {
+    eyebrow: string;
+    heading: string;
+    description: string;
+    note: string;
+    steps?: { label: string; id?: string | null }[] | null;
+  };
+  form: {
+    heading: string;
+    description: string;
+    reasonPlaceholder?: string | null;
+    confirmationText: string;
+  };
+  process: {
+    heading: string;
+    items?:
+      | {
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  deleted: {
+    heading: string;
+    items?: { text: string; id?: string | null }[] | null;
+  };
+  retained: {
+    heading: string;
+    description: string;
+    items?:
+      | {
+          label?: string | null;
+          detail: string;
+          id?: string | null;
+        }[]
+      | null;
+    button: { label: string; href: string };
+  };
+  help: {
+    heading: string;
+    description: string;
+    email: string;
+    address: string;
+  };
+  showTrustedBanner?: boolean | null;
+  meta?: SeoMeta | null;
+};
+
+export type DeleteAccountPageResponse = {
+  deleteAccount: DeleteAccountPageData | null;
+  trust: TrustData | null;
+};
+
+export type DeleteAccountStepView = {
+  id: "details" | "verify" | "done";
+  label: string;
+};
+
+export type DeleteAccountView = {
+  hero: {
+    eyebrow: string;
+    heading: string;
+    description: string;
+    note: string;
+    steps: DeleteAccountStepView[];
+  };
+  form: {
+    heading: string;
+    description: string;
+    reasonPlaceholder: string;
+    confirmationText: string;
+  };
+  process: {
+    heading: string;
+    items: { id: string; title: string; description: string }[];
+  };
+  deleted: {
+    heading: string;
+    items: { id: string; text: string }[];
+  };
+  retained: {
+    heading: string;
+    description: string;
+    items: { id: string; text: string }[];
+    button: { label: string; href: string };
+  };
+  help: {
+    heading: string;
+    description: string;
+    email: string;
+    address: string;
+  };
+  trustBadges: HomeTrustBadge[];
+};
+
 export type AboutView = {
   hero: {
     heading: string;
