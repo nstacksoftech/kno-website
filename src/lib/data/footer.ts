@@ -52,6 +52,7 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
       { label: "Contact Us", href: "/contact" },
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of service", href: "/terms" },
+      { label: "Delete account", href: "/delete-account" },
     ],
   },
   {
@@ -93,7 +94,7 @@ export const STORE_LINKS: readonly StoreLink[] = [
 export const FOOTER_COMPANY: CompanyDetails = {
   name: "KNO VETERINARY CARE NETWORK PRIVATE LIMITED",
   addressLines: [
-    "WeWork Oberoi Commerz II, Oberoi Garden City, Goregaon East, Mumbai- 400063, Maharashtra",
+    "Oberoi Garden City, Goregaon East, Mumbai- 400063, Maharashtra",
   ],
 };
 export const FOOTER_COPYRIGHT = "All rights to KNO VETERINARY CARE NETWORK.";

@@ -271,7 +271,7 @@ export const TERMS: LegalDocument = {
         },
         {
           kind: "p",
-          text: "Postal address: KNO Veterinary Care Network Private Limited, WeWork Oberoi Commerz II, Oberoi Garden City, Goregaon East, Mumbai - 400063, Maharashtra, India.",
+          text: "Postal address: KNO Veterinary Care Network Private Limited, Oberoi Garden City, Goregaon East, Mumbai - 400063, Maharashtra, India.",
         },
       ],
     },
