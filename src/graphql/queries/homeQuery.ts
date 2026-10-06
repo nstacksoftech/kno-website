@@ -8,6 +8,7 @@ query {
       highlight
       supportingLine
       description
+      chipImage { url alt }
       chip
       highlights {
         icon { url alt }

@@ -27,6 +27,7 @@ export type HomePageData = {
     highlight: string;
     supportingLine: string;
     description: string;
+    chipImage: MediaRef;
     chip: string;
     highlights: {
       icon: MediaRef;
@@ -252,6 +253,7 @@ export type HomeView = {
     highlight: string;
     supportingLine: string;
     description: string;
+    chipImage: CmsImage | null;
     chip: string;
     image: CmsImage | null;
     badge: string;

@@ -91,7 +91,7 @@ function FounderCard({ person }: { person: AboutPerson }) {
             <X className="size-5" aria-hidden />
           </Dialog.Close>
 
-          <div className="relative mx-auto aspect-[300/340] w-[260px] overflow-hidden rounded-trust sm:w-[300px]">
+          {/* <div className="relative mx-auto aspect-[300/340] w-[260px] overflow-hidden rounded-trust sm:w-[300px]">
             {person.image ? (
               <Image
                 src={person.image.src}
@@ -101,7 +101,7 @@ function FounderCard({ person }: { person: AboutPerson }) {
                 className="object-cover"
               />
             ) : null}
-          </div>
+          </div> */}
 
           <Dialog.Title className="mt-6 text-center text-h3 font-bold text-kno-ink">
             {person.name}
