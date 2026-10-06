@@ -529,6 +529,8 @@ export type LegalBlockData = {
 };
 
 export type LegalPageData = {
+  title?: string | null;
+  slug?: string | null;
   eyebrow: string;
   heading: string;
   description: string;

@@ -3,7 +3,7 @@ import { homeQuery } from "@/graphql/queries/homeQuery";
 import { aboutQuery } from "@/graphql/queries/aboutQuery";
 import { contactQuery } from "@/graphql/queries/contactQuery";
 import { deleteAccountQuery } from "@/graphql/queries/deleteAccountQuery";
-import { privacyQuery, termsQuery } from "@/graphql/queries/legalQuery";
+import { legalPageBySlugQuery, legalPageSlugsQuery } from "@/graphql/queries/legalQuery";
 import { footerQuery } from "@/graphql/queries/footerQuery";
 
 import { graphqlFetch } from "./graphqlClient";
@@ -101,31 +101,40 @@ export async function fetchContactPageData(): Promise<ContactPageResponse | null
   }
 }
 
-export async function fetchPrivacyPageData(): Promise<LegalPageData | null> {
+export async function fetchLegalPageBySlug(
+  slug: string,
+): Promise<LegalPageData | null> {
   try {
-    const data = await graphqlFetch<{ Privacy: LegalPageData | null }>({
-      query: privacyQuery,
+    const data = await graphqlFetch<{
+      LegalPages: { docs: LegalPageData[] } | null;
+    }>({
+      query: legalPageBySlugQuery,
+      variables: { slug },
       revalidate: 60,
-      tags: ["privacy"],
+      tags: ["legal-pages", `legal-page-${slug}`],
     });
-    return data.Privacy;
+    return data.LegalPages?.docs?.[0] ?? null;
   } catch (error) {
-    console.error("Error fetching privacy page", error);
+    console.error(`Error fetching legal page "${slug}"`, error);
     return null;
   }
 }
 
-export async function fetchTermsPageData(): Promise<LegalPageData | null> {
+export async function fetchLegalPageSlugs(): Promise<string[]> {
   try {
-    const data = await graphqlFetch<{ Term: LegalPageData | null }>({
-      query: termsQuery,
+    const data = await graphqlFetch<{
+      LegalPages: { docs: { slug: string }[] } | null;
+    }>({
+      query: legalPageSlugsQuery,
       revalidate: 60,
-      tags: ["terms"],
+      tags: ["legal-pages"],
     });
-    return data.Term;
+    return (data.LegalPages?.docs ?? [])
+      .map((doc) => doc.slug?.trim())
+      .filter((slug): slug is string => Boolean(slug));
   } catch (error) {
-    console.error("Error fetching terms page", error);
-    return null;
+    console.error("Error fetching legal page slugs", error);
+    return [];
   }
 }
 

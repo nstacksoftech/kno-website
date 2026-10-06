@@ -50,8 +50,8 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
     links: [
       { label: "Help Centre", href: "/contact" },
       { label: "Contact Us", href: "/contact" },
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of service", href: "/terms" },
+      { label: "Privacy Policy", href: "/legal/privacy" },
+      { label: "Terms of service", href: "/legal/terms" },
       { label: "Delete account", href: "/delete-account" },
     ],
   },
@@ -99,6 +99,6 @@ export const FOOTER_COMPANY: CompanyDetails = {
 };
 export const FOOTER_COPYRIGHT = "All rights to KNO VETERINARY CARE NETWORK.";
 export const FOOTER_LEGAL: readonly NavItem[] = [
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms & Condition", href: "/terms" },
+  { label: "Privacy Policy", href: "/legal/privacy" },
+  { label: "Terms & Condition", href: "/legal/terms" },
 ] as const;

@@ -1,6 +1,8 @@
 import { seoMetaFields } from "@/graphql/queries/seoMetaFields";
 
 const legalPageFields = `
+  title
+  slug
   eyebrow
   heading
   description
@@ -27,19 +29,24 @@ const legalPageFields = `
   ${seoMetaFields}
 `;
 
-export const privacyQuery = `
-query {
-  Privacy {
-    ${legalPageFields}
+/** Fetch one legal page by URL slug (e.g. privacy, terms). */
+export const legalPageBySlugQuery = `
+query LegalPageBySlug($slug: String!) {
+  LegalPages(where: { slug: { equals: $slug } }, limit: 1) {
+    docs {
+      ${legalPageFields}
+    }
   }
 }
 `;
 
-/** Payload exposes the terms global as \`Term\`. */
-export const termsQuery = `
-query {
-  Term {
-    ${legalPageFields}
+/** All legal page slugs for static generation. */
+export const legalPageSlugsQuery = `
+query LegalPageSlugs {
+  LegalPages(limit: 100) {
+    docs {
+      slug
+    }
   }
 }
 `;
