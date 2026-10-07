@@ -3,7 +3,11 @@ import { Inter } from "next/font/google";
 
 import { SiteFooter } from "@/components/sections/site-footer";
 import { SiteHeader } from "@/components/sections/site-header";
-import { fetchFooterData, fetchHeaderData } from "@/lib/api";
+import {
+  fetchFooterData,
+  fetchHeaderData,
+  fetchSiteSettingsData,
+} from "@/lib/api";
 import { mapFooter } from "@/lib/map-footer";
 import { NAV_ITEMS } from "@/lib/data/site";
 import { resolveMediaUrl } from "@/lib/graphqlClient";
@@ -30,21 +34,22 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
-  const [header, footerData] = await Promise.all([
+  const [header, footerData, siteSettings] = await Promise.all([
     fetchHeaderData(),
     fetchFooterData(),
+    fetchSiteSettingsData(),
   ]);
-  const footer = mapFooter(footerData);
+  const footer = mapFooter(footerData, siteSettings);
   const items =
     header?.navLinks && header.navLinks.length > 0
       ? header.navLinks.map((link) => ({ label: link.label, href: link.url }))
       : NAV_ITEMS;
   const ctaLabel = header?.cta?.label || "Become a Member";
   const ctaHref = header?.cta?.url || "/#pricing";
-  const logo = header?.logo?.url
+  const logo = siteSettings?.headerLogo?.url
     ? {
-        src: resolveMediaUrl(header.logo.url),
-        alt: header.logo.alt || "KNO",
+        src: resolveMediaUrl(siteSettings.headerLogo.url),
+        alt: siteSettings.headerLogo.alt || "KNO",
       }
     : null;
 

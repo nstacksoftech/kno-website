@@ -85,17 +85,6 @@ export type HomePageData = {
   };
   veterinarians: {
     heading: string;
-    vets: {
-      id: string;
-      name: string;
-      photo: MediaRef;
-      initials?: string | null;
-      speciality: string;
-      qualification: string;
-      experience: string;
-      languages: string;
-      verifiedLabel?: string | null;
-    }[] | null;
     viewAllLabel?: string | null;
     viewAllUrl?: string | null;
   };
@@ -117,26 +106,26 @@ export type HomePageResponse = {
   trust: TrustData | null;
 };
 
-export type HeaderLogo = {
-  url: string | null;
-  alt: string | null;
-};
-
 export type HeaderLink = {
   label: string;
   url: string;
 };
 
 export type HeaderData = {
-  logo: HeaderLogo | null;
   navLinks: HeaderLink[] | null;
   cta: HeaderLink | null;
 };
 
+export type SiteSettingsData = {
+  headerLogo: MediaRef;
+  footerLogo: MediaRef;
+  address: string;
+  copyright: string;
+  trust: TrustData | null;
+};
+
 export type FooterData = {
-  logo: MediaRef;
   companyName: string;
-  companyAddress: string;
   socialLinks:
     | {
         platform: string;
@@ -150,7 +139,6 @@ export type FooterData = {
         links: { label: string; url: string }[] | null;
       }[]
     | null;
-  copyright: string;
   legalLinks: { label: string; url: string }[] | null;
 };
 
@@ -238,6 +226,28 @@ export type HomeVet = {
   photo: string | null;
   initials: string;
   verified: boolean;
+};
+
+export type ApprovedVetItem = {
+  full_name?: string | null;
+  specialization?: string | null;
+  qualification?: string | null;
+  years_experience?: number | null;
+  languages?: string[] | null;
+  profile_image_url?: string | null;
+};
+
+export type ApprovedVetsResponse = {
+  message: string;
+  data: {
+    items: ApprovedVetItem[];
+    pagination: {
+      total: number;
+      page: number;
+      limit: number;
+      totalPages: number;
+    };
+  };
 };
 
 export type HomeTrustBadge = {

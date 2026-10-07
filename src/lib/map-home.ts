@@ -40,16 +40,6 @@ function list<T>(items: T[] | null | undefined): T[] {
   return items ?? [];
 }
 
-function initialsFrom(name: string): string {
-  return name
-    .replace(/^Dr\.?\s+/i, "")
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0]?.toUpperCase() ?? "")
-    .join("");
-}
-
 function mapHero(hero: HomePageData["hero"]): HomeView["hero"] {
   return {
     heading: text(hero.heading),
@@ -140,26 +130,10 @@ function mapPricing(section: HomePageData["pricing"]): HomeView["pricing"] {
 
 function mapVets(section: HomePageData["veterinarians"]): HomeView["veterinarians"] {
   return {
-    heading: text(section?.heading),
-    viewAllLabel: text(section?.viewAllLabel),
-    viewAllUrl: text(section?.viewAllUrl),
-    vets: list(section?.vets).map((vet) => {
-      const name = text(vet.name);
-      return {
-        id: vet.id,
-        name,
-        speciality: text(vet.speciality),
-        qualification: text(vet.qualification),
-        experience: text(vet.experience),
-        languages: text(vet.languages)
-          .split(",")
-          .map((language) => language.trim())
-          .filter(Boolean),
-        photo: image(vet.photo)?.src ?? null,
-        initials: text(vet.initials) || initialsFrom(name),
-        verified: text(vet.verifiedLabel).length > 0,
-      };
-    }),
+    heading: text(section?.heading) || "Meet our veterinarians",
+    viewAllLabel: text(section?.viewAllLabel) || "View all",
+    viewAllUrl: text(section?.viewAllUrl) || "/#vets",
+    vets: [],
   };
 }
 

@@ -1,12 +1,7 @@
 export const footerQuery = `
 query {
   Footer {
-    logo {
-      url
-      alt
-    }
     companyName
-    companyAddress
     socialLinks {
       platform
       url
@@ -22,7 +17,6 @@ query {
         url
       }
     }
-    copyright
     legalLinks {
       label
       url

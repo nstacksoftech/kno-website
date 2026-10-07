@@ -1,4 +1,5 @@
 import { seoMetaFields } from "@/graphql/queries/seoMetaFields";
+import { siteSettingsTrustFields } from "@/graphql/queries/siteSettingsQuery";
 
 export const homeQuery = `
 query {
@@ -74,30 +75,14 @@ query {
     }
     veterinarians {
       heading
-      vets {
-        id
-        name
-        photo { url alt }
-        initials
-        speciality
-        qualification
-        experience
-        languages
-        verifiedLabel
-      }
       viewAllLabel
       viewAllUrl
     }
     showTrustedBanner
     ${seoMetaFields}
   }
-  Trust {
-    items {
-      title
-      description
-      note
-      image { url alt }
-    }
+  SiteSetting {
+    ${siteSettingsTrustFields}
   }
 }
 `;

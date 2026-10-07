@@ -9,6 +9,21 @@ import type { HomeVet } from "@/lib/types";
  */
 function VetPortrait({ vet }: { vet: HomeVet }) {
   if (vet.photo) {
+    const isRemote = /^https?:\/\//i.test(vet.photo);
+
+    if (isRemote) {
+      return (
+        // eslint-disable-next-line @next/next/no-img-element -- profile URLs come from the petcare API/CDN
+        <img
+          src={vet.photo}
+          alt={`Portrait of ${vet.name}`}
+          width={150}
+          height={175}
+          className="h-[175px] w-[150px] shrink-0 rounded-[16px] object-cover"
+        />
+      );
+    }
+
     return (
       <Image
         src={vet.photo}

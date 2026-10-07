@@ -1,5 +1,11 @@
 import { resolveMediaUrl } from "./graphqlClient";
-import type { CmsImage, FooterData, FooterView, MediaRef } from "./types";
+import type {
+  CmsImage,
+  FooterData,
+  FooterView,
+  MediaRef,
+  SiteSettingsData,
+} from "./types";
 
 const EMPTY_FOOTER: FooterView = {
   logo: null,
@@ -26,30 +32,33 @@ function platformLabel(platform: string): string {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
-export function mapFooter(footer: FooterData | null): FooterView {
-  if (!footer) return EMPTY_FOOTER;
+export function mapFooter(
+  footer: FooterData | null,
+  siteSettings: SiteSettingsData | null = null,
+): FooterView {
+  if (!footer && !siteSettings) return EMPTY_FOOTER;
 
   return {
-    logo: image(footer.logo),
-    companyName: text(footer.companyName),
-    addressLines: text(footer.companyAddress)
+    logo: image(siteSettings?.footerLogo ?? null),
+    companyName: text(footer?.companyName),
+    addressLines: text(siteSettings?.address)
       .split("\n")
       .map((line) => line.trim())
       .filter(Boolean),
-    socialLinks: (footer.socialLinks ?? []).map((link) => ({
+    socialLinks: (footer?.socialLinks ?? []).map((link) => ({
       label: platformLabel(link.platform),
       href: text(link.url),
       icon: image(link.icon),
     })),
-    columns: (footer.columns ?? []).map((column) => ({
+    columns: (footer?.columns ?? []).map((column) => ({
       heading: text(column.title),
       links: (column.links ?? []).map((link) => ({
         label: text(link.label),
         href: text(link.url),
       })),
     })),
-    copyright: text(footer.copyright),
-    legalLinks: (footer.legalLinks ?? []).map((link) => ({
+    copyright: text(siteSettings?.copyright),
+    legalLinks: (footer?.legalLinks ?? []).map((link) => ({
       label: text(link.label),
       href: text(link.url),
     })),

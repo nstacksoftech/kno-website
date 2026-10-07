@@ -8,7 +8,7 @@ import { HowItWorks } from "@/components/sections/how-it-works";
 import { PainPoints } from "@/components/sections/pain-points";
 import { Pricing } from "@/components/sections/pricing";
 import { TrustBadges } from "@/components/sections/trust-badges";
-import { fetchHomePageData } from "@/lib/api";
+import { fetchApprovedVets, fetchHomePageData } from "@/lib/api";
 import { mapHomePage } from "@/lib/map-home";
 import { metadataFromSeo } from "@/lib/map-seo";
 
@@ -27,7 +27,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const data = await fetchHomePageData();
+  const [data, approvedVets] = await Promise.all([
+    fetchHomePageData(),
+    fetchApprovedVets({ page: 1, limit: 20 }),
+  ]);
   const home = mapHomePage(data);
 
   return (
@@ -53,7 +56,7 @@ export default async function HomePage() {
       />
       <Vets
         heading={home.veterinarians.heading}
-        vets={home.veterinarians.vets}
+        vets={approvedVets}
         viewAllLabel={home.veterinarians.viewAllLabel}
         viewAllUrl={home.veterinarians.viewAllUrl}
       />

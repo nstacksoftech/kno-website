@@ -3,15 +3,19 @@ export async function graphqlFetch<T>({
   variables = {},
   revalidate = 60,
   tags,
+  url: urlOverride,
 }: {
   query: string;
   variables?: Record<string, unknown>;
   revalidate?: number | false;
   tags?: string[];
+  /** Override the default CMS GraphQL endpoint. */
+  url?: string;
 }): Promise<T> {
   const url =
+    urlOverride ||
     process.env.NEXT_PUBLIC_GRAPHQL_API_URL ||
-    "http://localhost:3000/api/graphql";
+    "https://kno-api-stg.stagingurl.in";
 
   try {
     const response = await fetch(url, {
@@ -63,4 +67,18 @@ export function resolveMediaUrl(url: string): string {
   } catch {
     return url;
   }
+}
+
+/** Petcare backend GraphQL endpoint: `{NEXT_PUBLIC_KNO_API_BASE_URL}/v1/graphql` */
+export function getKnoApiGraphqlUrl(): string {
+  const base = process.env.NEXT_PUBLIC_KNO_API_BASE_URL?.trim().replace(
+    /\/$/,
+    "",
+  );
+  if (!base) {
+    throw new Error(
+      "NEXT_PUBLIC_KNO_API_BASE_URL is missing in environment variables",
+    );
+  }
+  return `${base}/v1/graphql`;
 }

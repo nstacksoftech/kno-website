@@ -1,4 +1,5 @@
 import { seoMetaFields } from "@/graphql/queries/seoMetaFields";
+import { siteSettingsTrustFields } from "@/graphql/queries/siteSettingsQuery";
 
 export const contactQuery = `
 query {
@@ -66,13 +67,8 @@ query {
     showTrustedBanner
     ${seoMetaFields}
   }
-  Trust {
-    items {
-      title
-      description
-      note
-      image { url alt }
-    }
+  SiteSetting {
+    ${siteSettingsTrustFields}
   }
 }
 `;
