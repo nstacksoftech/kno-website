@@ -81,9 +81,7 @@ export async function fetchApprovedVets(options?: {
   limit?: number;
 }): Promise<HomeVet[]> {
   try {
-    const data = await graphqlFetch<{
-      approvedVets: ApprovedVetsResponse;
-    }>({
+    const data = await graphqlFetch<ApprovedVetsResponse>({
       query: approvedVetsQuery,
       variables: {
         page: options?.page ?? 1,

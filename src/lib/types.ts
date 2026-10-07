@@ -10,10 +10,10 @@ export type SeoMeta = {
   ogTitle?: string | null;
   ogDescription?: string | null;
   ogImage?: MediaRef;
-  ogType?: "website" | "article" | "product" | "profile" | null;
+  ogType?: 'website' | 'article' | 'product' | 'profile' | null;
   ogUrl?: string | null;
   keywords?: { keyword: string; id?: string | null }[] | null;
-  twitterCard?: "summary" | "summary_large_image" | "app" | "player" | null;
+  twitterCard?: 'summary' | 'summary_large_image' | 'app' | 'player' | null;
   twitterSite?: string | null;
   twitterTitle?: string | null;
   twitterDescription?: string | null;
@@ -29,11 +29,13 @@ export type HomePageData = {
     description: string;
     chipImage: MediaRef;
     chip: string;
-    highlights: {
-      icon: MediaRef;
-      title: string;
-      description: string | null;
-    }[] | null;
+    highlights:
+      | {
+          icon: MediaRef;
+          title: string;
+          description: string | null;
+        }[]
+      | null;
     primaryCta: { label: string; url: string; icon: MediaRef };
     secondaryCta: { label: string; url: string };
     image: MediaRef;
@@ -45,11 +47,13 @@ export type HomePageData = {
   };
   howItWorks: {
     heading: string;
-    steps: {
-      icon: MediaRef;
-      title: string;
-      description: string;
-    }[] | null;
+    steps:
+      | {
+          icon: MediaRef;
+          title: string;
+          description: string;
+        }[]
+      | null;
   };
   painPoints: {
     heading: string;
@@ -59,27 +63,31 @@ export type HomePageData = {
   features: {
     heading: string;
     image: MediaRef;
-    items: {
-      icon: MediaRef;
-      title: string;
-      description: string;
-    }[] | null;
+    items:
+      | {
+          icon: MediaRef;
+          title: string;
+          description: string;
+        }[]
+      | null;
   };
   pricing: {
     heading: string;
-    plans: {
-      id: string;
-      name: string;
-      tagline: string;
-      price: number;
-      currency: string;
-      interval: string;
-      featured?: boolean | null;
-      includesLabel: string;
-      features: { text: string }[] | null;
-      ctaLabel: string;
-      ctaUrl: string;
-    }[] | null;
+    plans:
+      | {
+          id: string;
+          name: string;
+          tagline: string;
+          price: number;
+          currency: string;
+          interval: string;
+          featured?: boolean | null;
+          includesLabel: string;
+          features: { text: string }[] | null;
+          ctaLabel: string;
+          ctaUrl: string;
+        }[]
+      | null;
     image: MediaRef;
     caption?: string | null;
   };
@@ -93,12 +101,14 @@ export type HomePageData = {
 };
 
 export type TrustData = {
-  items: {
-    title: string;
-    description: string;
-    note?: string | null;
-    image: MediaRef;
-  }[] | null;
+  items:
+    | {
+        title: string;
+        description: string;
+        note?: string | null;
+        image: MediaRef;
+      }[]
+    | null;
 };
 
 export type HomePageResponse = {
@@ -239,14 +249,12 @@ export type ApprovedVetItem = {
 
 export type ApprovedVetsResponse = {
   message: string;
-  data: {
-    items: ApprovedVetItem[];
-    pagination: {
-      total: number;
-      page: number;
-      limit: number;
-      totalPages: number;
-    };
+  items: ApprovedVetItem[];
+  pagination: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
   };
 };
 
@@ -270,7 +278,7 @@ export type HomeView = {
     badgeImage: CmsImage | null;
     highlights: HomeHighlight[];
     primaryCta: HomeCta;
-    secondaryCta: Omit<HomeCta, "icon">;
+    secondaryCta: Omit<HomeCta, 'icon'>;
     proofTitle: string;
     proofStat: string;
     avatars: CmsImage[];
@@ -524,7 +532,7 @@ export type ContactView = {
 };
 
 export type LegalBlockData = {
-  type: "paragraph" | "list" | "table";
+  type: 'paragraph' | 'list' | 'table';
   text?: string | null;
   items?: { text: string; id?: string | null }[] | null;
   caption?: string | null;
@@ -612,7 +620,7 @@ export type DeleteAccountPageResponse = {
 };
 
 export type DeleteAccountStepView = {
-  id: "details" | "verify" | "done";
+  id: 'details' | 'verify' | 'done';
   label: string;
 };
 
@@ -690,4 +698,3 @@ export type AboutView = {
   };
   trustBadges: HomeTrustBadge[];
 };
-
