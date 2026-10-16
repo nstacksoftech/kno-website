@@ -4,8 +4,8 @@ export const PRIVACY_POLICY: LegalDocument = {
   title: "Privacy Policy",
   intro:
     "This policy explains what KNO collects when you use our website and app, why we collect it, who we share it with, and the choices you have. It covers your personal information and your pet's medical records, which we treat with the same care.",
-  effectiveDate: "31 August 2026",
-  lastUpdated: "31 August 2026",
+  effectiveDate: "16 October 2026",
+  lastUpdated: "16 October 2026",
   sections: [
     {
       id: "who-we-are",
@@ -95,7 +95,7 @@ export const PRIVACY_POLICY: LegalDocument = {
         },
         {
           kind: "p",
-          text: "Consent for marketing is separate and optional. Declining it does not affect your membership or your ability to book a consultation. You may withdraw any consent at any time, in your account settings or by writing to privacy@kno.vet. Withdrawal is not retrospective: it does not undo processing already carried out lawfully.",
+          text: "Consent for marketing is separate and optional. Declining it does not affect your membership or your ability to book a consultation. You may withdraw any consent at any time, in your account settings or by writing to support@kno.vet. Withdrawal is not retrospective: it does not undo processing already carried out lawfully.",
         },
       ],
     },
@@ -105,22 +105,23 @@ export const PRIVACY_POLICY: LegalDocument = {
       blocks: [
         {
           kind: "p",
-          text: "We do not sell personal data or pet health records, and we do not share them for third-party advertising. We share the minimum necessary with the following categories of recipient.",
+          text: "We do not sell personal data or pet health records, and we do not share them for third-party advertising. We share the minimum personal data necessary with the following categories of recipients:",
         },
         {
           kind: "list",
           items: [
-            "Veterinarians on the KNO panel - they see the profile and history of the pet they are consulting on, and nothing else.",
-            "Payment gateways, to authorise and settle your payments. They receive your name, email address and transaction amount.",
-            "Cloud hosting and infrastructure providers that store and serve the platform, under contract and on our instructions.",
-            "Communication providers that deliver our email, SMS and push notifications.",
-            "Professional advisers, auditors and regulators, where we are required to disclose or need advice on a dispute.",
-            "An acquirer, if the business is sold or restructured. You will be told before your data moves, and this policy will continue to apply until replaced.",
+            "Veterinarians on the KNO panel: They see the profile and medical history of the specific pet they are consulting on, and nothing else, strictly for the purpose of delivering clinical care.",
+            "Payment gateways and financial intermediaries: To authorize, process, and settle your payments in compliance with RBI guidelines. They receive basic transaction identifiers (name, email address, transaction amount).",
+            "Cloud hosting and infrastructure providers: Who store and host the platform under data-processing contracts and strictly on our instructions.",
+            "Communication providers: That deliver transactional email, SMS, and push notifications requested by you.",
+            "Law enforcement agencies, courts, and statutory authorities: Where we are legally obligated to disclose information under applicable Indian law, summons, court orders, or for the prevention, detection, investigation, or prosecution of any cyber incident or criminal offence.",
+            "Professional advisers and auditors: Where reasonably required for financial reporting, auditing, or legal advice regarding dispute resolution.",
+            "An acquirer or corporate successor: In the event of a merger, acquisition, or restructuring. You will be notified before your data is transferred, and this policy will continue to apply until formally replaced.",
           ],
         },
         {
           kind: "p",
-          text: "Every processor we appoint is bound by contract to use the data only for the purpose we specify, to keep it secure, and to return or delete it when the engagement ends.",
+          text: "Every third-party service provider acting as a Data Processor on our behalf is bound by a contract to process data solely for the designated purpose, maintain equivalent technical and organizational security safeguards, and erase the data upon completion of the service. KNO remains responsible for ensuring the processing of your data complies with the Digital Personal Data Protection Act, 2023.",
         },
       ],
     },
@@ -172,21 +173,21 @@ export const PRIVACY_POLICY: LegalDocument = {
       blocks: [
         {
           kind: "p",
-          text: "Under the Digital Personal Data Protection Act, 2023 you may:",
+          text: "Under the Digital Personal Data Protection Act, 2023, you have the right to:",
         },
         {
           kind: "list",
           items: [
-            "Ask for a summary of the personal data we hold about you and who we have shared it with.",
-            "Ask us to correct data that is inaccurate, or complete data that is missing.",
-            "Ask us to erase data we no longer need for the purpose it was collected for, subject to the retention periods above.",
-            "Nominate another person to exercise these rights on your behalf if you die or become incapacitated.",
-            "Raise a grievance with us, and escalate to the Data Protection Board of India if you are not satisfied with our answer.",
+            "Access: Request a summary of the personal data we hold about you and the identities of third parties with whom it has been shared.",
+            "Correction & Completion: Request the correction of inaccurate data or the completion of incomplete information.",
+            "Erasure & Downstream Deletion: Request the erasure of your personal data when it is no longer necessary for the purpose it was collected. Upon receiving a valid erasure request or withdrawal of consent, we will delete your personal data from our active systems and mandate that our third-party Data Processors do the same, subject only to statutory retention periods required by law.",
+            "Nomination: Nominate an individual to exercise these data rights on your behalf in the event of death or incapacity.",
+            "Grievance Redressal: Raise concerns directly with our Grievance Officer, and escalate to the Data Protection Board of India if you are not satisfied with the resolution.",
           ],
         },
         {
           kind: "p",
-          text: "Write to privacy@kno.vet to exercise any of these. We acknowledge requests within 72 hours and respond substantively within 30 days. We may ask you to verify your identity first - health records are sensitive and we will not hand them to the wrong person.",
+          text: "Write to support@kno.vet to exercise any of these rights. We acknowledge requests within 24 hours and respond substantively within 15 days. We may require verification of your identity prior to releasing or modifying records.",
         },
       ],
     },
@@ -206,7 +207,7 @@ export const PRIVACY_POLICY: LegalDocument = {
       blocks: [
         {
           kind: "p",
-          text: "KNO is intended for adults. We do not knowingly create accounts for anyone under 18, and we do not direct marketing at children. If you believe a child has given us personal data, write to privacy@kno.vet and we will delete it.",
+          text: "KNO is intended for adults. We do not knowingly create accounts for anyone under 18, and we do not direct marketing at children. If you believe a child has given us personal data, write to support@kno.vet and we will delete it.",
         },
       ],
     },
@@ -250,11 +251,23 @@ export const PRIVACY_POLICY: LegalDocument = {
       blocks: [
         {
           kind: "p",
-          text: "For any question about this policy, or to exercise a right, write to privacy@kno.vet. If your concern is unresolved, escalate to our Grievance Officer at grievance@kno.vet, who acknowledges within 48 hours and aims to resolve within 30 days. You may also complain to the Data Protection Board of India.",
+          text: "For any questions regarding this policy or to exercise your rights under the DPDP Act, 2023, please write to support@kno.vet.",
         },
         {
           kind: "p",
-          text: "Postal address: KNO Veterinary Care Network Private Limited, Oberoi Garden City, Goregaon East, Mumbai - 400063, Maharashtra, India.",
+          text: "If your concern remains unresolved or you wish to raise a formal complaint, you may escalate the matter to our designated Grievance Officer:",
+        },
+        {
+          kind: "list",
+          items: [
+            "Grievance Officer: Grievance Officer",
+            "Email: support@kno.vet",
+            "Postal Address: KNO Veterinary Care Network Private Limited, Oberoi Garden City, Goregaon East, Mumbai – 400063, Maharashtra, India.",
+          ],
+        },
+        {
+          kind: "p",
+          text: "In accordance with applicable rules, our Grievance Officer will acknowledge your complaint within 24 hours and resolve it within 15 days of receipt. If you remain unsatisfied with our response, you have the right to submit a complaint directly to the Data Protection Board of India.",
         },
       ],
     },

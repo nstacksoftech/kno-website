@@ -158,8 +158,8 @@ export const CONTACT_CHANNELS: readonly ContactChannel[] = [
     label: "Privacy & Data Requests",
     description:
       "Access, correct or erase your data, or raise a concern about how it is handled.",
-    email: "privacy@kno.vet",
-    responseTime: "Acknowledged within 72 hours",
+    email: "support@kno.vet",
+    responseTime: "Acknowledged within 24 hours",
   },
 ] as const;
 
@@ -185,9 +185,9 @@ export const CONTACT_FAQ = {
 /** Required under the Consumer Protection (E-Commerce) Rules, 2020. */
 export const GRIEVANCE = {
   designation: "Grievance Officer",
-  email: "grievance@kno.vet",
-  acknowledgement: "48 hours",
-  resolution: "30 days",
+  email: "support@kno.vet",
+  acknowledgement: "24 hours",
+  resolution: "15 days",
 } as const;
 
 export const CONTACT_SUBJECTS = [

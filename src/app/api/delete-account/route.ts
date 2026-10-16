@@ -84,7 +84,7 @@ export async function POST(request: Request) {
         {
           ok: false,
           errors: {
-            form: "We could not submit your request right now. Please try again, or email privacy@kno.vet.",
+            form: "We could not submit your request right now. Please try again, or email support@kno.vet.",
           },
         },
         { status: 502 },

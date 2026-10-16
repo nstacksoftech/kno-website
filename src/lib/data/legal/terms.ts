@@ -4,8 +4,8 @@ export const TERMS: LegalDocument = {
   title: "Terms & Conditions",
   intro:
     "These terms govern your use of the KNO website, app and veterinary consultation service. They set out what we provide, what a membership includes, how payment works, and the limits of advice delivered over a screen. Please read section 3 in particular - it explains what KNO cannot do.",
-  effectiveDate: "31 August 2026",
-  lastUpdated: "31 August 2026",
+  effectiveDate: "16 October 2026",
+  lastUpdated: "16 October 2026",
   sections: [
     {
       id: "acceptance",
@@ -94,7 +94,7 @@ export const TERMS: LegalDocument = {
         },
         {
           kind: "p",
-          text: "Prices are in Indian Rupees and include applicable taxes unless stated otherwise at checkout. Membership renews automatically each month on the date you first subscribed, using the payment instrument you registered, until you cancel.",
+          text: "Prices are in Indian Rupees and include applicable taxes unless stated otherwise at checkout. Membership renews automatically each month on the date you first subscribed, using the payment instrument you registered, until you cancel. All recurring billing is processed in compliance with Reserve Bank of India (RBI) guidelines on e-mandates and automated payment systems. You will receive pre-debit notifications from your bank or payment issuer prior to renewal, and you retain the right to modify or revoke your e-mandate at any time through your bank or account settings.",
         },
         {
           kind: "p",
@@ -138,11 +138,11 @@ export const TERMS: LegalDocument = {
       blocks: [
         {
           kind: "p",
-          text: "A veterinarian may issue a prescription where, in their professional judgement, it is appropriate to do so from a remote consultation. They may also decline, and will explain why. A prescription is never guaranteed by paying a consultation fee.",
+          text: "A veterinarian may issue a prescription where, in their professional judgement and in strict compliance with the Drugs and Cosmetics Act, 1940 and applicable veterinary norms, it is appropriate to do so from a remote consultation. They may also decline, and will explain why. A prescription is never guaranteed by paying a consultation fee.",
         },
         {
           kind: "p",
-          text: "Certain medicines cannot responsibly or lawfully be prescribed without physical examination. KNO does not sell or dispense medicines, and we do not receive commission from any pharmacy. Fill prescriptions at a licensed pharmacy and follow the dosage exactly.",
+          text: "Certain medicines—including restricted, controlled, or prescription-only veterinary drugs—cannot responsibly or lawfully be prescribed without a physical examination. KNO does not sell or dispense medicines, and we do not receive commission from any pharmacy. Fill prescriptions at a licensed pharmacy and follow the dosage exactly.",
         },
       ],
     },
@@ -173,7 +173,11 @@ export const TERMS: LegalDocument = {
           items: [
             "Use KNO to seek advice for an animal you do not own or care for.",
             "Abuse, threaten or harass a veterinarian or a member of our team.",
-            "Upload anything unlawful, or any file you do not have the right to share.",
+            "Upload, host, display, modify, publish, transmit, update, or share any information that belongs to another person and to which you do not have any right; is grossly harmful, harassing, blasphemous, defamatory, obscene, pornographic, pedophilic, libelous, invasive of another's privacy, hateful, or racially, ethnically objectionable, disparaging, relating or encouraging money laundering or gambling, or otherwise unlawful in any manner whatsoever.",
+            "Harm minors in any way.",
+            "Infringe any patent, trademark, copyright, or other proprietary rights.",
+            "Violate any law for the time being in force.",
+            "Deceive or mislead the addressee about the origin of such messages or communicate any information which is grossly offensive or menacing in nature.",
             "Attempt to access another user's account, records or consultations.",
             "Scrape, reverse-engineer, or interfere with the operation of the platform.",
             "Resell or commercially exploit consultations or content from the service.",
@@ -243,7 +247,7 @@ export const TERMS: LegalDocument = {
         },
         {
           kind: "p",
-          text: "On closure you keep the right to export your pet's records, and we retain what we must under the retention periods in the Privacy Policy.",
+          text: "On closure you keep the right to export your pet's records, and we retain user registration data and transaction records for up to 180 days (or such other period as mandated) following cancellation in accordance with the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021, alongside other data retained under our Privacy Policy.",
         },
       ],
     },
@@ -253,11 +257,32 @@ export const TERMS: LegalDocument = {
       blocks: [
         {
           kind: "p",
-          text: "These terms are governed by the laws of India. The courts at Mumbai, Maharashtra have exclusive jurisdiction, without prejudice to any right you have to approach a consumer forum where you live.",
+          text: "Governing Law: These terms and any dispute or claim arising out of or in connection with them, their subject matter, or their formation shall be governed by and construed in accordance with the laws of India.",
         },
         {
           kind: "p",
-          text: "Please raise any dispute with us first. Most are resolved quickly once we understand what happened.",
+          text: "Amicable Resolution: If any dispute, controversy, or claim arises between you and KNO, please reach out to us first at support@kno.vet. We will attempt in good faith to resolve the matter informally within thirty (30) days of receiving written notice of the dispute.",
+        },
+        {
+          kind: "p",
+          text: "Arbitration: If the dispute is not resolved amicably within the thirty (30) day period, it shall be referred to and finally resolved by binding arbitration in accordance with the Arbitration and Conciliation Act, 1996 (including any statutory modifications or re-enactments thereof for the time being in force):",
+        },
+        {
+          kind: "list",
+          items: [
+            "Arbitrator: The arbitration shall be conducted by a sole arbitrator mutually appointed by both parties. If the parties fail to agree on a sole arbitrator within thirty (30) days of the invocation of arbitration, the appointment shall be made in accordance with the provisions of the Arbitration and Conciliation Act, 1996.",
+            "Seat and Venue: The seat and legal place of arbitration shall be Mumbai, Maharashtra, India. The arbitral proceedings may be conducted virtually or at a physical venue in Mumbai as determined by the arbitrator.",
+            "Language: The language of the arbitral proceedings shall be English.",
+            "Award: The arbitral award shall be final, reasoned, and binding upon both parties.",
+          ],
+        },
+        {
+          kind: "p",
+          text: "Court Jurisdiction & Consumer Rights: Subject to the arbitration agreement above, the competent courts at Mumbai, Maharashtra shall have exclusive jurisdiction over any proceedings seeking interim or injunctive relief under the Arbitration and Conciliation Act, 1996, or to enforce an arbitral award.",
+        },
+        {
+          kind: "p",
+          text: "Nothing in this clause shall limit or impair any statutory right you may have under the Consumer Protection Act, 2019 to approach an appropriate Consumer Disputes Redressal Commission having jurisdiction.",
         },
       ],
     },
@@ -267,7 +292,11 @@ export const TERMS: LegalDocument = {
       blocks: [
         {
           kind: "p",
-          text: "In line with the Consumer Protection (E-Commerce) Rules, 2020, complaints may be sent to our Grievance Officer at grievance@kno.vet. We acknowledge every complaint within 48 hours and aim to resolve it within 30 days.",
+          text: "In line with the Consumer Protection (E-Commerce) Rules, 2020 and the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021, complaints or grievances may be sent to our designated Grievance Officer at support@kno.vet. We acknowledge every complaint within 24 hours and aim to resolve it within 15 days from the date of receipt.",
+        },
+        {
+          kind: "p",
+          text: "The current name and contact details of our Grievance Officer are also prominently displayed on our Contact/Help page.",
         },
         {
           kind: "p",

@@ -456,8 +456,8 @@ export function DeleteAccountForm() {
             <h2 className="mt-6 text-h3 font-bold text-kno-ink">Deletion request received</h2>
             <p className="mx-auto mt-3 max-w-[440px] text-base leading-[24px] text-kno-muted">
               Your number is verified and your request is with our privacy team.
-              We&apos;ll acknowledge it within 72 hours and complete deletion within
-              30 days{email ? ", confirming by email" : ""}.
+              We&apos;ll acknowledge it within 24 hours and complete deletion within
+              15 days{email ? ", confirming by email" : ""}.
             </p>
             <dl className="mt-8 grid w-full max-w-[440px] gap-px overflow-hidden rounded-tile border border-kno-line bg-kno-line text-left text-sm">
               {[
